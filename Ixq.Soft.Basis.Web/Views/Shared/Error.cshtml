@@ -1,14 +1,15 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width" />
-    <title>错误</title>
-</head>
-<body>
-    <hgroup>
-        <h1>错误。</h1>
-        <h2>处理你的请求时出错。</h2>
-    </hgroup>
-</body>
-</html>
+﻿@{ 
+    Layout = "~/Areas/Hplus/Views/Shared/_LayoutHplusIframe.cshtml";
+}
+<div class="middle-box text-center animated fadeInDown">
+    <h1>500</h1>
+    <h3 class="font-bold">服务器内部错误</h3>
+    <div class="error-desc">
+        服务器好像出错了...
+    </div>
+    @*<div class="error-desc">
+        控制器：@ViewData.Model.ControllerName
+        <br/>
+        操作：@ViewData.Model.ActionName
+    </div>*@
+</div>

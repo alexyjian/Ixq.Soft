@@ -30,8 +30,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.DynamicFilters, Version=1.4.11.0, Culture=neutral, PublicKeyToken=146423a1b8d60775, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.DynamicFilters.1.4.11\lib\net40\EntityFramework.DynamicFilters.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Ixq.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Core.1.1.0\lib\net45\Ixq.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ixq.Data, Version=1.1.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Data.1.1.0\lib\net45\Ixq.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Ixq.Extensions, Version=1.1.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Extensions.1.1.0\lib\net45\Ixq.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,6 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
