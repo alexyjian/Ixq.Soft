@@ -46,17 +46,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.5.0\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.1\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.DynamicFilters, Version=1.4.11.0, Culture=neutral, PublicKeyToken=146423a1b8d60775, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.DynamicFilters.1.4.11\lib\net40\EntityFramework.DynamicFilters.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Ixq.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
       <HintPath>..\packages\Ixq.Core.2.0.0\lib\net45\Ixq.Core.dll</HintPath>
@@ -64,11 +70,20 @@
     <Reference Include="Ixq.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
       <HintPath>..\packages\Ixq.Data.2.0.0\lib\net45\Ixq.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Ixq.DependencyInjection, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.DependencyInjection.2.0.0\lib\net45\Ixq.DependencyInjection.dll</HintPath>
+    </Reference>
     <Reference Include="Ixq.Extensions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
       <HintPath>..\packages\Ixq.Extensions.2.0.0\lib\net45\Ixq.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Ixq.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Logging.2.0.0\lib\net45\Ixq.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="Ixq.Mapper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
       <HintPath>..\packages\Ixq.Mapper.2.0.0\lib\net45\Ixq.Mapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Ixq.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Owin.2.0.0\lib\net45\Ixq.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Ixq.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
       <HintPath>..\packages\Ixq.Security.2.0.0\lib\net45\Ixq.Security.dll</HintPath>
@@ -78,6 +93,9 @@
     </Reference>
     <Reference Include="Ixq.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
       <HintPath>..\packages\Ixq.Web.Mvc.2.0.0\lib\net45\Ixq.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -180,21 +198,47 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\bootstrap-rtl.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\login.css" />
+    <Content Include="Content\patterns\header-profile-skin-1.png" />
+    <Content Include="Content\patterns\header-profile-skin-3.png" />
+    <Content Include="Content\patterns\header-profile.png" />
+    <Content Include="Content\patterns\shattered.png" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="log4net.config" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\contabs.js" />
+    <Content Include="Scripts\content.js" />
+    <Content Include="Scripts\hplus.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
+    <Content Include="Scripts\jquery-ui.custom.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -205,6 +249,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\welcome.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -255,6 +300,28 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ixq.Soft.Basis.Core\Ixq.Soft.Basis.Core.csproj">
+      <Project>{057ab31e-beca-4807-9744-ba3a9ad3e85d}</Project>
+      <Name>Ixq.Soft.Basis.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ixq.Soft.Basis.DataContext\Ixq.Soft.Basis.DataContext.csproj">
+      <Project>{B6DCABAE-6F02-427B-8C34-DF6F0E1B7610}</Project>
+      <Name>Ixq.Soft.Basis.DataContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ixq.Soft.Basis.Entities\Ixq.Soft.Basis.Entities.csproj">
+      <Project>{9cc708a6-95a4-4c08-ac37-30254d6a794a}</Project>
+      <Name>Ixq.Soft.Basis.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ixq.Soft.Basis.Models\Ixq.Soft.Basis.Models.csproj">
+      <Project>{65f99a52-0042-4d57-95a5-189586360087}</Project>
+      <Name>Ixq.Soft.Basis.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ixq.Soft.Basis.Utility\Ixq.Soft.Basis.Utility.csproj">
+      <Project>{a9e91f4e-28d0-4402-a965-1f54ba0042c7}</Project>
+      <Name>Ixq.Soft.Basis.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
