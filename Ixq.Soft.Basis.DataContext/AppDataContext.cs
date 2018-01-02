@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,14 @@ namespace Ixq.Soft.Basis.DataContext
     {
         public AppDataContext() : base("DataContext")
         {
+            Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
         }
+
         public static AppDataContext Create()
         {
             return new AppDataContext();
         }
+
     }
 }

@@ -14,9 +14,11 @@ namespace Ixq.Soft.Basis.Web.Controllers
 {
     public class AccountController : BaseController
     {
-        public ApplicationSignInManager SignInManager => 
+        public ApplicationSignInManager SignInManager =>
             HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
+
+        private IAuthenticationManager AuthenticationManager =>
+            HttpContext.GetOwinContext().Authentication;
 
         public ApplicationUserManager UserManager =>
             HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();

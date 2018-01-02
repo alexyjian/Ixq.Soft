@@ -33,6 +33,7 @@ namespace Ixq.Soft.Basis.Web
                 "~/Content/animate.css",
                 "~/Content/style.css"
             ));
+
             bundles.Add(new ScriptBundle("~/bundles/login").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/bootstrap.js"));

@@ -16,7 +16,7 @@ namespace Ixq.Soft.Basis.DataContext
             var roleManager = new AppRoleManager<ApplicationRole>(new AppRoleStore<ApplicationRole>(context));
             var userManager = new AppUserManager<ApplicationUser>(new AppUserStore<ApplicationUser>(context));
 
-            var adminRole = new ApplicationRole() { Name = "Admin", Description = "具备全部权限的用户组", CreateDate = DateTime.Now };
+            var adminRole = new ApplicationRole() { Name = "Admin", Description = "具备全部权限的角色", CreateDate = DateTime.Now };
             if (!roleManager.RoleExists(adminRole.Name))
                 roleManager.Create(adminRole);
 
@@ -27,7 +27,8 @@ namespace Ixq.Soft.Basis.DataContext
                 CreateDate = DateTime.Now,
                 PhoneNumber = "",
             };
-            userManager.Create(adminUser, "123");
+            userManager.Create(adminUser, "123123");
+            userManager.AddToRole(adminUser.Id, adminRole.Name);
 
             context.SaveChanges();
         }
