@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Ixq.Core.Entity;
 using Ixq.Security.Identity;
 
-namespace Ixq.Soft.Basis.Entities
+namespace Ixq.Soft.Basis.Entities.System
 {
     public class ApplicationRole : AppIdentityRole, ICreateSpecification, IUpdataSpecification,
         ISoftDeleteSpecification

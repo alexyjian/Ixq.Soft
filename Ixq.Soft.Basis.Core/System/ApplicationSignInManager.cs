@@ -1,13 +1,15 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using Ixq.Security.Owin;
+using Ixq.Soft.Basis.Core.System;
 using Ixq.Soft.Basis.Entities;
+using Ixq.Soft.Basis.Entities.System;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 
-namespace Ixq.Soft.Basis.Core
+namespace Ixq.Soft.Basis.Core.System
 {
     public class ApplicationSignInManager : AppSignInManager<ApplicationUser>
     {

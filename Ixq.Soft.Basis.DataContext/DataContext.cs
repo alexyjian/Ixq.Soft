@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ixq.Security.Identity;
 using Ixq.Soft.Basis.Entities;
+using Ixq.Soft.Basis.Entities.System;
 
 namespace Ixq.Soft.Basis.DataContext
 {

@@ -6,7 +6,7 @@ using Ixq.Core.Entity;
 using Ixq.Security.Identity;
 using Microsoft.AspNet.Identity;
 
-namespace Ixq.Soft.Basis.Entities
+namespace Ixq.Soft.Basis.Entities.System
 {
     public class ApplicationUser : AppIdentityUser, ICreateSpecification, IUpdataSpecification,
         ISoftDeleteSpecification

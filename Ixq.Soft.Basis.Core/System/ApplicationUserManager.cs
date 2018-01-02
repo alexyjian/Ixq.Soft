@@ -1,11 +1,11 @@
 ﻿using System;
 using Ixq.Security.Identity;
-using Ixq.Soft.Basis.Entities;
+using Ixq.Soft.Basis.Entities.System;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-namespace Ixq.Soft.Basis.Core
+namespace Ixq.Soft.Basis.Core.System
 {
     public class ApplicationUserManager : AppUserManager<ApplicationUser>
     {
