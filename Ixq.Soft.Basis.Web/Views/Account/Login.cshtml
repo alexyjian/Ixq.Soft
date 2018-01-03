@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Ixq.Soft.Basis.Models.Basis.LoginViewModel
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -22,11 +23,11 @@
             <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
             <div class="form-group">
                 <label>用户名</label>
-                <input name="userName" type="text" class="form-control" placeholder="用户名" required="">
+                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", placeholder = "用户名", required = "required" })
             </div>
             <div class="form-group">
                 <label>密码</label>
-                <input name="password" type="password" class="form-control" placeholder="密码" required="">
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "密码", required = "required" })
             </div>
             <div class="form-group">
                 <label>验证码</label>
