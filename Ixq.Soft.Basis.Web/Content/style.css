@@ -4802,6 +4802,8 @@ body.modal-open {
 }
 .login-container form .form-group label {
     display: block;
+    color: #9ba3af;
+    font-weight: initial;
 }
 .login-container form .form-group .input-captcha {
     width: calc(100% - 95px);
