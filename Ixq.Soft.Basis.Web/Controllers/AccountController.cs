@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Ixq.Soft.Basis.Core.System;
 using Ixq.Soft.Basis.Entities.System;
 using Ixq.Soft.Basis.Models.Basis;
+using Ixq.Soft.Basis.Utility;
 using Ixq.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -38,8 +39,19 @@ namespace Ixq.Soft.Basis.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> LoginAsync(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Login", model);
+            }
+            if (Session["ValidateCode"] == null || Session["ValidateCode"].ToString() != model.Code)
+            {
+                ModelState.AddModelError(nameof(model.Code), "验证码错误。");
+                model.Code = "";
+                return View("Login", model);
+            }
+            Session["ValidateCode"] = null;
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, true);
             switch (result)
             {
@@ -58,6 +70,14 @@ namespace Ixq.Soft.Basis.Web.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Login");
+        }
+
+        public ActionResult GetValidateCode()
+        {
+            var code = ValidateCode.CreateValidateCode(4);
+            Session["ValidateCode"] = code;
+            var bytes = ValidateCode.CreateValidateGraphic(code);
+            return File(bytes, "image/jpeg");
         }
     }
 }
