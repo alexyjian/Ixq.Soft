@@ -19,6 +19,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Utility", "Ixq.Sof
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Repository", "Ixq.Soft.Repository\Ixq.Soft.Repository.csproj", "{955248CC-4DD6-45E2-BF37-08046B1A5178}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Core.Tests", "Ixq.Soft.Core.Tests\Ixq.Soft.Core.Tests.csproj", "{561E5CE9-35E2-4A7D-B5BB-DCB59BE19277}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Web.Tests", "Ixq.Soft.Web.Tests\Ixq.Soft.Web.Tests.csproj", "{6F614FAC-B68C-4615-8EB3-1D5DE1F9F69E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "测试", "测试", "{DC569CAD-F542-41AE-8F6B-BAE181BBB019}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,9 +63,21 @@ Global
 		{955248CC-4DD6-45E2-BF37-08046B1A5178}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{955248CC-4DD6-45E2-BF37-08046B1A5178}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{955248CC-4DD6-45E2-BF37-08046B1A5178}.Release|Any CPU.Build.0 = Release|Any CPU
+		{561E5CE9-35E2-4A7D-B5BB-DCB59BE19277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{561E5CE9-35E2-4A7D-B5BB-DCB59BE19277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{561E5CE9-35E2-4A7D-B5BB-DCB59BE19277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{561E5CE9-35E2-4A7D-B5BB-DCB59BE19277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F614FAC-B68C-4615-8EB3-1D5DE1F9F69E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F614FAC-B68C-4615-8EB3-1D5DE1F9F69E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F614FAC-B68C-4615-8EB3-1D5DE1F9F69E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F614FAC-B68C-4615-8EB3-1D5DE1F9F69E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{561E5CE9-35E2-4A7D-B5BB-DCB59BE19277} = {DC569CAD-F542-41AE-8F6B-BAE181BBB019}
+		{6F614FAC-B68C-4615-8EB3-1D5DE1F9F69E} = {DC569CAD-F542-41AE-8F6B-BAE181BBB019}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6DE2BC16-8057-4475-87E2-D89669583491}
