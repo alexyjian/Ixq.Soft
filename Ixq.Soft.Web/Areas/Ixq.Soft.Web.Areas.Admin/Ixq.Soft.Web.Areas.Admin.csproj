@@ -195,7 +195,6 @@
     <Content Include="Views\Shared\EntityIndex.cshtml" />
     <Content Include="Views\Shared\EditViewer.cshtml" />
     <Content Include="Views\Shared\Edit.cshtml" />
-    <Content Include="Views\Shared\Details.cshtml" />
     <Content Include="Views\Shared\Detail.cshtml" />
     <Content Include="Views\Shared\DefaultEditor.cshtml" />
     <Content Include="Views\Shared\DateViewer.cshtml" />
@@ -227,6 +226,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="web.config" />
+    <Content Include="Views\Shared\TextViewer.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

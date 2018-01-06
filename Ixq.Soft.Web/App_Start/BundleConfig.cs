@@ -17,7 +17,8 @@ namespace Ixq.Soft.Web
                 "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                "~/Scripts/jquery.validate*"));
+                "~/Scripts/jquery.validate*",
+                "~/Scripts/jquery.validate_zh.min.js"));
 
             bundles.Add(new StyleBundle("~/bundles/basis/css")
                 .Include("~/Content/bootstrap.css", new CssRewriteUrlTransform())

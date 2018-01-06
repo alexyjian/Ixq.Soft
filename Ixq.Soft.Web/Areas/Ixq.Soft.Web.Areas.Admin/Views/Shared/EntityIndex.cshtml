@@ -5,7 +5,7 @@
     Layout = "~/Areas/Ixq.Soft.Web.Areas.Admin/Views/Shared/_LayoutIframe.cshtml";
 }
 @section styles{
-    <link href="~/Content/Hplus/css/plugins/jqgrid/ui.jqgrid.css" rel="stylesheet" />
+    <link href="~/Content/plugins/jqgrid/ui.jqgrid.css" rel="stylesheet" />
     <style>
         /*数据-操作栏 样式调整*/
         .ui-jqgrid tr.jqgrow td:last-child {
@@ -83,8 +83,8 @@
                             </div>
                         </div>
                         <script type="text/javascript">
-                            function SearchFor(){
-                                var data=document.querySelector("search_data");
+                            function SearchFor() {
+                                var data = document.querySelector("search_data");
                                 //$.ajax({}); //搜索数据
                                 //更新jqgrid插件数据
                             }
@@ -103,8 +103,8 @@
 
 @section scripts{
 
-    <script src="~/Content/Hplus/js/plugins/jqgrid/i18n/grid.locale-cn.js"></script>
-    <script src="~/Content/Hplus/js/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="~/Scripts/plugins/jqgrid/i18n/grid.locale-cn.js"></script>
+    <script src="~/Scripts/plugins/jqgrid/jquery.jqGrid.min.js"></script>
     <script>
         var colNames = @Html.Raw(Model.GetColNames());
         var colModel = @Html.Raw(Model.GetColModel());
