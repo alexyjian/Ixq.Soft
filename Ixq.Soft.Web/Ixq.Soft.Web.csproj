@@ -295,6 +295,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -333,6 +334,10 @@
     <ProjectReference Include="..\Ixq.Soft.Utility\Ixq.Soft.Utility.csproj">
       <Project>{a9e91f4e-28d0-4402-a965-1f54ba0042c7}</Project>
       <Name>Ixq.Soft.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="Areas\Ixq.Soft.Web.Areas.Admin\Ixq.Soft.Web.Areas.Admin.csproj">
+      <Project>{3b4c4e30-a898-444d-b134-bc0906b5695c}</Project>
+      <Name>Ixq.Soft.Web.Areas.Admin</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

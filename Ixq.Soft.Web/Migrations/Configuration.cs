@@ -16,7 +16,7 @@ namespace Ixq.Soft.Web.Migrations
 
         protected override void Seed(AppDataContext context)
         {
-            //DbSeed.SeedSystemUser(context);
+            DbSeed.SeedSystemUser(context);
         }
     }
 }

@@ -32,8 +32,9 @@ namespace Ixq.Soft.Web.Controllers
             _userManager ?? (_userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>());
 
         // GET: Account
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.returnUrl = returnUrl;
             return View();
         }
 
@@ -48,7 +49,7 @@ namespace Ixq.Soft.Web.Controllers
             if (Session["ValidateCode"] == null || Session["ValidateCode"].ToString() != model.Code)
             {
                 ModelState.AddModelError(nameof(model.Code), "验证码错误。");
-                model.Code = "";
+                model.Code = null;
                 return View("Login", model);
             }
             Session["ValidateCode"] = null;
@@ -56,14 +57,28 @@ namespace Ixq.Soft.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return Redirect(returnUrl);
+                    return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
-                    return View("Lockout");
+                    ModelState.AddModelError("", "账户被锁定。");
+                    return View(model);
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "无效的登录尝试。");
                     return View(model);
             }
+        }
+
+        public ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (string.IsNullOrEmpty(returnUrl))
+            {
+                returnUrl = Url.Action("Index", "Home");
+            }
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Logout()
