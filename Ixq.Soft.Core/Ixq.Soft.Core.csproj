@@ -90,7 +90,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\Base\DtoBaseGuid.cs" />
+    <Compile Include="Dtos\System\ApplicationRoleDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\LoginMoldes\AccountViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -104,10 +107,6 @@
     <ProjectReference Include="..\Ixq.Soft.Entities\Ixq.Soft.Entities.csproj">
       <Project>{9cc708a6-95a4-4c08-ac37-30254d6a794a}</Project>
       <Name>Ixq.Soft.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ixq.Soft.Models\Ixq.Soft.Models.csproj">
-      <Project>{65f99a52-0042-4d57-95a5-189586360087}</Project>
-      <Name>Ixq.Soft.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ixq.Soft.Utility\Ixq.Soft.Utility.csproj">
       <Project>{a9e91f4e-28d0-4402-a965-1f54ba0042c7}</Project>

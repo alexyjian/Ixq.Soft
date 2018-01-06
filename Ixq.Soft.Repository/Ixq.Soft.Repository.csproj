@@ -70,6 +70,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ixq.Soft.Core\Ixq.Soft.Core.csproj">
+      <Project>{057ab31e-beca-4807-9744-ba3a9ad3e85d}</Project>
+      <Name>Ixq.Soft.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ixq.Soft.DataContext\Ixq.Soft.DataContext.csproj">
       <Project>{b6dcabae-6f02-427b-8c34-df6f0e1b7610}</Project>
       <Name>Ixq.Soft.DataContext</Name>

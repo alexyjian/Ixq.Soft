@@ -112,10 +112,6 @@
       <Project>{9cc708a6-95a4-4c08-ac37-30254d6a794a}</Project>
       <Name>Ixq.Soft.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ixq.Soft.Models\Ixq.Soft.Models.csproj">
-      <Project>{65f99a52-0042-4d57-95a5-189586360087}</Project>
-      <Name>Ixq.Soft.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Ixq.Soft.Repository\Ixq.Soft.Repository.csproj">
       <Project>{955248cc-4dd6-45e2-bf37-08046b1a5178}</Project>
       <Name>Ixq.Soft.Repository</Name>
