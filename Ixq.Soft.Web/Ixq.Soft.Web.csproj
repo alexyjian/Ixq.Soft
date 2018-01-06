@@ -326,6 +326,10 @@
       <Project>{65f99a52-0042-4d57-95a5-189586360087}</Project>
       <Name>Ixq.Soft.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ixq.Soft.Service\Ixq.Soft.Service.csproj">
+      <Project>{a3b71fc3-cf11-4d67-8cfd-8c495e2a069d}</Project>
+      <Name>Ixq.Soft.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ixq.Soft.Utility\Ixq.Soft.Utility.csproj">
       <Project>{a9e91f4e-28d0-4402-a965-1f54ba0042c7}</Project>
       <Name>Ixq.Soft.Utility</Name>
