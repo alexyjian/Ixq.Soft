@@ -35,7 +35,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{01DF499D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{2301E1C1-CACF-48A3-8D66-5BDB20E8D804}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{8108E6FF-53F6-4F2B-92B7-ED5B93C5CB64}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{8108E6FF-53F6-4F2B-92B7-ED5B93C5CB64}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Web.Areas.Admin", "Ixq.Soft.Web\Areas\Ixq.Soft.Web.Areas.Admin\Ixq.Soft.Web.Areas.Admin.csproj", "{3B4C4E30-A898-444D-B134-BC0906B5695C}"
 EndProject
