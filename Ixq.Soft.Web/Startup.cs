@@ -12,6 +12,7 @@ using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartup(typeof(Ixq.Soft.Web.Startup))]
+
 namespace Ixq.Soft.Web
 {
     public partial class Startup
@@ -31,7 +32,7 @@ namespace Ixq.Soft.Web
                     serverCollection.TryAddSingleton<DbContext, AppDataContext>();
                     ConfigureAuth(app);
                 })
-                .RegisterAutofac(Assembly.GetExecutingAssembly());
+                .RegisterAutofac(Assembly.GetExecutingAssembly(), Assembly.Load("Ixq.Soft.Web.Areas.Admin"));
         }
     }
 }
