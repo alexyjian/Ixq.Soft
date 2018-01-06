@@ -215,9 +215,24 @@
       <Project>{9CC708A6-95A4-4C08-AC37-30254D6A794A}</Project>
       <Name>Ixq.Soft.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Ixq.Soft.Repository\Ixq.Soft.Repository.csproj">
+      <Project>{955248cc-4dd6-45e2-bf37-08046b1a5178}</Project>
+      <Name>Ixq.Soft.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Ixq.Soft.Service\Ixq.Soft.Service.csproj">
+      <Project>{a3b71fc3-cf11-4d67-8cfd-8c495e2a069d}</Project>
+      <Name>Ixq.Soft.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
