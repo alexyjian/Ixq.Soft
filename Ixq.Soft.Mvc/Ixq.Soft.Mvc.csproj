@@ -129,27 +129,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Views\Shared\BooleanEditor.cshtml" />
-    <None Include="Views\Shared\CurrencyEditor.cshtml" />
-    <None Include="Views\Shared\DateEditor.cshtml" />
-    <None Include="Views\Shared\DateViewer.cshtml" />
-    <None Include="Views\Shared\DefaultEditor.cshtml" />
-    <None Include="Views\Shared\Detail.cshtml" />
-    <None Include="Views\Shared\Details.cshtml" />
-    <None Include="Views\Shared\Edit.cshtml" />
-    <None Include="Views\Shared\EditViewer.cshtml" />
-    <None Include="Views\Shared\EntityIndex.cshtml" />
-    <None Include="Views\Shared\EnumEditor.cshtml" />
-    <None Include="Views\Shared\Error.cshtml" />
-    <None Include="Views\Shared\Index.cshtml" />
-    <None Include="Views\Shared\IntegerEditor.cshtml" />
-    <None Include="Views\Shared\NumberEditor.cshtml" />
-    <None Include="Views\Shared\TextEditor.cshtml" />
-    <None Include="Views\Shared\TimeEditor.cshtml" />
-    <None Include="Views\Shared\_Form.cshtml" />
-    <None Include="Views\Shared\_Layout.cshtml" />
-    <None Include="Views\Shared\_LayoutHplus.cshtml" />
-    <None Include="Views\Shared\_LayoutHplusIframe.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
