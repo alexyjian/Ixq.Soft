@@ -16,7 +16,7 @@ using Microsoft.Owin.Security;
 
 namespace Ixq.Soft.Web.Controllers
 {
-    public class AccountController : BaseController
+    public class AccountController : Ixq.Soft.Mvc.BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -31,6 +31,7 @@ namespace Ixq.Soft.Web.Controllers
         public ApplicationUserManager UserManager =>
             _userManager ?? (_userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>());
 
+        [AllowAnonymous]
         // GET: Account
         public ActionResult Login(string returnUrl)
         {
@@ -39,6 +40,7 @@ namespace Ixq.Soft.Web.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
@@ -87,6 +89,7 @@ namespace Ixq.Soft.Web.Controllers
             return RedirectToAction("Login");
         }
 
+        [AllowAnonymous]
         public ActionResult GetValidateCode()
         {
             var code = ValidateCode.CreateValidateCode(4);

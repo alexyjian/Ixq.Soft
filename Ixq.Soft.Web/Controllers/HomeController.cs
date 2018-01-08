@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Ixq.Web.Mvc;
+using Ixq.Soft.Mvc;
 
 namespace Ixq.Soft.Web.Controllers
 {
