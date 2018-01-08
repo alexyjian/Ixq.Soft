@@ -276,3 +276,12 @@ $(function () {
 function localStorageSupport() {
     return (('localStorage' in window) && window['localStorage'] !== null)
 }
+
+// 刷新活动页面的数据
+function reloadData() {
+    var target = $('.J_iframe[data-id="' + $('.J_menuTab.active').data('id') + '"]');
+    var frame = window.frames[target.attr('name')];
+    if (frame != undefined && frame.reloadData != undefined) {
+        frame.reloadData();
+    }
+}

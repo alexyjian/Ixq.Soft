@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ixq.Soft.Core.Configs
 {
-    class SiteConfigs
+    public class SiteConfigs
     {
+        public const string AdminAreaName = "Ixq.Soft.Web.Areas.Admin";
     }
 }

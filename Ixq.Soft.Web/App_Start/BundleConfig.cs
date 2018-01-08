@@ -23,8 +23,8 @@ namespace Ixq.Soft.Web
             bundles.Add(new StyleBundle("~/bundles/basis/css")
                 .Include("~/Content/bootstrap.css", new CssRewriteUrlTransform())
                 .Include("~/Content/font-awesome.css", new CssRewriteUrlTransform())
-                .Include("~/Content/style.css", new CssRewriteUrlTransform())
-                .Include("~/Content/animate.css"));
+                .Include("~/Content/animate.css")
+                .Include("~/Content/style.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new ScriptBundle("~/bundles/login").Include(
                     "~/Scripts/jquery-{version}.js",

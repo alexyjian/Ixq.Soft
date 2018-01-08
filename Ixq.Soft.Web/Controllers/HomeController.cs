@@ -12,7 +12,7 @@ namespace Ixq.Soft.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Home", new { area = Ixq.Soft.Core.Configs.SiteConfigs.AdminAreaName });
         }
 
         public ActionResult About()

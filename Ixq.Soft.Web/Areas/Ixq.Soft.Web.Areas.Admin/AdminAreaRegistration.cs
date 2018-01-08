@@ -4,10 +4,8 @@ namespace Ixq.Soft.Web.Areas.Admin
 {
     public class AdminAreaRegistration : AreaRegistration
     {
-        public override string AreaName
-        {
-            get { return "Ixq.Soft.Web.Areas.Admin"; }
-        }
+        public override string AreaName => Ixq.Soft.Core.Configs.SiteConfigs.AdminAreaName;
+        
 
         public override void RegisterArea(AreaRegistrationContext context)
         {

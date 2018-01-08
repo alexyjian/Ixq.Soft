@@ -2,6 +2,7 @@
 using Ixq.Core.Dto;
 using Ixq.Core.Entity;
 using Ixq.Core.Mapper;
+using Newtonsoft.Json;
 
 namespace Ixq.Soft.Core.Dtos.Base
 {
@@ -15,6 +16,8 @@ namespace Ixq.Soft.Core.Dtos.Base
         }
 
         public long Id { get; set; }
+
+        [JsonIgnore]
         public IMapper Mapper { get; set; }
 
         public TEntity MapTo()
