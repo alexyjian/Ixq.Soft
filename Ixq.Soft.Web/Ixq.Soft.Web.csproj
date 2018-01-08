@@ -354,33 +354,11 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutHplusIframe.cshtml" />
-    <Content Include="Views\Shared\_LayoutHplus.cshtml" />
-    <Content Include="Views\Shared\_Form.cshtml" />
-    <Content Include="Views\Shared\TimeEditor.cshtml" />
-    <Content Include="Views\Shared\TextEditor.cshtml" />
-    <Content Include="Views\Shared\NumberEditor.cshtml" />
-    <Content Include="Views\Shared\IntegerEditor.cshtml" />
-    <Content Include="Views\Shared\Index.cshtml" />
-    <Content Include="Views\Shared\EnumEditor.cshtml" />
-    <Content Include="Views\Shared\EntityIndex.cshtml" />
-    <Content Include="Views\Shared\EditViewer.cshtml" />
-    <Content Include="Views\Shared\Edit.cshtml" />
-    <Content Include="Views\Shared\Details.cshtml" />
-    <Content Include="Views\Shared\Detail.cshtml" />
-    <Content Include="Views\Shared\DefaultEditor.cshtml" />
-    <Content Include="Views\Shared\DateViewer.cshtml" />
-    <Content Include="Views\Shared\DateEditor.cshtml" />
-    <Content Include="Views\Shared\CurrencyEditor.cshtml" />
-    <Content Include="Views\Shared\BooleanEditor.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Shared\_ChatBox.cshtml" />
-    <Content Include="Views\Shared\_MenuPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
