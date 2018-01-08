@@ -25,7 +25,7 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     @Html.RenderScripts()
     <script>
-        var parentIndex = parent.layer.getFrameIndex(window.name); //获取窗口索引
+        var parentIndex = $parentNode.layer.getFrameIndex(window.name); //获取窗口索引
         $().ready(function() {
             $("#@(entityName)_from").validate();
         });
@@ -37,7 +37,7 @@
                 yes: function (index, el) {
                     parent.reloadData();
                     layer.close(index);
-                    parent.layer.close(parentIndex); // 关闭iframe
+                    $parentNode.layer.close(parentIndex); // 关闭iframe
                 }
             });
         }

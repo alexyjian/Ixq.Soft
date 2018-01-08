@@ -12,9 +12,8 @@
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
                             <span class="block m-t-xs">
-                                <strong class="font-bold">Beaut-zihan</strong>
+                                <strong class="font-bold">Beaut-zihan</strong><b class="caret"></b>
                             </span>
-                            <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -25,14 +24,11 @@
                             <a class="J_menuItem" href="profile.html">个人资料</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="contacts.html">联系我们</a>
-                        </li>
-                        <li>
                             <a class="J_menuItem" href="mailbox.html">信箱</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="@Url.Action("Logout", "Account")">安全退出</a>
+                            <a href="@Url.Action("Logout", "Account", new { area = "" })">安全退出</a>
                         </li>
                     </ul>
                 </div>

@@ -8,6 +8,7 @@ using Ixq.Core.Logging;
 using Ixq.Logging.Log4Net;
 using Ixq.Owin.Extensions;
 using Ixq.Soft.DataContext;
+using Ixq.Web.Mvc;
 using Microsoft.Owin;
 using Owin;
 
@@ -30,6 +31,7 @@ namespace Ixq.Soft.Web
                 .RegisterService(serverCollection =>
                 {
                     serverCollection.TryAddSingleton<DbContext, AppDataContext>();
+                    serverCollection.TryAddScoped<IEntityControllerDescriptor>();
                     ConfigureAuth(app);
                 })
                 .RegisterAutofac(Assembly.GetExecutingAssembly(), Assembly.Load("Ixq.Soft.Web.Areas.Admin"));

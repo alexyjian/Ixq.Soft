@@ -1,4 +1,4 @@
-//var $parentNode = window.parent.document;
+var $parentNode = window.parent;
 
 function $childNode(name) {
     return window.frames[name]
