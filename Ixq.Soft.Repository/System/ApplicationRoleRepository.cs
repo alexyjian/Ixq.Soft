@@ -10,7 +10,7 @@ using Ixq.Soft.Repository.Interface;
 
 namespace Ixq.Soft.Repository.System
 {
-    public class ApplicationRoleRepository : RepositoryBase<ApplicationRole, long>, IApplicationRoleRepository
+    public class ApplicationRoleRepository : RepositoryBase<AppRole, long>, IApplicationRoleRepository
     {
         public ApplicationRoleRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {

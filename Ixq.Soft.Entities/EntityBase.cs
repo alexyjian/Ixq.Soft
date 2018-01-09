@@ -12,24 +12,29 @@ namespace Ixq.Soft.Entities
     {
     }
 
+    public class EntityBaseInt : EntityBase<int>
+    {
+    }
+
     public class EntityBase<TKey> : IEntity<TKey>, ICreateSpecification, IUpdataSpecification,
         ISoftDeleteSpecification
     {
         [Key]
-        public virtual TKey Id { get; set; }
+        public TKey Id { get; set; }
 
-        [Required]
-        public virtual DateTime CreateDate { get; set; }
-
-        public virtual DateTime? UpdataDate { get; set; }
-        public virtual DateTime? DeleteDate { get; set; }
-        public virtual bool IsDeleted { get; set; }
+        public string Name { get; set; }
 
         [StringLength(2048)]
         public string Description { get; set; }
 
         [StringLength(200)]
         public string SoteCode { get; set; }
+
+        [Required]
+        public virtual DateTime CreateDate { get; set; }
+        public virtual DateTime? UpdataDate { get; set; }
+        public virtual DateTime? DeleteDate { get; set; }
+        public virtual bool IsDeleted { get; set; }
 
         public virtual void OnCreateComplete()
         {

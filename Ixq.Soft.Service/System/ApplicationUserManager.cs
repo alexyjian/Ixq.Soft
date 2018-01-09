@@ -7,18 +7,18 @@ using Microsoft.Owin;
 
 namespace Ixq.Soft.Service.System
 {
-    public class ApplicationUserManager : AppUserManager<ApplicationUser>
+    public class ApplicationUserManager : AppUserManager<AppUser>
     {
-        public ApplicationUserManager(IAppUserStore<ApplicationUser> store) : base(store)
+        public ApplicationUserManager(IAppUserStore<AppUser> store) : base(store)
         {
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options,
             IOwinContext context)
         {
-            var manager = new ApplicationUserManager(new AppUserStore<ApplicationUser>(context.Get<DataContext.AppDataContext>()));
+            var manager = new ApplicationUserManager(new AppUserStore<AppUser>(context.Get<DataContext.AppDataContext>()));
             // 配置用户名的验证逻辑
-            manager.UserValidator = new AppUserValidator<ApplicationUser>(manager)
+            manager.UserValidator = new AppUserValidator<AppUser>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = false

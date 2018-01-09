@@ -8,10 +8,14 @@ using Microsoft.AspNet.Identity;
 
 namespace Ixq.Soft.Entities.System
 {
-    public class ApplicationUser : AppIdentityUser, ICreateSpecification, IUpdataSpecification,
+    public class AppUser : AppIdentityUser, ICreateSpecification, IUpdataSpecification,
         ISoftDeleteSpecification
     {
         public virtual int Age { get; set; }
+
+        [Required]
+        public virtual AppDepartment Department { get; set; }
+
         [StringLength(2048)]
         public string Description { get; set; }
         [StringLength(200)]
@@ -30,7 +34,7 @@ namespace Ixq.Soft.Entities.System
         {
         }
 
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(AppUserManager<ApplicationUser> manager)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(AppUserManager<AppUser> manager)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             return userIdentity;

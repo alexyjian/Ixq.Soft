@@ -9,9 +9,9 @@ using Microsoft.Owin.Security;
 
 namespace Ixq.Soft.Service.System
 {
-    public class ApplicationSignInManager : AppSignInManager<ApplicationUser>
+    public class ApplicationSignInManager : AppSignInManager<AppUser>
     {
-        public ApplicationSignInManager(UserManager<ApplicationUser, long> userManager,
+        public ApplicationSignInManager(UserManager<AppUser, long> userManager,
             IAuthenticationManager authenticationManager) : base(userManager, authenticationManager)
         {
         }
@@ -23,7 +23,7 @@ namespace Ixq.Soft.Service.System
                 context.Authentication);
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(AppUser user)
         {
             return user.GenerateUserIdentityAsync((ApplicationUserManager) UserManager);
         }

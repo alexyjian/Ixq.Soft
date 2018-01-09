@@ -1,20 +1,23 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 using Ixq.Core.Entity;
 using Ixq.Security.Identity;
 
 namespace Ixq.Soft.Entities.System
 {
-    public class ApplicationRole : AppIdentityRole, ICreateSpecification, IUpdataSpecification,
+    public class AppRole : AppIdentityRole, ICreateSpecification, IUpdataSpecification,
         ISoftDeleteSpecification
     {
-        public ApplicationRole()
+        public AppRole()
         {
         }
 
-        public ApplicationRole(string name) : base(name)
+        public AppRole(string name) : base(name)
         {
         }
+
+        public virtual ICollection<AppMenu> Menus { get; set; }
 
         [StringLength(2048)]
         public string Description { get; set; }

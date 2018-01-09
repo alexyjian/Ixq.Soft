@@ -13,15 +13,15 @@ namespace Ixq.Soft.DataContext
     {
         public static void SeedSystemUser(AppDataContext context)
         {
-            var roleManager = new AppRoleManager<ApplicationRole>(new AppRoleStore<ApplicationRole>(context));
-            var userManager = new AppUserManager<ApplicationUser>(new AppUserStore<ApplicationUser>(context));
+            var roleManager = new AppRoleManager<AppRole>(new AppRoleStore<AppRole>(context));
+            var userManager = new AppUserManager<AppUser>(new AppUserStore<AppUser>(context));
 
             var adminRole =
-                new ApplicationRole() {Name = "Admin", Description = "具备全部权限的角色", CreateDate = DateTime.Now};
+                new AppRole() {Name = "Admin", Description = "具备全部权限的角色", CreateDate = DateTime.Now};
             if (!roleManager.RoleExists(adminRole.Name))
                 roleManager.Create(adminRole);
 
-            var adminUser = new ApplicationUser
+            var adminUser = new AppUser
             {
                 UserName = "admin",
                 Age = 20,

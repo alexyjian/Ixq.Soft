@@ -32,14 +32,14 @@ namespace Ixq.Soft.Web
                 {
                     OnValidateIdentity =
                         Security.Owin.SecurityStampValidator
-                            .OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
+                            .OnValidateIdentity<ApplicationUserManager, AppUser>(
                                 TimeSpan.FromMinutes(30),
                                 (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
             });
 
-            app.UseExtendCookieAuthentication<ApplicationUserManager, ApplicationUser>(
-                new ExtendAuthenticationOptions<ApplicationUser>()
+            app.UseExtendCookieAuthentication<ApplicationUserManager, AppUser>(
+                new ExtendAuthenticationOptions<AppUser>()
                 {
                     CookieName = "IxqApplicationCookie"
                 });

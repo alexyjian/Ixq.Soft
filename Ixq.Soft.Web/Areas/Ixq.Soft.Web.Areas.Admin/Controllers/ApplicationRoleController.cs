@@ -12,9 +12,9 @@ using Ixq.Web.Mvc;
 
 namespace Ixq.Soft.Web.Areas.Admin.Controllers
 {
-    public class ApplicationRoleController : EntityController<ApplicationRole, ApplicationRoleDto, long>
+    public class ApplicationRoleController : EntityController<AppRole, ApplicationRoleDto, long>
     {
-        public ApplicationRoleController(IRepositoryBase<ApplicationRole, long> repository) : base(repository)
+        public ApplicationRoleController(IRepositoryBase<AppRole, long> repository) : base(repository)
         {
         }
 
