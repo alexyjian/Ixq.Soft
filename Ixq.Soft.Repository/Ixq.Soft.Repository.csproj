@@ -66,9 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interface\IApplicationRoleRepository.cs" />
+    <Compile Include="Interface\IAppRoleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="System\ApplicationRoleRepository.cs" />
+    <Compile Include="System\AppRoleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

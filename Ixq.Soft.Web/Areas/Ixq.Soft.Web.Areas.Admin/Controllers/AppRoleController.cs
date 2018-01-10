@@ -7,14 +7,15 @@ using System.Web.Routing;
 using Ixq.Core.Repository;
 using Ixq.Soft.Core.Dtos.System;
 using Ixq.Soft.Entities.System;
+using Ixq.Soft.Repository.Interface;
 using Ixq.Soft.Service.System;
 using Ixq.Web.Mvc;
 
 namespace Ixq.Soft.Web.Areas.Admin.Controllers
 {
-    public class ApplicationRoleController : EntityController<AppRole, AppRoleDto, long>
+    public class AppRoleController : EntityController<AppRole, AppRoleDto, long>
     {
-        public ApplicationRoleController(IRepositoryBase<AppRole, long> repository) : base(repository)
+        public AppRoleController(IAppRoleRepository<AppRole, long> repository) : base(repository)
         {
         }
 

@@ -41,7 +41,7 @@ namespace Ixq.Soft.Web
             app.UseExtendCookieAuthentication<AppUserManager, AppUser>(
                 new ExtendAuthenticationOptions<AppUser>()
                 {
-                    CookieName = "IxqApplicationCookie"
+                    CookieName = "IxqApplicationCookie",
                 });
         }
     }
