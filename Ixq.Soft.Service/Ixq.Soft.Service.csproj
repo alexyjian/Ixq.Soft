@@ -125,12 +125,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interface\IApplicationRoleService.cs" />
+    <Compile Include="Interface\IAppRoleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="System\ApplicationRoleManager.cs" />
-    <Compile Include="System\ApplicationRoleService.cs" />
-    <Compile Include="System\ApplicationSignInManager.cs" />
-    <Compile Include="System\ApplicationUserManager.cs" />
+    <Compile Include="System\AppRoleManager.cs" />
+    <Compile Include="System\AppRoleService.cs" />
+    <Compile Include="System\AppSignInManager.cs" />
+    <Compile Include="System\AppUserManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

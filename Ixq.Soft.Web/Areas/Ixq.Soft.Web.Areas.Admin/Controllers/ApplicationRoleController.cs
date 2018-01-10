@@ -12,7 +12,7 @@ using Ixq.Web.Mvc;
 
 namespace Ixq.Soft.Web.Areas.Admin.Controllers
 {
-    public class ApplicationRoleController : EntityController<AppRole, ApplicationRoleDto, long>
+    public class ApplicationRoleController : EntityController<AppRole, AppRoleDto, long>
     {
         public ApplicationRoleController(IRepositoryBase<AppRole, long> repository) : base(repository)
         {
@@ -21,7 +21,7 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
-            EntityServicer = new ApplicationRoleService(Repository, requestContext, this);
+            EntityServicer = new AppRoleService(Repository, requestContext, this);
         }
     }
 }

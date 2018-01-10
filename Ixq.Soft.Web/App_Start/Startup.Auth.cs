@@ -19,9 +19,9 @@ namespace Ixq.Soft.Web
         public void ConfigureAuth(IAppBuilder app)
         {
             app.CreatePerOwinContext(AppDataContext.Create);
-            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
-            app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+            app.CreatePerOwinContext<AppUserManager>(AppUserManager.Create);
+            app.CreatePerOwinContext<AppRoleManager>(AppRoleManager.Create);
+            app.CreatePerOwinContext<AppSignInManager>(AppSignInManager.Create);
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
@@ -32,13 +32,13 @@ namespace Ixq.Soft.Web
                 {
                     OnValidateIdentity =
                         Security.Owin.SecurityStampValidator
-                            .OnValidateIdentity<ApplicationUserManager, AppUser>(
+                            .OnValidateIdentity<AppUserManager, AppUser>(
                                 TimeSpan.FromMinutes(30),
                                 (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
             });
 
-            app.UseExtendCookieAuthentication<ApplicationUserManager, AppUser>(
+            app.UseExtendCookieAuthentication<AppUserManager, AppUser>(
                 new ExtendAuthenticationOptions<AppUser>()
                 {
                     CookieName = "IxqApplicationCookie"

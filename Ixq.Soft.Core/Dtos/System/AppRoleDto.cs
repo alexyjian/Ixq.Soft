@@ -7,7 +7,7 @@ namespace Ixq.Soft.Core.Dtos.System
 {
     [Page(DefaultSortname = nameof(SoteCode), Title = "系统角色", MultiSelect = true, MultiBoxOnly = true,
         ShowRowNumber = true)]
-    public class ApplicationRoleDto : DtoBaseLong<AppRole>
+    public class AppRoleDto : DtoBaseLong<AppRole>
     {
         [Required]
         [Display(Name = "角色名称", Order = 1)]

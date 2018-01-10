@@ -95,7 +95,8 @@
   <ItemGroup>
     <Compile Include="Configs\SiteConfigs.cs" />
     <Compile Include="Dtos\Base\DtoBaseGuid.cs" />
-    <Compile Include="Dtos\System\ApplicationRoleDto.cs" />
+    <Compile Include="Dtos\System\AppRoleDto.cs" />
+    <Compile Include="Enums\DeptTypeEnum.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,8 +120,6 @@
       <Name>Ixq.Soft.Utility</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Enums\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

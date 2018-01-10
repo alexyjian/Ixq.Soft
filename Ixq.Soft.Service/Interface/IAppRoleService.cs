@@ -9,7 +9,7 @@ using Ixq.Web.Mvc;
 
 namespace Ixq.Soft.Service.Interface
 {
-    public interface IApplicationRoleService : IEntityService<AppRole, ApplicationRoleDto, long>
+    public interface IAppRoleService : IEntityService<AppRole, AppRoleDto, long>
     {
     }
 }

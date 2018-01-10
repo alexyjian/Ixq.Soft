@@ -9,23 +9,23 @@ using Microsoft.Owin.Security;
 
 namespace Ixq.Soft.Service.System
 {
-    public class ApplicationSignInManager : AppSignInManager<AppUser>
+    public class AppSignInManager : AppSignInManager<AppUser>
     {
-        public ApplicationSignInManager(UserManager<AppUser, long> userManager,
+        public AppSignInManager(UserManager<AppUser, long> userManager,
             IAuthenticationManager authenticationManager) : base(userManager, authenticationManager)
         {
         }
 
-        public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options,
+        public static AppSignInManager Create(IdentityFactoryOptions<AppSignInManager> options,
             IOwinContext context)
         {
-            return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(),
+            return new AppSignInManager(context.GetUserManager<AppUserManager>(),
                 context.Authentication);
         }
 
         public override Task<ClaimsIdentity> CreateUserIdentityAsync(AppUser user)
         {
-            return user.GenerateUserIdentityAsync((ApplicationUserManager) UserManager);
+            return user.GenerateUserIdentityAsync((AppUserManager) UserManager);
         }
     }
 }

@@ -12,9 +12,9 @@ using Ixq.Web.Mvc;
 
 namespace Ixq.Soft.Service.System
 {
-    public class ApplicationRoleService : EntityService<AppRole, ApplicationRoleDto, long> , IApplicationRoleService
+    public class AppRoleService : EntityService<AppRole, AppRoleDto, long> , IAppRoleService
     {
-        public ApplicationRoleService(IRepositoryBase<AppRole, long> repository, RequestContext requestContxt,
+        public AppRoleService(IRepositoryBase<AppRole, long> repository, RequestContext requestContxt,
             IEntityControllerDescriptor entityControllerData) : base(repository, requestContxt, entityControllerData)
         {
         }

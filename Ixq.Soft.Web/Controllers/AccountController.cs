@@ -18,18 +18,18 @@ namespace Ixq.Soft.Web.Controllers
 {
     public class AccountController : Ixq.Soft.Mvc.BaseController
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+        private AppSignInManager _signInManager;
+        private AppUserManager _userManager;
         private IAuthenticationManager _authenticationManager;
 
-        public ApplicationSignInManager SignInManager =>
-            _signInManager ?? (_signInManager = HttpContext.GetOwinContext().Get<ApplicationSignInManager>());
+        public AppSignInManager SignInManager =>
+            _signInManager ?? (_signInManager = HttpContext.GetOwinContext().Get<AppSignInManager>());
 
         private IAuthenticationManager AuthenticationManager =>
             _authenticationManager ?? (_authenticationManager = HttpContext.GetOwinContext().Authentication);
 
-        public ApplicationUserManager UserManager =>
-            _userManager ?? (_userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>());
+        public AppUserManager UserManager =>
+            _userManager ?? (_userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>());
 
         [AllowAnonymous]
         // GET: Account

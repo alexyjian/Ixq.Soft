@@ -7,16 +7,16 @@ using Microsoft.Owin;
 
 namespace Ixq.Soft.Service.System
 {
-    public class ApplicationUserManager : AppUserManager<AppUser>
+    public class AppUserManager : AppUserManager<AppUser>
     {
-        public ApplicationUserManager(IAppUserStore<AppUser> store) : base(store)
+        public AppUserManager(IAppUserStore<AppUser> store) : base(store)
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options,
+        public static AppUserManager Create(IdentityFactoryOptions<AppUserManager> options,
             IOwinContext context)
         {
-            var manager = new ApplicationUserManager(new AppUserStore<AppUser>(context.Get<DataContext.AppDataContext>()));
+            var manager = new AppUserManager(new AppUserStore<AppUser>(context.Get<DataContext.AppDataContext>()));
             // 配置用户名的验证逻辑
             manager.UserValidator = new AppUserValidator<AppUser>(manager)
             {
