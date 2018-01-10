@@ -9,9 +9,16 @@ namespace Ixq.Soft.Entities.System
 {
     public class AppMenu : EntityBaseInt
     {
-        [StringLength(200)]
+        #region constant
+
+        public const int LinkMaxLength = 200;
+        public const int IconMaxLength = 200;
+
+        #endregion
+
+        [StringLength(LinkMaxLength)]
         public string Link { get; set; }
-        [StringLength(200)]
+        [StringLength(IconMaxLength)]
         public string Icon { get; set; }
         public virtual AppMenu ParentMenu { get; set; }
     }

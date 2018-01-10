@@ -17,8 +17,6 @@ namespace Ixq.Soft.Entities.System
         {
         }
 
-        public virtual ICollection<AppMenu> Menus { get; set; }
-
         [StringLength(2048)]
         public string Description { get; set; }
         [StringLength(200)]
