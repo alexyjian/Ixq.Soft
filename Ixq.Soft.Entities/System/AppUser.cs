@@ -13,7 +13,6 @@ namespace Ixq.Soft.Entities.System
     {
         public virtual int Age { get; set; }
 
-        [Required]
         public virtual AppDepartment Department { get; set; }
 
         [StringLength(2048)]
@@ -26,9 +25,11 @@ namespace Ixq.Soft.Entities.System
         public virtual bool IsDeleted { get; set; }
         public void OnCreateComplete()
         {
+            CreateDate = DateTime.Now;
         }
         public void OnUpdataComplete()
         {
+            UpdataDate = DateTime.Now;
         }
         public void OnSoftDeleteComplete()
         {

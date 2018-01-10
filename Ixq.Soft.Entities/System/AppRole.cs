@@ -9,6 +9,12 @@ namespace Ixq.Soft.Entities.System
     public class AppRole : AppIdentityRole, ICreateSpecification, IUpdataSpecification,
         ISoftDeleteSpecification
     {
+        #region const
+
+        public const int DescriptionMaxLength = 2048;
+        public const int SoteCodeMaxLength = 200;
+
+        #endregion
         public AppRole()
         {
         }
@@ -17,15 +23,14 @@ namespace Ixq.Soft.Entities.System
         {
         }
 
-        [StringLength(2048)]
         public string Description { get; set; }
-        [StringLength(200)]
         public string SoteCode { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime? UpdataDate { get; set; }
         public DateTime? DeleteDate { get; set; }
         public bool IsDeleted { get; set; }
 
+        public virtual ICollection<AppMenuRole> Menus { get; set; }
 
         public void OnCreateComplete()
         {

@@ -16,10 +16,9 @@ namespace Ixq.Soft.Entities.System
 
         #endregion
 
-        [StringLength(LinkMaxLength)]
         public string Link { get; set; }
-        [StringLength(IconMaxLength)]
         public string Icon { get; set; }
         public virtual AppMenu ParentMenu { get; set; }
+        public virtual ICollection<AppMenuRole> Roles { get; set; }
     }
 }

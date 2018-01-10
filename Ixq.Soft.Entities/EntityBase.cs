@@ -43,6 +43,7 @@ namespace Ixq.Soft.Entities
 
         public virtual void OnUpdataComplete()
         {
+            UpdataDate = DateTime.Now;
         }
 
         public virtual void OnSoftDeleteComplete()

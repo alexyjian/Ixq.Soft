@@ -8,13 +8,12 @@ using Ixq.Soft.Entities.System;
 
 namespace Ixq.Soft.EntityMapping.System
 {
-    public class AppDepartmentMap : EntityTypeConfiguration<AppDepartment>
+    public class AppMenuRoleMap : EntityTypeConfiguration<AppMenuRole>
     {
-        public AppDepartmentMap()
+        public AppMenuRoleMap()
         {
-            ToTable("AppDepartments");
-            HasOptional(d => d.ParentDepartment);
-            HasMany(d => d.Users).WithRequired(u => u.Department);
+            ToTable("AppMenuRoles");
+            HasKey(mr => new {mr.AppMenuId, mr.AppRoleId});
         }
     }
 }

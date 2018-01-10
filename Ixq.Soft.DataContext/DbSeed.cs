@@ -11,6 +11,15 @@ namespace Ixq.Soft.DataContext
 {
     public class DbSeed
     {
+        public static void SeedSystemDept(AppDataContext context)
+        {
+            if (context.AppDepartment.Any()) return;
+
+            var dept = new AppDepartment();
+            dept.Name = "总裁办";
+            context.AppDepartment.Add(dept);
+            context.Save();
+        }
         public static void SeedSystemUser(AppDataContext context)
         {
             var roleManager = new AppRoleManager<AppRole>(new AppRoleStore<AppRole>(context));
@@ -27,13 +36,14 @@ namespace Ixq.Soft.DataContext
                 Age = 20,
                 CreateDate = DateTime.Now,
                 PhoneNumber = "",
+                Department = context.AppDepartment.SingleOrDefault(x=>x.Name == "总裁办")
             };
             if (userManager.FindByName(adminUser.UserName) == null)
             {
                 userManager.Create(adminUser, "123123");
                 userManager.AddToRole(adminUser.Id, adminRole.Name);
             }
-            context.SaveChanges();
+            context.Save();
         }
     }
 }
