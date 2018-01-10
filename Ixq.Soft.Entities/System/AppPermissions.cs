@@ -8,5 +8,7 @@ namespace Ixq.Soft.Entities.System
 {
     public class AppPermissions : EntityBaseInt
     {
+        public string Action { get; set; }
+        public string Controller { get; set; }
     }
 }
