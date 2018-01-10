@@ -7,7 +7,7 @@ using System.Web.Routing;
 using Ixq.Core.Repository;
 using Ixq.Soft.Core.Dtos.System;
 using Ixq.Soft.Entities.System;
-using Ixq.Soft.Repository.Interface;
+using Ixq.Soft.Repository.System;
 using Ixq.Soft.Service.System;
 using Ixq.Web.Mvc;
 

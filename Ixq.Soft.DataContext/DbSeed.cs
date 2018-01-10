@@ -20,6 +20,7 @@ namespace Ixq.Soft.DataContext
             context.AppDepartment.Add(dept);
             context.Save();
         }
+
         public static void SeedSystemUser(AppDataContext context)
         {
             var roleManager = new AppRoleManager<AppRole>(new AppRoleStore<AppRole>(context));

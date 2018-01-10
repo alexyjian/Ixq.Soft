@@ -9,7 +9,7 @@ namespace Ixq.Soft.Entities.System
 {
     public class AppMenu : EntityBaseInt
     {
-        #region constant
+        #region const
 
         public const int LinkMaxLength = 200;
         public const int IconMaxLength = 200;
@@ -18,6 +18,7 @@ namespace Ixq.Soft.Entities.System
 
         public string Link { get; set; }
         public string Icon { get; set; }
+        public bool IsEnable { get; set; }
         public virtual AppMenu ParentMenu { get; set; }
         public virtual ICollection<AppMenuRole> Roles { get; set; }
     }

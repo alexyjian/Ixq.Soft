@@ -82,7 +82,7 @@ namespace Ixq.Soft.Utility
                     int y2 = random.Next(image.Height);
                     g.DrawLine(new Pen(Color.Silver), x1, y1, x2, y2);
                 }
-                Font font = new Font("Arial", 12, (FontStyle.Bold | FontStyle.Italic));
+                Font font = new Font("Arial", 12, (FontStyle.Bold | FontStyle.Italic | FontStyle.Strikeout));
                 LinearGradientBrush brush = new LinearGradientBrush(new Rectangle(0, 0, image.Width, image.Height),
                  Color.Blue, Color.DarkRed, 1.2f, true);
                 g.DrawString(validateCode, font, brush, 3, 2);

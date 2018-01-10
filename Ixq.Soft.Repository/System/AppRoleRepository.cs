@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Ixq.Core.Repository;
 using Ixq.Data.Repository;
 using Ixq.Soft.Entities.System;
-using Ixq.Soft.Repository.Interface;
 
 namespace Ixq.Soft.Repository.System
 {
