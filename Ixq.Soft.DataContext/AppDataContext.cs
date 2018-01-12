@@ -46,11 +46,11 @@ namespace Ixq.Soft.DataContext
                 modelBuilder.Configurations.Add(configurationInstance);
             }
 
-            modelBuilder.Entity<AppUser>().ToTable("AppUsers");
-            modelBuilder.Entity<AppRole>().ToTable("AppRoles");
-            modelBuilder.Entity<AppIdentityUserRole>().ToTable("AppUserRoles");
-            modelBuilder.Entity<AppIdentityUserLogin>().ToTable("AppUserLogins");
-            modelBuilder.Entity<AppIdentityUserClaim>().ToTable("AppUserClaims");
+            //modelBuilder.Entity<AppUser>().ToTable("AppUsers");
+            //modelBuilder.Entity<AppRole>().ToTable("AppRoles");
+            //modelBuilder.Entity<AppIdentityUserRole>().ToTable("AppUserRoles");
+            //modelBuilder.Entity<AppIdentityUserLogin>().ToTable("AppUserLogins");
+            //modelBuilder.Entity<AppIdentityUserClaim>().ToTable("AppUserClaims");
         }
     }
 }
