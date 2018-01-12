@@ -29,7 +29,6 @@ namespace Ixq.Soft.DataContext
 
         public IDbSet<AppMenu> AppMenu { get; set; }
 
-        //public IDbSet<AppMenuRole> AppMenuRole { get; set; }
         public IDbSet<AppPermissions> AppPermissions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -47,9 +46,11 @@ namespace Ixq.Soft.DataContext
                 modelBuilder.Configurations.Add(configurationInstance);
             }
 
-            modelBuilder.Entity<AppMenuRole>()
-                .HasKey(r => new {r.AppMenuId, r.AppRoleId })
-                .ToTable("AppMenuRoles");
+            modelBuilder.Entity<AppUser>().ToTable("AppUsers");
+            modelBuilder.Entity<AppRole>().ToTable("AppRoles");
+            modelBuilder.Entity<AppIdentityUserRole>().ToTable("AppUserRoles");
+            modelBuilder.Entity<AppIdentityUserLogin>().ToTable("AppUserLogins");
+            modelBuilder.Entity<AppIdentityUserClaim>().ToTable("AppUserClaims");
         }
     }
 }
