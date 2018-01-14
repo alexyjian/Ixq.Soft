@@ -42,26 +42,26 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Ixq.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ixq.Core.2.0.0\lib\net45\Ixq.Core.dll</HintPath>
+    <Reference Include="Ixq.Core, Version=2.0.1.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Core.2.0.1\lib\net45\Ixq.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Ixq.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ixq.Data.2.0.0\lib\net45\Ixq.Data.dll</HintPath>
+    <Reference Include="Ixq.Data, Version=2.0.1.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Data.2.0.1\lib\net45\Ixq.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Ixq.Extensions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ixq.Extensions.2.0.0\lib\net45\Ixq.Extensions.dll</HintPath>
+    <Reference Include="Ixq.Extensions, Version=2.0.1.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Extensions.2.0.1\lib\net45\Ixq.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Ixq.Mapper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
       <HintPath>..\packages\Ixq.Mapper.2.0.0\lib\net45\Ixq.Mapper.dll</HintPath>
     </Reference>
-    <Reference Include="Ixq.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ixq.Security.2.0.0\lib\net45\Ixq.Security.dll</HintPath>
+    <Reference Include="Ixq.Security, Version=2.0.1.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Security.2.0.1\lib\net45\Ixq.Security.dll</HintPath>
     </Reference>
     <Reference Include="Ixq.UI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
       <HintPath>..\packages\Ixq.UI.2.0.0\lib\net45\Ixq.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Ixq.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ixq.Web.Mvc.2.0.0\lib\net45\Ixq.Web.Mvc.dll</HintPath>
+    <Reference Include="Ixq.Web.Mvc, Version=2.0.1.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Web.Mvc.2.0.1\lib\net45\Ixq.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -135,6 +135,27 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Views\Shared\BooleanEditor.cshtml" />
+    <None Include="Views\Shared\CurrencyEditor.cshtml" />
+    <None Include="Views\Shared\DateEditor.cshtml" />
+    <None Include="Views\Shared\DateViewer.cshtml" />
+    <None Include="Views\Shared\DefaultEditor.cshtml" />
+    <None Include="Views\Shared\Detail.cshtml" />
+    <None Include="Views\Shared\Details.cshtml" />
+    <None Include="Views\Shared\Edit.cshtml" />
+    <None Include="Views\Shared\EditViewer.cshtml" />
+    <None Include="Views\Shared\EntityIndex.cshtml" />
+    <None Include="Views\Shared\EnumEditor.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\Index.cshtml" />
+    <None Include="Views\Shared\IntegerEditor.cshtml" />
+    <None Include="Views\Shared\NumberEditor.cshtml" />
+    <None Include="Views\Shared\TextEditor.cshtml" />
+    <None Include="Views\Shared\TimeEditor.cshtml" />
+    <None Include="Views\Shared\_Form.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_LayoutHplus.cshtml" />
+    <None Include="Views\Shared\_LayoutHplusIframe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ixq.Soft.Core\Ixq.Soft.Core.csproj">

@@ -1,0 +1,31 @@
+﻿@model IPropertyEditModel
+<div class="form-group">
+    <label class="col-sm-3 control-label">@Model.EntityProperty.Name：</label>
+    <div class="col-sm-8">
+        <div class="input-group">
+            <input id="@Model.EntityProperty.PropertyInfo.Name" name="@Model.EntityProperty.PropertyInfo.Name" type="text" class="form-control" value="@Model.Value" @Html.Raw(Model.EntityProperty.IsRequired ? "required=\"\"" : "") />
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        </div>
+    </div>
+</div>
+@Html.Script(
+    @<script src="~/Content/Hplus/js/plugins/datapicker/bootstrap-datepicker.min.js"></script>)
+@Html.Script(
+    @<script src="~/Content/Hplus/js/plugins/datapicker/bootstrap-datepicker.min.js"></script>)
+@Html.Script(
+    @<script src="~/Content/Hplus/js/plugins/datapicker/bootstrap-datepicker.zh-CN.js"></script>)
+@Html.Script(
+    @<script>
+        $().ready(function () {
+            $('#@Model.EntityProperty.PropertyInfo.Name').datepicker({
+                todayBtn: "linked",
+                autoclose: true,
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd'
+            });
+        });
+    </script>
+    )
+@Html.Styles(
+    @<link href="~/Content/Hplus/css/plugins/datapicker/bootstrap-datepicker3.min.css" rel="stylesheet" />
+    )

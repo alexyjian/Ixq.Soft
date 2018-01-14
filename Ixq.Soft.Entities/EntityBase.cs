@@ -16,7 +16,7 @@ namespace Ixq.Soft.Entities
     {
     }
 
-    public class EntityBase<TKey> : IEntity<TKey>, ICreateSpecification, IUpdataSpecification,
+    public class EntityBase<TKey> : IEntity<TKey>, ICreateSpecification, IUpdateSpecification,
         ISoftDeleteSpecification
     {
         [Key]
@@ -32,8 +32,12 @@ namespace Ixq.Soft.Entities
 
         [Required]
         public virtual DateTime CreateDate { get; set; }
+
+        public string CreateUserId { get; set; }
         public virtual DateTime? UpdataDate { get; set; }
+        public string UpdateUserId { get; set; }
         public virtual DateTime? DeleteDate { get; set; }
+        public string DeleteUserId { get; set; }
         public virtual bool IsDeleted { get; set; }
 
         public virtual void OnCreateComplete()

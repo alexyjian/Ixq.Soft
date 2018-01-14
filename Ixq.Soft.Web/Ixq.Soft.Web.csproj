@@ -64,17 +64,17 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Ixq.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ixq.Core.2.0.0\lib\net45\Ixq.Core.dll</HintPath>
+    <Reference Include="Ixq.Core, Version=2.0.1.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Core.2.0.1\lib\net45\Ixq.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Ixq.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ixq.Data.2.0.0\lib\net45\Ixq.Data.dll</HintPath>
+    <Reference Include="Ixq.Data, Version=2.0.1.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Data.2.0.1\lib\net45\Ixq.Data.dll</HintPath>
     </Reference>
     <Reference Include="Ixq.DependencyInjection, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
       <HintPath>..\packages\Ixq.DependencyInjection.2.0.0\lib\net45\Ixq.DependencyInjection.dll</HintPath>
     </Reference>
-    <Reference Include="Ixq.Extensions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ixq.Extensions.2.0.0\lib\net45\Ixq.Extensions.dll</HintPath>
+    <Reference Include="Ixq.Extensions, Version=2.0.1.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Extensions.2.0.1\lib\net45\Ixq.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Ixq.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
       <HintPath>..\packages\Ixq.Logging.2.0.0\lib\net45\Ixq.Logging.dll</HintPath>
@@ -85,17 +85,17 @@
     <Reference Include="Ixq.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
       <HintPath>..\packages\Ixq.Owin.2.0.0\lib\net45\Ixq.Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Ixq.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ixq.Security.2.0.0\lib\net45\Ixq.Security.dll</HintPath>
+    <Reference Include="Ixq.Security, Version=2.0.1.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Security.2.0.1\lib\net45\Ixq.Security.dll</HintPath>
     </Reference>
     <Reference Include="Ixq.UI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
       <HintPath>..\packages\Ixq.UI.2.0.0\lib\net45\Ixq.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Ixq.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ixq.Web.Mvc.2.0.0\lib\net45\Ixq.Web.Mvc.dll</HintPath>
+    <Reference Include="Ixq.Web.Mvc, Version=2.0.1.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ixq.Web.Mvc.2.0.1\lib\net45\Ixq.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -308,8 +308,13 @@
     <Content Include="Scripts\contabs.js" />
     <Content Include="Scripts\content.js" />
     <Content Include="Scripts\hplus.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.2.1.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.2.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.2.js" />
@@ -354,11 +359,31 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutHplusIframe.cshtml" />
+    <Content Include="Views\Shared\_LayoutHplus.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Form.cshtml" />
+    <Content Include="Views\Shared\TimeEditor.cshtml" />
+    <Content Include="Views\Shared\TextEditor.cshtml" />
+    <Content Include="Views\Shared\NumberEditor.cshtml" />
+    <Content Include="Views\Shared\IntegerEditor.cshtml" />
+    <Content Include="Views\Shared\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\EnumEditor.cshtml" />
+    <Content Include="Views\Shared\EntityIndex.cshtml" />
+    <Content Include="Views\Shared\EditViewer.cshtml" />
+    <Content Include="Views\Shared\Edit.cshtml" />
+    <Content Include="Views\Shared\Details.cshtml" />
+    <Content Include="Views\Shared\Detail.cshtml" />
+    <Content Include="Views\Shared\DefaultEditor.cshtml" />
+    <Content Include="Views\Shared\DateViewer.cshtml" />
+    <Content Include="Views\Shared\DateEditor.cshtml" />
+    <Content Include="Views\Shared\CurrencyEditor.cshtml" />
+    <Content Include="Views\Shared\BooleanEditor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -375,7 +400,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ixq.Soft.Core\Ixq.Soft.Core.csproj">

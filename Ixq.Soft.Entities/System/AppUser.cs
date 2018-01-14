@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Ixq.Soft.Entities.System
 {
-    public class AppUser : AppIdentityUser, ICreateSpecification, IUpdataSpecification,
+    public class AppUser : AppIdentityUser, ICreateSpecification, IUpdateSpecification,
         ISoftDeleteSpecification
     {
         public virtual int Age { get; set; }
@@ -20,8 +20,11 @@ namespace Ixq.Soft.Entities.System
         [StringLength(200)]
         public string SoteCode { get; set; }
         public virtual DateTime CreateDate { get; set; }
+        public string CreateUserId { get; set; }
         public virtual DateTime? UpdataDate { get; set; }
+        public string UpdateUserId { get; set; }
         public virtual DateTime? DeleteDate { get; set; }
+        public string DeleteUserId { get; set; }
         public virtual bool IsDeleted { get; set; }
         public void OnCreateComplete()
         {

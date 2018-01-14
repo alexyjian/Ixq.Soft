@@ -1,0 +1,56 @@
+﻿@using Ixq.Core.Entity
+@using Ixq.UI
+@model IPageEditViewModel
+@{
+    Layout = "~/Areas/Ixq.Soft.Web.Areas.Admin/Views/Shared/_LayoutIframe.cshtml";
+    var entityName = Model.EntityDto.GetType().Name;
+}
+@section styles{
+    @Html.RenderStyles()
+}
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content" id="from-container">
+                    @Html.Partial("_Form", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    @Html.RenderScripts()
+    <script>
+        var parentIndex = $parentNode.layer.getFrameIndex(window.name); //获取窗口索引
+        $().ready(function() {
+            $("#@(entityName)_from").validate();
+        });
+        function onSuccess(html, state, xhr) {
+            layer.open({
+                btn:['关闭'],
+                type: 0,
+                content: '提交成功',
+                yes: function (index, el) {
+                    parent.reloadData();
+                    layer.close(index);
+                    $parentNode.layer.close(parentIndex); // 关闭iframe
+                }
+            });
+        }
+        function onFailure(xhr, state) {
+            if (xhr.responseJSON && xhr.responseJSON.message) {
+                layer.open({
+                    type: 0,
+                    content: xhr.responseJSON.message
+                });
+            }
+            else {
+                $('#from-container').html(xhr.responseText);
+            }
+        }
+    </script>
+}
