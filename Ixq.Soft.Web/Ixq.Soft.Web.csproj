@@ -94,8 +94,8 @@
     <Reference Include="Ixq.Web.Mvc, Version=2.0.1.0, Culture=neutral, PublicKeyToken=9204588956bdddd4, processorArchitecture=MSIL">
       <HintPath>..\packages\Ixq.Web.Mvc.2.0.1\lib\net45\Ixq.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -435,7 +435,7 @@
       <Name>Ixq.Soft.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="Areas\Ixq.Soft.Web.Areas.Admin\Ixq.Soft.Web.Areas.Admin.csproj">
-      <Project>{3b4c4e30-a898-444d-b134-bc0906b5695c}</Project>
+      <Project>{1122b762-069f-44a0-901e-a28bdfdc684d}</Project>
       <Name>Ixq.Soft.Web.Areas.Admin</Name>
     </ProjectReference>
   </ItemGroup>

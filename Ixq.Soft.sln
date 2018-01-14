@@ -33,13 +33,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{01DF499D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{8108E6FF-53F6-4F2B-92B7-ED5B93C5CB64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Web.Areas.Admin", "Ixq.Soft.Web\Areas\Ixq.Soft.Web.Areas.Admin\Ixq.Soft.Web.Areas.Admin.csproj", "{3B4C4E30-A898-444D-B134-BC0906B5695C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{AB70294B-648D-464D-985B-263A583722F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Mvc", "Ixq.Soft.Mvc\Ixq.Soft.Mvc.csproj", "{2421F410-707D-4895-9535-180C199BA73E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.EntityMapping", "Ixq.Soft.EntityMapping\Ixq.Soft.EntityMapping.csproj", "{52F20117-81D8-4335-BC3A-D5035F36FA8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Web.Areas.Admin", "Ixq.Soft.Web\Areas\Ixq.Soft.Web.Areas.Admin\Ixq.Soft.Web.Areas.Admin.csproj", "{1122B762-069F-44A0-901E-A28BDFDC684D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,10 +91,6 @@ Global
 		{18268474-F578-4D7A-A9F3-62E1A344DB28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18268474-F578-4D7A-A9F3-62E1A344DB28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18268474-F578-4D7A-A9F3-62E1A344DB28}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B4C4E30-A898-444D-B134-BC0906B5695C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B4C4E30-A898-444D-B134-BC0906B5695C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B4C4E30-A898-444D-B134-BC0906B5695C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B4C4E30-A898-444D-B134-BC0906B5695C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2421F410-707D-4895-9535-180C199BA73E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2421F410-707D-4895-9535-180C199BA73E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2421F410-707D-4895-9535-180C199BA73E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -103,6 +99,10 @@ Global
 		{52F20117-81D8-4335-BC3A-D5035F36FA8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52F20117-81D8-4335-BC3A-D5035F36FA8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52F20117-81D8-4335-BC3A-D5035F36FA8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1122B762-069F-44A0-901E-A28BDFDC684D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1122B762-069F-44A0-901E-A28BDFDC684D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1122B762-069F-44A0-901E-A28BDFDC684D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1122B762-069F-44A0-901E-A28BDFDC684D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
