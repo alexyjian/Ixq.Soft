@@ -146,14 +146,29 @@
         function deleteRows() {
             var ids = $("#@tableId").jqGrid('getGridParam', 'selarrrow');
             if (ids.length > 0) {
-                $parentNode.layer.confirm('是否删除？', {
-                    btn: ['确认','取消'] //按钮
-                }, function(){
-                    //$.ajax({});提交到后台执行删除
-                    $parentNode.layer.msg('已删除', {icon: 1});
-                }, function(){
-                    return;
-                });
+                layer.confirm('是否删除？',
+                    //{
+                    //    btn: ['确认', '取消'] //按钮
+                    //},
+                    function () {
+                        var tokenInput = $('@Html.AntiForgeryToken()');
+                        var postData = { range: ids };
+                        postData[tokenInput.attr('name')] = tokenInput.val();
+                        $.ajax({
+                            url: '@Url.Action(Model.PageConfig.DelAction)',
+                            type: 'POST',
+                            data: postData,
+                            success: function(res) {
+                                layer.msg('已删除', { icon: 1 });
+                            },
+                            error: function() {
+                                layer.msg('删除失败了', { icon: 2 });
+                            }
+                        });
+                    },
+                    function() {
+                        return;
+                    });
             }
         }
 

@@ -16,8 +16,8 @@ namespace Ixq.Soft.DataContext
     {
         public AppDataContext() : base("DataContext")
         {
-            //Configuration.ProxyCreationEnabled = false;
-            //Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
         }
 
         public static AppDataContext Create()
@@ -45,12 +45,6 @@ namespace Ixq.Soft.DataContext
                 dynamic configurationInstance = Activator.CreateInstance(type);
                 modelBuilder.Configurations.Add(configurationInstance);
             }
-
-            //modelBuilder.Entity<AppUser>().ToTable("AppUsers");
-            //modelBuilder.Entity<AppRole>().ToTable("AppRoles");
-            //modelBuilder.Entity<AppIdentityUserRole>().ToTable("AppUserRoles");
-            //modelBuilder.Entity<AppIdentityUserLogin>().ToTable("AppUserLogins");
-            //modelBuilder.Entity<AppIdentityUserClaim>().ToTable("AppUserClaims");
         }
     }
 }

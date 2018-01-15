@@ -12,7 +12,6 @@ namespace Ixq.Soft.EntityMapping.System
     {
         public AppRoleMap()
         {
-            ToTable("AppRoles");
             Property(r => r.Description).HasMaxLength(AppRole.DescriptionMaxLength);
             Property(r => r.SoteCode).HasMaxLength(AppRole.SoteCodeMaxLength);
             Property(r => r.CreateDate).IsRequired();
