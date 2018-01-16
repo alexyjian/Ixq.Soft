@@ -11,8 +11,8 @@ namespace Ixq.Soft.Core.ViewModels.LoginMoldes
         [Display(Name = "密码")]
         [Required]
         public string Password { get; set; }
+
         [Display(Name = "验证码")]
-        [Required]
         public string Code { get; set; }
         public bool RememberMe { get; set; }
     }

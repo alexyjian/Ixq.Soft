@@ -18,6 +18,7 @@ namespace Ixq.Soft.Core.Dtos.System
         public string Description { get; set; }
 
         [Display(Name = "排序码", Order = 20)]
+        [ColModel(Sortable = true)]
         public string SoteCode { get; set; }
     }
 }

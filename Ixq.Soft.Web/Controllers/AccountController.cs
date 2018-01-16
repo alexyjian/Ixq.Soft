@@ -44,15 +44,27 @@ namespace Ixq.Soft.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            if (!Ixq.Soft.Core.Configs.SiteConfigs.IsDebug)
+            {
+                if (string.IsNullOrWhiteSpace(model.Code))
+                {
+                    ModelState.AddModelError(nameof(model.Code), "验证码不能为空。");
+                }
+            }
+
             if (!ModelState.IsValid)
             {
                 return View("Login", model);
             }
-            if (Session["ValidateCode"] == null || Session["ValidateCode"].ToString() != model.Code)
+
+            if (!Ixq.Soft.Core.Configs.SiteConfigs.IsDebug)
             {
-                ModelState.AddModelError(nameof(model.Code), "验证码错误。");
-                model.Code = null;
-                return View("Login", model);
+                if (Session["ValidateCode"] == null || Session["ValidateCode"].ToString() != model.Code)
+                {
+                    ModelState.AddModelError(nameof(model.Code), "验证码错误。");
+                    model.Code = null;
+                    return View("Login", model);
+                }
             }
             Session["ValidateCode"] = null;
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, true);
