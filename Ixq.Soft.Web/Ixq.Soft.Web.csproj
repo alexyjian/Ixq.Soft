@@ -304,6 +304,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Content Include="Images\basis\browser.psd" />
+    <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\contabs.js" />
     <Content Include="Scripts\content.js" />
