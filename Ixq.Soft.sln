@@ -41,7 +41,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.EntityMapping", "I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Web.Areas.Admin", "Ixq.Soft.Web\Areas\Ixq.Soft.Web.Areas.Admin\Ixq.Soft.Web.Areas.Admin.csproj", "{1122B762-069F-44A0-901E-A28BDFDC684D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{22EE5D85-3C64-4713-85B2-DAD5756D762B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA020FAF-6C18-40F2-A9E5-9082E179A352}"
 	ProjectSection(SolutionItems) = preProject
 		Local.testsettings = Local.testsettings
 	EndProjectSection
