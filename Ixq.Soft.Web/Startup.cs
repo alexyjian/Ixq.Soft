@@ -1,38 +1,68 @@
 ﻿using System;
-using System.Data.Entity;
-using System.Reflection;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using Ixq.Core.Cache;
-using Ixq.Core.DependencyInjection.Extensions;
-using Ixq.Core.Logging;
-using Ixq.Logging.Log4Net;
-using Ixq.Owin.Extensions;
-using Ixq.Soft.DataContext;
-using Microsoft.Owin;
-using Owin;
-
-[assembly: OwinStartup(typeof(Ixq.Soft.Web.Startup))]
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Ixq.Soft.Web.Data;
+using Ixq.Soft.Web.Models;
+using Ixq.Soft.Web.Services;
 
 namespace Ixq.Soft.Web
 {
-    public partial class Startup
+    public class Startup
     {
-        public void Configuration(IAppBuilder app)
+        public Startup(IConfiguration configuration)
         {
-            // 启用缓存
-            CacheManager.SetCacheProvider(new Ixq.Web.Mvc.Caching.WebCacheProvider());
-            // 启用日志
-            ILoggerFactory factory = new Log4NetLoggerFactory();
-            LogManager.SetLoggerFactory(factory);
+            Configuration = configuration;
+        }
 
-            app.Initialization()
-                .RegisterAutoMappe()
-                .RegisterService(serverCollection =>
-                {
-                    serverCollection.TryAddSingleton<DbContext, AppDataContext>();
-                    ConfigureAuth(app);
-                })
-                .RegisterAutofac(Assembly.GetExecutingAssembly(), Assembly.Load("Ixq.Soft.Web.Areas.Admin"));
+        public IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            // Add application services.
+            services.AddTransient<IEmailSender, EmailSender>();
+
+            services.AddMvc();
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseBrowserLink();
+                app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+
+            app.UseStaticFiles();
+
+            app.UseAuthentication();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }
