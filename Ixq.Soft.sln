@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Mvc", "Ixq.Soft.Mv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Web", "Ixq.Soft.Web\Ixq.Soft.Web.csproj", "{5E8036EB-18AE-4ECA-928F-A74A73130FAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Core.Tests", "Ixq.Soft.Core.Tests\Ixq.Soft.Core.Tests.csproj", "{D7F27032-5224-4310-A464-B43FC5C37442}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5E8036EB-18AE-4ECA-928F-A74A73130FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E8036EB-18AE-4ECA-928F-A74A73130FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E8036EB-18AE-4ECA-928F-A74A73130FAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7F27032-5224-4310-A464-B43FC5C37442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7F27032-5224-4310-A464-B43FC5C37442}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7F27032-5224-4310-A464-B43FC5C37442}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7F27032-5224-4310-A464-B43FC5C37442}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
