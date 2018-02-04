@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Ixq.Soft.Core.ViewModels.LoginMoldes
+namespace Ixq.Soft.Mvc.ViewModels.LoginMoldes
 {
     public class LoginViewModel
     {
