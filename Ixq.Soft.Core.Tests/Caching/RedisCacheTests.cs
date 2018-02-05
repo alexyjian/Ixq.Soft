@@ -130,7 +130,7 @@ namespace Ixq.Soft.Core.Tests.Caching
         }
 
         [TestMethod]
-        public async void Exists()
+        public async Task Exists()
         {
             var cache = new RedisCache(_appConfig, _serializableService, _cma);
 
