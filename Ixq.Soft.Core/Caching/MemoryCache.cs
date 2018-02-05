@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Thread;
@@ -14,9 +13,9 @@ namespace Ixq.Soft.Core.Caching
 {
     public class MemoryCache : ICache
     {
+        private static readonly ConcurrentDictionary<string, bool> AllKeys;
         private readonly IMemoryCache _memoryCache;
         private CancellationTokenSource _cancellationTokenSource;
-        private static readonly ConcurrentDictionary<string, bool> AllKeys;
 
         static MemoryCache()
         {
@@ -29,52 +28,19 @@ namespace Ixq.Soft.Core.Caching
             _cancellationTokenSource = new CancellationTokenSource();
         }
 
-        protected MemoryCacheEntryOptions CreateCacheOptions()
+        public void Dispose()
         {
-            return new MemoryCacheEntryOptions()
-                .AddExpirationToken(new CancellationChangeToken(_cancellationTokenSource.Token))
-                .RegisterPostEvictionCallback(PostEviction);
-        }
-        protected string AddKey(string key)
-        {
-            AllKeys.TryAdd(key, true);
-            return key;
-        }
-        protected string RemoveKey(string key)
-        {
-            TryRemoveKey(key);
-            return key;
-        }
-        protected void TryRemoveKey(string key)
-        {
-            if (!AllKeys.TryRemove(key, out bool _))
-                AllKeys.TryUpdate(key, false, false);
+            _memoryCache?.Dispose();
         }
 
-        public IReadOnlyDictionary<string, bool> GetAllKeys()
+        public bool Exists(string key)
         {
-            var dict = new ReadOnlyDictionary<string, bool>(AllKeys);
-            return dict;
+            return _memoryCache.TryGetValue(key, out object _);
         }
 
-        private void ClearKeys()
+        public Task<bool> ExistsAsync(string key)
         {
-            foreach (var key in AllKeys.Where(p => !p.Value).Select(p => p.Key).ToList())
-            {
-                RemoveKey(key);
-            }
-        }
-        private void PostEviction(object key, object value, EvictionReason reason, object state)
-        {
-            // 如果缓存项目只是改变，那么什么都不做
-            if (reason == EvictionReason.Replaced)
-                return;
-
-            // 尝试从字典中删除这个键
-            TryRemoveKey(key.ToString());
-
-            // 尝试删除标记为不存在的所有密钥
-            ClearKeys();
+            return TaskHelper.Run(() => Exists(key));
         }
 
         public IDictionary<string, object> GetAll()
@@ -84,10 +50,7 @@ namespace Ixq.Soft.Core.Caching
             AllKeys.ToList().ForEach(item =>
             {
                 var value = _memoryCache.Get(item.Key);
-                if (value != null)
-                {
-                    dict.Add(item.Key, value);
-                }
+                if (value != null) dict.Add(item.Key, value);
             });
 
             return dict;
@@ -132,7 +95,6 @@ namespace Ixq.Soft.Core.Caching
             Guard.ArgumentNotNull(value, nameof(value));
 
             _memoryCache.Set(AddKey(key), value, CreateCacheOptions());
-
         }
 
         public Task SetAsync<T>(string key, T value)
@@ -140,7 +102,7 @@ namespace Ixq.Soft.Core.Caching
             Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
             Guard.ArgumentNotNull(value, nameof(value));
 
-            return TaskHelper.Run(() => Set<T>(key, value));
+            return TaskHelper.Run(() => Set(key, value));
         }
 
         public void Set<T>(string key, T value, int second)
@@ -157,7 +119,7 @@ namespace Ixq.Soft.Core.Caching
             Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
             Guard.ArgumentNotNull(value, nameof(value));
 
-            return TaskHelper.Run(() => Set<T>(key, value, second));
+            return TaskHelper.Run(() => Set(key, value, second));
         }
 
         public void Set<T>(string key, T value, DateTime absoluteExpiration)
@@ -173,7 +135,7 @@ namespace Ixq.Soft.Core.Caching
             Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
             Guard.ArgumentNotNull(value, nameof(value));
 
-            return TaskHelper.Run(() => Set<T>(key, value, absoluteExpiration));
+            return TaskHelper.Run(() => Set(key, value, absoluteExpiration));
         }
 
         public void Set<T>(string key, T value, TimeSpan slidingExpiration)
@@ -182,7 +144,6 @@ namespace Ixq.Soft.Core.Caching
             Guard.ArgumentNotNull(value, nameof(value));
 
             _memoryCache.Set(AddKey(key), value, CreateCacheOptions().SetSlidingExpiration(slidingExpiration));
-
         }
 
         public Task SetAsync<T>(string key, T value, TimeSpan slidingExpiration)
@@ -220,9 +181,53 @@ namespace Ixq.Soft.Core.Caching
             return TaskHelper.Run(Clear);
         }
 
-        public void Dispose()
+        protected MemoryCacheEntryOptions CreateCacheOptions()
         {
-            _memoryCache?.Dispose();
+            return new MemoryCacheEntryOptions()
+                .AddExpirationToken(new CancellationChangeToken(_cancellationTokenSource.Token))
+                .RegisterPostEvictionCallback(PostEviction);
+        }
+
+        protected string AddKey(string key)
+        {
+            AllKeys.TryAdd(key, true);
+            return key;
+        }
+
+        protected string RemoveKey(string key)
+        {
+            TryRemoveKey(key);
+            return key;
+        }
+
+        protected void TryRemoveKey(string key)
+        {
+            if (!AllKeys.TryRemove(key, out bool _))
+                AllKeys.TryUpdate(key, false, false);
+        }
+
+        public IReadOnlyDictionary<string, bool> GetAllKeys()
+        {
+            var dict = new ReadOnlyDictionary<string, bool>(AllKeys);
+            return dict;
+        }
+
+        private void ClearKeys()
+        {
+            foreach (var key in AllKeys.Where(p => !p.Value).Select(p => p.Key).ToList()) RemoveKey(key);
+        }
+
+        private void PostEviction(object key, object value, EvictionReason reason, object state)
+        {
+            // 如果缓存项目只是改变，那么什么都不做
+            if (reason == EvictionReason.Replaced)
+                return;
+
+            // 尝试从字典中删除这个键
+            TryRemoveKey(key.ToString());
+
+            // 尝试删除标记为不存在的所有密钥
+            ClearKeys();
         }
     }
 }

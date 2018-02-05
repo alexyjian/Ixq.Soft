@@ -114,5 +114,22 @@ namespace Ixq.Soft.Core.Tests.Caching
             Assert.IsNull(memoryCache.Get("test_key"));
             Assert.AreEqual(memoryCache.GetAll().Count, 0);
         }
+
+        [TestMethod]
+        public async Task Exists()
+        {
+            var memoryCache =
+                new MemoryCache(new Microsoft.Extensions.Caching.Memory.MemoryCache(new MemoryCacheOptions()));
+
+            memoryCache.Set("test_key", 123, 3);
+
+            Assert.IsTrue(memoryCache.Exists("test_key"));
+
+            Assert.IsTrue(await memoryCache.ExistsAsync("test_key"));
+
+            memoryCache.Remove("test_key");
+
+            Assert.IsFalse(memoryCache.Exists("test_key"));
+        }
     }
 }

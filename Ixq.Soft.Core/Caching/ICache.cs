@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Ixq.Soft.Core.Caching
@@ -8,10 +7,24 @@ namespace Ixq.Soft.Core.Caching
     public interface ICache : IDisposable
     {
         /// <summary>
+        ///     验证指定的缓存项是否已经存在。
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        bool Exists(string key);
+
+        /// <summary>
+        ///     异步验证指定的缓存项是否已经存在。
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        Task<bool> ExistsAsync(string key);
+
+        /// <summary>
         ///     获取全部的缓存项。
         /// </summary>
         /// <returns>全部的缓存项。</returns>
-        IDictionary<string,object> GetAll();
+        IDictionary<string, object> GetAll();
 
         /// <summary>
         ///     异步获取全部的缓存项。
