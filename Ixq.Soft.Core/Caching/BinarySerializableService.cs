@@ -8,16 +8,22 @@ namespace Ixq.Soft.Core.Caching
     /// </summary>
     public class BinarySerializableService : ISerializableService
     {
-        public object Deserialize(byte[] data)
+        /// <inheritdoc />
+        public T Deserialize<T>(byte[] data)
         {
             var binaryFormatter = new BinaryFormatter();
             using (var memoryStream = new MemoryStream(data))
             {
                 var result = binaryFormatter.Deserialize(memoryStream);
-                return result;
+                if (result is T resOfT)
+                {
+                    return resOfT;
+                }
+                return default(T);
             }
         }
 
+        /// <inheritdoc />
         public byte[] Serialize(object obj)
         {
             if (obj == null)

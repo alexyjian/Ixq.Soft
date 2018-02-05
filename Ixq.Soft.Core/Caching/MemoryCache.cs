@@ -206,7 +206,7 @@ namespace Ixq.Soft.Core.Caching
                 AllKeys.TryUpdate(key, false, false);
         }
 
-        public IReadOnlyDictionary<string, bool> GetAllKeys()
+        internal IReadOnlyDictionary<string, bool> GetAllKeys()
         {
             var dict = new ReadOnlyDictionary<string, bool>(AllKeys);
             return dict;

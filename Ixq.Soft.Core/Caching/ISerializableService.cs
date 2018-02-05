@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        object Deserialize(byte[] data);
+        T Deserialize<T>(byte[] data);
 
         /// <summary>
         ///     序列化。

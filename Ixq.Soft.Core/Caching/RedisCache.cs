@@ -7,9 +7,6 @@ using StackExchange.Redis;
 
 namespace Ixq.Soft.Core.Caching
 {
-    /// <summary>
-    ///     IConnectionMultiplexerAccessor
-    /// </summary>
     public class RedisCache : ICache
     {
         private readonly AppConfig _appConfig;
@@ -37,9 +34,9 @@ namespace Ixq.Soft.Core.Caching
             return TaskHelper.RunSync(() => ExistsAsync(key));
         }
 
-        public Task<bool> ExistsAsync(string key)
+        public async Task<bool> ExistsAsync(string key)
         {
-            return _database.KeyExistsAsync(ParseKey(key));
+            return await _database.KeyExistsAsync(ParseKey(key));
         }
 
         public IDictionary<string, object> GetAll()
@@ -102,9 +99,9 @@ namespace Ixq.Soft.Core.Caching
             TaskHelper.RunSync(() => SetAsync(key, value));
         }
 
-        public Task SetAsync<T>(string key, T value)
+        public async Task SetAsync<T>(string key, T value)
         {
-            return _database.StringSetAsync(ParseKey(key), ParseValue(key, value));
+            await _database.StringSetAsync(ParseKey(key), ParseValue(key, value));
         }
 
         public void Set<T>(string key, T value, int second)
@@ -112,9 +109,9 @@ namespace Ixq.Soft.Core.Caching
             TaskHelper.RunSync(() => SetAsync(key, value, second));
         }
 
-        public Task SetAsync<T>(string key, T value, int second)
+        public async Task SetAsync<T>(string key, T value, int second)
         {
-            return _database.StringSetAsync(ParseKey(key), ParseValue(key, value), TimeSpan.FromSeconds(second));
+            await _database.StringSetAsync(ParseKey(key), ParseValue(key, value), TimeSpan.FromSeconds(second));
         }
 
         public void Set<T>(string key, T value, DateTime absoluteExpiration)
@@ -122,10 +119,10 @@ namespace Ixq.Soft.Core.Caching
             TaskHelper.RunSync(() => SetAsync(key, value, absoluteExpiration));
         }
 
-        public Task SetAsync<T>(string key, T value, DateTime absoluteExpiration)
+        public async Task SetAsync<T>(string key, T value, DateTime absoluteExpiration)
         {
             var expiry = absoluteExpiration - DateTime.Now;
-            return _database.StringSetAsync(ParseKey(key), ParseValue(key, value), expiry);
+            await _database.StringSetAsync(ParseKey(key), ParseValue(key, value), expiry);
         }
 
         public void Set<T>(string key, T value, TimeSpan slidingExpiration)
@@ -133,9 +130,9 @@ namespace Ixq.Soft.Core.Caching
             TaskHelper.RunSync(() => SetAsync(key, value, slidingExpiration));
         }
 
-        public Task SetAsync<T>(string key, T value, TimeSpan slidingExpiration)
+        public async Task SetAsync<T>(string key, T value, TimeSpan slidingExpiration)
         {
-            return _database.StringSetAsync(ParseKey(key), ParseValue(key, value, slidingExpiration),
+            await _database.StringSetAsync(ParseKey(key), ParseValue(key, value, slidingExpiration),
                 slidingExpiration);
         }
 
@@ -144,9 +141,9 @@ namespace Ixq.Soft.Core.Caching
             TaskHelper.RunSync(() => RemoveAsync(key));
         }
 
-        public Task RemoveAsync(string key)
+        public async Task RemoveAsync(string key)
         {
-            return _database.KeyDeleteAsync(key);
+            await _database.KeyDeleteAsync(ParseKey(key));
         }
 
         public void Clear()
@@ -235,8 +232,8 @@ namespace Ixq.Soft.Core.Caching
                 return false;
             try
             {
-                var result = _serializableService.Deserialize(data);
-                @object = (RedisCacheValue) result;
+                var result = _serializableService.Deserialize<RedisCacheValue>(data);
+                @object = result;
                 if (!CheckCacheValue(@object))
                 {
                     @object = null;
