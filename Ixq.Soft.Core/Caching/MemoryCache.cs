@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -34,7 +35,6 @@ namespace Ixq.Soft.Core.Caching
                 .AddExpirationToken(new CancellationChangeToken(_cancellationTokenSource.Token))
                 .RegisterPostEvictionCallback(PostEviction);
         }
-
         protected string AddKey(string key)
         {
             AllKeys.TryAdd(key, true);
@@ -50,6 +50,13 @@ namespace Ixq.Soft.Core.Caching
             if (!AllKeys.TryRemove(key, out bool _))
                 AllKeys.TryUpdate(key, false, false);
         }
+
+        public IReadOnlyDictionary<string, bool> GetAllKeys()
+        {
+            var dict = new ReadOnlyDictionary<string, bool>(AllKeys);
+            return dict;
+        }
+
         private void ClearKeys()
         {
             foreach (var key in AllKeys.Where(p => !p.Value).Select(p => p.Key).ToList())
