@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ixq.Soft.Core
+﻿namespace Ixq.Soft.Core.Configuration
 {
     /// <summary>
     /// 应用程序配置信息。
@@ -12,5 +8,7 @@ namespace Ixq.Soft.Core
         public bool RedisCacheEnabled { get; set; }
         public string RedisCacheKeyPrefix { get; set; }
         public string RedisCacheConnectionString { get; set; }
+        public string DbContextConnectionString { get; set; }
+
     }
 }

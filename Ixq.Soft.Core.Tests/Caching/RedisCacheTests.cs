@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Caching;
+using Ixq.Soft.Core.Configuration;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MemoryCache = Ixq.Soft.Core.Caching.MemoryCache;

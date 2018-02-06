@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Ixq.Soft.Core\Ixq.Soft.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mapping\" />
+  </ItemGroup>
+
 </Project>

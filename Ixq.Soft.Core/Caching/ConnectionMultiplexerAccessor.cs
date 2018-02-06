@@ -1,4 +1,5 @@
 ﻿using System;
+using Ixq.Soft.Core.Configuration;
 using StackExchange.Redis;
 
 namespace Ixq.Soft.Core.Caching
