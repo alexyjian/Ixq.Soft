@@ -36,6 +36,8 @@ namespace Ixq.Soft.Core.Caching
 
         public async Task<bool> ExistsAsync(string key)
         {
+            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
+
             return await _database.KeyExistsAsync(ParseKey(key));
         }
 
@@ -74,6 +76,8 @@ namespace Ixq.Soft.Core.Caching
 
         public async Task<object> GetAsync(string key)
         {
+            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
+
             var byteValue = await _database.StringGetAsync(ParseKey(key));
             if (TryDeserialize(byteValue, out var value))
                 return value.Value;
@@ -87,6 +91,8 @@ namespace Ixq.Soft.Core.Caching
 
         public async Task<T> GetAsync<T>(string key)
         {
+            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
+
             var byteValue = await _database.StringGetAsync(ParseKey(key));
             TryDeserialize(byteValue, out var value);
             if (value == null)
@@ -101,6 +107,9 @@ namespace Ixq.Soft.Core.Caching
 
         public async Task SetAsync<T>(string key, T value)
         {
+            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
+            Guard.ArgumentNotNull(value, nameof(value));
+
             await _database.StringSetAsync(ParseKey(key), ParseValue(key, value));
         }
 
@@ -111,6 +120,9 @@ namespace Ixq.Soft.Core.Caching
 
         public async Task SetAsync<T>(string key, T value, int second)
         {
+            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
+            Guard.ArgumentNotNull(value, nameof(value));
+
             await _database.StringSetAsync(ParseKey(key), ParseValue(key, value), TimeSpan.FromSeconds(second));
         }
 
@@ -121,6 +133,9 @@ namespace Ixq.Soft.Core.Caching
 
         public async Task SetAsync<T>(string key, T value, DateTime absoluteExpiration)
         {
+            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
+            Guard.ArgumentNotNull(value, nameof(value));
+
             var expiry = absoluteExpiration - DateTime.Now;
             await _database.StringSetAsync(ParseKey(key), ParseValue(key, value), expiry);
         }
@@ -132,6 +147,9 @@ namespace Ixq.Soft.Core.Caching
 
         public async Task SetAsync<T>(string key, T value, TimeSpan slidingExpiration)
         {
+            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
+            Guard.ArgumentNotNull(value, nameof(value));
+
             await _database.StringSetAsync(ParseKey(key), ParseValue(key, value, slidingExpiration),
                 slidingExpiration);
         }
@@ -143,6 +161,8 @@ namespace Ixq.Soft.Core.Caching
 
         public async Task RemoveAsync(string key)
         {
+            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
+
             await _database.KeyDeleteAsync(ParseKey(key));
         }
 

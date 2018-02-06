@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ixq.Soft.Repository", "Ixq.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ixq.Soft.Services", "Ixq.Soft.Services\Ixq.Soft.Services.csproj", "{DB4F0AB0-11E7-4525-BA4D-46355F5C4728}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Mvc", "Ixq.Soft.Mvc\Ixq.Soft.Mvc.csproj", "{4E333688-DD6D-4E4C-85B9-893FC7EE7201}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ixq.Soft.Mvc", "Ixq.Soft.Mvc\Ixq.Soft.Mvc.csproj", "{4E333688-DD6D-4E4C-85B9-893FC7EE7201}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Web", "Ixq.Soft.Web\Ixq.Soft.Web.csproj", "{5E8036EB-18AE-4ECA-928F-A74A73130FAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ixq.Soft.Web", "Ixq.Soft.Web\Ixq.Soft.Web.csproj", "{5E8036EB-18AE-4ECA-928F-A74A73130FAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Core.Tests", "Ixq.Soft.Core.Tests\Ixq.Soft.Core.Tests.csproj", "{D7F27032-5224-4310-A464-B43FC5C37442}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ixq.Soft.Core.Tests", "Ixq.Soft.Core.Tests\Ixq.Soft.Core.Tests.csproj", "{D7F27032-5224-4310-A464-B43FC5C37442}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

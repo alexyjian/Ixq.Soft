@@ -134,16 +134,16 @@ namespace Ixq.Soft.Core.Tests.Caching
         {
             var cache = new RedisCache(_appConfig, _serializableService, _cma);
 
-            cache.Set("test_key", 123, 3);
+            cache.Set("test_key", 123);
 
             Assert.IsTrue(cache.Exists("test_key"));
 
-            Assert.IsTrue(await cache.ExistsAsync("test_key"));
+            var isTrue = await cache.ExistsAsync("test_key");
+            Assert.IsTrue(isTrue);
 
             cache.Remove("test_key");
 
             Assert.IsFalse(cache.Exists("test_key"));
         }
-
     }
 }

@@ -35,6 +35,8 @@ namespace Ixq.Soft.Core.Caching
 
         public bool Exists(string key)
         {
+            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
+
             return _memoryCache.TryGetValue(key, out object _);
         }
 
@@ -70,8 +72,6 @@ namespace Ixq.Soft.Core.Caching
 
         public Task<object> GetAsync(string key)
         {
-            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
-
             return TaskHelper.Run(() => Get(key));
         }
 
@@ -84,8 +84,6 @@ namespace Ixq.Soft.Core.Caching
 
         public Task<T> GetAsync<T>(string key)
         {
-            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
-
             return TaskHelper.Run(() => Get<T>(key));
         }
 
@@ -99,9 +97,6 @@ namespace Ixq.Soft.Core.Caching
 
         public Task SetAsync<T>(string key, T value)
         {
-            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
-            Guard.ArgumentNotNull(value, nameof(value));
-
             return TaskHelper.Run(() => Set(key, value));
         }
 
@@ -116,9 +111,6 @@ namespace Ixq.Soft.Core.Caching
 
         public Task SetAsync<T>(string key, T value, int second)
         {
-            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
-            Guard.ArgumentNotNull(value, nameof(value));
-
             return TaskHelper.Run(() => Set(key, value, second));
         }
 
@@ -132,9 +124,6 @@ namespace Ixq.Soft.Core.Caching
 
         public Task SetAsync<T>(string key, T value, DateTime absoluteExpiration)
         {
-            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
-            Guard.ArgumentNotNull(value, nameof(value));
-
             return TaskHelper.Run(() => Set(key, value, absoluteExpiration));
         }
 
@@ -148,14 +137,13 @@ namespace Ixq.Soft.Core.Caching
 
         public Task SetAsync<T>(string key, T value, TimeSpan slidingExpiration)
         {
-            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
-            Guard.ArgumentNotNull(value, nameof(value));
-
             return TaskHelper.Run(() => Set(key, value, slidingExpiration));
         }
 
         public void Remove(string key)
         {
+            Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
+
             _memoryCache.Remove(RemoveKey(key));
         }
 
