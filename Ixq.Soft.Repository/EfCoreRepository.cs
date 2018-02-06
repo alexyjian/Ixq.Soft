@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Domain;
-using Ixq.Soft.Core.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ixq.Soft.Repository
 {
-    public class EfCoreRepository<TEntity,TKey> : IRepository<TEntity,TKey>
+    public class EfCoreRepository<TEntity, TKey> : IRepository<TEntity, TKey>
         where TEntity : class, IEntityBase<TKey>
     {
         private readonly IDbContext _dbContext;
@@ -20,6 +17,7 @@ namespace Ixq.Soft.Repository
             _dbContext = dbContext;
             _entities = _dbContext.Set<TEntity>();
         }
+
         public TEntity GetById(TKey id)
         {
             return _entities.Find(id);
@@ -69,7 +67,7 @@ namespace Ixq.Soft.Repository
         {
             return await _dbContext.SaveChangesAsync();
         }
-        
+
         public IQueryable<TEntity> Table => _entities;
         public IQueryable<TEntity> TableNoTracking => _entities.AsNoTracking();
     }

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Domain;
 
-namespace Ixq.Soft.Core.Repository
+namespace Ixq.Soft.Repository
 {
     public interface IRepository<TEntity, in TKey>
         where TEntity : class, IEntityBase<TKey>

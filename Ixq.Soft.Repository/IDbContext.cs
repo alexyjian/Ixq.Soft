@@ -1,8 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ixq.Soft.Repository
 {
@@ -15,9 +14,9 @@ namespace Ixq.Soft.Repository
         int SaveChanges();
 
         /// <summary>
-        /// 异步提交当前单元操作的更改。
+        ///     异步提交当前单元操作的更改。
         /// </summary>
-        /// <param name="cancellationToken">在等待任务完成时观察 <see cref="System.Threading.CancellationToken"/>。</param>
+        /// <param name="cancellationToken">在等待任务完成时观察 <see cref="System.Threading.CancellationToken" />。</param>
         /// <returns>操作影响的行数。</returns>
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));
 
