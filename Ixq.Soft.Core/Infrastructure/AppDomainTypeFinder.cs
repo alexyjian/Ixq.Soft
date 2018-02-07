@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
@@ -92,7 +94,30 @@ namespace Ixq.Soft.Core.Infrastructure
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
                 if (Matches(assembly.FullName))
                     assemblies.Add(assembly);
+
+            GetBinAssembly(assemblies);
+
             return assemblies;
+        }
+
+        private void GetBinAssembly(List<Assembly> assemblies)
+        {
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+
+            var files = Directory.GetFiles(path, "*.dll", SearchOption.TopDirectoryOnly)
+                .Concat(Directory.GetFiles(path, "*.exe", SearchOption.TopDirectoryOnly))
+                .ToArray();
+
+            var binAssemblies = files.Select(Assembly.LoadFrom).Distinct()
+                .Where(x => !assemblies.Contains(x) && Matches(x.FullName))
+                .ToArray();
+
+            foreach (var assembly in binAssemblies)
+                if (Matches(assembly.FullName))
+                {
+                    AppDomain.CurrentDomain.Load(assembly.GetName());
+                    assemblies.Add(assembly);
+                }
         }
 
         protected virtual bool Matches(string assemblyFullName, string pattern)

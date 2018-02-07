@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Ixq.Soft.Web.Data;
 using Ixq.Soft.Web.Models;
 using Ixq.Soft.Web.Services;
 using Ixq.Soft.Repository;
