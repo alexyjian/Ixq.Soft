@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Ixq.Soft.Core\Ixq.Soft.Core.csproj" />
     <ProjectReference Include="..\Ixq.Soft.Mvc\Ixq.Soft.Mvc.csproj" />
+    <ProjectReference Include="..\Ixq.Soft.Repository\Ixq.Soft.Repository.csproj" />
     <ProjectReference Include="..\Ixq.Soft.Services\Ixq.Soft.Services.csproj" />
   </ItemGroup>
 

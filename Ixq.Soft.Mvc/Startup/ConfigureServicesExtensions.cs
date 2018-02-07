@@ -21,7 +21,8 @@ namespace Ixq.Soft.Mvc.Startup
 
             var configureServiceTypes = typeFinder.FindTypes<IConfigureServices>();
             var configureServiceInstances =
-                configureServiceTypes.Select(x => (IConfigureServices) Activator.CreateInstance(x));
+                configureServiceTypes.Select(x => (IConfigureServices) Activator.CreateInstance(x))
+                    .OrderBy(x => x.Order);
             foreach (var configureService in configureServiceInstances)
                 configureService.ConfigureServices(services, configuration);
         }
@@ -34,23 +35,28 @@ namespace Ixq.Soft.Mvc.Startup
 
             // app config
             var appConfig = new AppConfig();
-            configuration.Bind(appConfig);
+            configuration.Bind("AppConfig", appConfig);
+            appConfig.DbContextConnectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddSingleton(typeof(AppConfig), appConfig);
 
             // caching
             if (appConfig.RedisCacheEnabled)
             {
-                services.AddScoped<ICache, MemoryCache>();
-            }
-            else
-            {
                 services.AddSingleton<ISerializableService, BinarySerializableService>();
                 services.AddSingleton<IConnectionMultiplexerAccessor, ConnectionMultiplexerAccessor>();
                 services.AddScoped<ICache, RedisCache>();
             }
+            else
+            {
+                services.AddScoped<ICache, MemoryCache>();
+            }
 
             // type finder
             services.AddSingleton<ITypeFinder, AppDomainTypeFinder>();
+
+            // logging
+            services.AddLogging();
+
         }
     }
 }

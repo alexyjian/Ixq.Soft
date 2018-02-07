@@ -1,9 +1,11 @@
 ﻿using System.Threading.Tasks;
+using Ixq.Soft.Core.Domain.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ixq.Soft.Repository
 {
-    public class AppDbContext : DbContext, IDbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, long>, IDbContext
     {
         public AppDbContext(DbContextOptions options) : base(options)
         {
