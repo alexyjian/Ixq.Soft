@@ -27,6 +27,11 @@ namespace Ixq.Soft.Mvc.Startup
                 configureService.ConfigureServices(services, configuration);
         }
 
+        /// <summary>
+        /// 添加一些基础设置服务至容器。
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
         private static void ConfigureInfrastructureServices(this IServiceCollection services,
             IConfiguration configuration)
         {
