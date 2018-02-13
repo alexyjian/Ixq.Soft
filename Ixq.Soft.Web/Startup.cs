@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Ixq.Soft.Web.Models;
 using Ixq.Soft.Web.Services;
 using Ixq.Soft.Repository;
+using Ixq.Soft.Services;
 
 namespace Ixq.Soft.Web
 {
