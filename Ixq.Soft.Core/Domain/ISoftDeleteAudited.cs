@@ -8,6 +8,6 @@ namespace Ixq.Soft.Core.Domain
     {
         long DeleteUserId { get; set; }
         DateTime? DeleteTime { get; set; }
-        bool IsDelete { get; set; }
+        bool IsDeleted { get; set; }
     }
 }

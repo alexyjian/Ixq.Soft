@@ -16,6 +16,6 @@ namespace Ixq.Soft.Core.Domain
         public DateTime? UpdateTime { get; set; }
         public long DeleteUserId { get; set; }
         public DateTime? DeleteTime { get; set; }
-        public bool IsDelete { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

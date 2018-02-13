@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Ixq.Soft.Core.Configuration;
+﻿using Ixq.Soft.Core.Configuration;
 using Ixq.Soft.Core.Domain.Identity;
 using Ixq.Soft.Repository;
 using Microsoft.AspNetCore.Identity;

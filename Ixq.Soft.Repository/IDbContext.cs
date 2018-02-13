@@ -2,13 +2,15 @@
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
+using Ixq.Soft.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ixq.Soft.Repository
 {
     public interface IDbContext : IDisposable
     {
-        ClaimsPrincipal User { get; }
+        bool IsSoftDeleteFilterEnabled { get; }
+        UserAccessor UserProvider { get; }
 
         /// <summary>
         ///     提交当前单元操作的更改。

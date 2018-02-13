@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
+using Ixq.Soft.Core.Configuration;
 using Ixq.Soft.Core.Domain;
 using Ixq.Soft.Core.Domain.Identity;
-using Microsoft.AspNetCore.Http;
+using Ixq.Soft.Core.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -15,15 +18,20 @@ namespace Ixq.Soft.Repository
 {
     public class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, long>, IDbContext
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private static readonly MethodInfo ConfigureGlobalQueryFilterMethodInfo =
+            typeof(AppDbContext).GetMethod(nameof(ConfigureGlobalQueryFilter),
+                BindingFlags.Instance | BindingFlags.NonPublic);
 
-        public AppDbContext(DbContextOptions options, IHttpContextAccessor httpContextAccessor) : base(options)
+        private readonly AppConfig _appConfig;
+
+        public AppDbContext(DbContextOptions options, UserAccessor userProvider, AppConfig appConfig) : base(options)
         {
-            _httpContextAccessor = httpContextAccessor;
+            UserProvider = userProvider;
+            _appConfig = appConfig;
         }
 
-        public ClaimsPrincipal User =>
-            _httpContextAccessor?.HttpContext.User ?? Thread.CurrentPrincipal as ClaimsPrincipal;
+        public bool IsSoftDeleteFilterEnabled => _appConfig.IsSoftDeleteFilterEnabled;
+        public UserAccessor UserProvider { get; }
 
         public int ExecuteSqlCommand(string sql, params object[] parameters)
         {
@@ -83,7 +91,7 @@ namespace Ixq.Soft.Repository
                 return;
 
             entry.State = EntityState.Modified;
-            entity.IsDelete = true;
+            entity.IsDeleted = true;
             entity.DeleteTime = DateTime.Now;
             entity.DeleteUserId = userId;
         }
@@ -127,13 +135,45 @@ namespace Ixq.Soft.Repository
             builder.Entity<IdentityUserLogin<long>>().ToTable("Base_ApplicationUserLogin");
             builder.Entity<IdentityRoleClaim<long>>().ToTable("Base_ApplicationRoleClaim");
             builder.Entity<IdentityUserToken<long>>().ToTable("Base_ApplicationUserToken");
+
+            // global query filters
+            ConfigureGlobalQueryFilters(builder);
+        }
+
+        protected void ConfigureGlobalQueryFilters(ModelBuilder builder)
+        {
+            foreach (var entityType in builder.Model.GetEntityTypes())
+                ConfigureGlobalQueryFilterMethodInfo.MakeGenericMethod(entityType.ClrType)
+                    .Invoke(this, new object[] {builder});
+        }
+
+        private void ConfigureGlobalQueryFilter<TEntity>(ModelBuilder builder)
+            where TEntity : class
+        {
+            var filterExpression = CreateFilterExpression<TEntity>();
+            if (filterExpression != null)
+                builder.Entity<TEntity>().HasQueryFilter(filterExpression);
+        }
+
+        protected virtual Expression<Func<TEntity, bool>> CreateFilterExpression<TEntity>()
+            where TEntity : class
+        {
+            Expression<Func<TEntity, bool>> expression = null;
+
+            if (typeof(ISoftDeleteAudited).IsAssignableFrom(typeof(TEntity)) && IsSoftDeleteFilterEnabled)
+            {
+                Expression<Func<TEntity, bool>> softDeleteFilter = e => !((ISoftDeleteAudited) e).IsDeleted;
+                expression = softDeleteFilter;
+            }
+
+            return expression;
         }
 
         private long GetUserId()
         {
             var userId = 0L;
-            if (User != null)
-                long.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out userId);
+            if (UserProvider?.User != null)
+                long.TryParse(UserProvider.User.FindFirstValue(ClaimTypes.NameIdentifier), out userId);
 
             return userId;
         }

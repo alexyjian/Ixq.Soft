@@ -9,6 +9,7 @@
         public string RedisCacheKeyPrefix { get; set; }
         public string RedisCacheConnectionString { get; set; }
         public string DbContextConnectionString { get; set; }
+        public bool IsSoftDeleteFilterEnabled { get; set; }
 
     }
 }

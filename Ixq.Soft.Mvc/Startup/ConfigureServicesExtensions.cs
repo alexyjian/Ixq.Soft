@@ -28,7 +28,7 @@ namespace Ixq.Soft.Mvc.Startup
         }
 
         /// <summary>
-        /// 添加一些基础设置服务至容器。
+        ///     添加一些基础设置服务至容器。
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
@@ -37,6 +37,9 @@ namespace Ixq.Soft.Mvc.Startup
         {
             // http context accessor
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // user accessor
+            services.AddSingleton<UserAccessor>();
 
             // app config
             var appConfig = new AppConfig();
@@ -61,7 +64,6 @@ namespace Ixq.Soft.Mvc.Startup
 
             // logging
             services.AddLogging();
-
         }
     }
 }
