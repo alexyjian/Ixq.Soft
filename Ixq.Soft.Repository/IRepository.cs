@@ -8,6 +8,8 @@ namespace Ixq.Soft.Repository
     public interface IRepository<TEntity, in TKey>
         where TEntity : class, IEntityBase<TKey>
     {
+        IQueryable<TEntity> Table { get; }
+        IQueryable<TEntity> TableNoTracking { get; }
         TEntity GetById(TKey id);
         void Add(TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);
@@ -18,7 +20,5 @@ namespace Ixq.Soft.Repository
         int Save();
         Task<int> SaveAsync();
         IQueryable<TEntity> SqlQuery(string sql, params object[] parameters);
-        IQueryable<TEntity> Table { get; }
-        IQueryable<TEntity> TableNoTracking { get; }
     }
 }

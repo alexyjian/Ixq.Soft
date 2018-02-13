@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,8 @@ namespace Ixq.Soft.Repository
 {
     public interface IDbContext : IDisposable
     {
+        ClaimsPrincipal User { get; }
+
         /// <summary>
         ///     提交当前单元操作的更改。
         /// </summary>
@@ -23,6 +26,7 @@ namespace Ixq.Soft.Repository
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
         int ExecuteSqlCommand(string sql, params object[] parameters);
+
         Task<int> ExecuteSqlCommandAsync(string sql, params object[] parameters);
     }
 }
