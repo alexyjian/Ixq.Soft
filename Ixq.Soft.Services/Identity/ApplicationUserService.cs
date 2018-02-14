@@ -11,16 +11,15 @@ namespace Ixq.Soft.Services.Identity
 {
     public class ApplicationUserService : BaseService, IApplicationUserService
     {
-        private readonly IRepository<ApplicationUser, long> _userRepository;
+        private readonly IRepositoryInt64<ApplicationUser> _userRepository;
 
-        public ApplicationUserService(IRepository<ApplicationUser, long> userrepository)
+        public ApplicationUserService(IRepositoryInt64<ApplicationUser> userRepository)
         {
-            _userRepository = userrepository;
+            _userRepository = userRepository;
         }
 
         public PaginatedList<ApplicationUser> GetApplicationUserList()
         {
-
             var query = _userRepository.TableNoTracking;
 
             var allUser = query.ToList();

@@ -6,7 +6,7 @@ using Ixq.Soft.Repository;
 
 namespace Ixq.Soft.Services.Identity
 {
-    public interface IApplicationUserService
+    public interface IApplicationUserService : IBaseService
     {
         PaginatedList<ApplicationUser> GetApplicationUserList();
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Ixq.Soft.Mvc.Controllers;
 using Ixq.Soft.Services.Identity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ixq.Soft.Web.Areas.Admin.Controllers
@@ -11,6 +12,7 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
     public class ApplicationUserController : AdminBaseController
     {
         private readonly IApplicationUserService _userSvc;
+        public IHttpContextAccessor HttpAccessor { get; set; }
 
         public ApplicationUserController(IApplicationUserService userSvc)
         {
@@ -25,10 +27,6 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult ApplicationUserList()
         {
-            var hashCode = this.HttpContext.RequestServices.GetHashCode();
-            var hashCode1 = this.HttpContext.RequestServices.GetHashCode();
-
-
             return Json("");
         }
     }
