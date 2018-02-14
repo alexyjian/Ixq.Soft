@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Text;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 
 namespace Ixq.Soft.Core.Infrastructure
 {
@@ -17,6 +14,5 @@ namespace Ixq.Soft.Core.Infrastructure
 
         public ClaimsPrincipal User =>
             _httpContextAccessor?.HttpContext.User ?? System.Threading.Thread.CurrentPrincipal as ClaimsPrincipal;
-
     }
 }

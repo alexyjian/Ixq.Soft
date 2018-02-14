@@ -16,9 +16,7 @@ namespace Ixq.Soft.Core.Caching
             {
                 var result = binaryFormatter.Deserialize(memoryStream);
                 if (result is T resOfT)
-                {
                     return resOfT;
-                }
                 return default(T);
             }
         }

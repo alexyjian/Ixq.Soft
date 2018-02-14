@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using Newtonsoft.Json;
 
 namespace Ixq.Soft.Core.Caching
 {
     /// <summary>
-    /// 使用 Newtonsoft.Json 进行序列化。
+    ///     使用 Newtonsoft.Json 进行序列化。
     /// </summary>
     public class SerializableService : ISerializableService
     {

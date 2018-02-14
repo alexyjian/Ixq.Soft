@@ -25,7 +25,8 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult ApplicationUserList()
         {
-
+            var hashCode = this.HttpContext.RequestServices.GetHashCode();
+            var hashCode1 = this.HttpContext.RequestServices.GetHashCode();
 
 
             return Json("");

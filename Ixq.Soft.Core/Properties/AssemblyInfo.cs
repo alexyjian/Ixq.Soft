@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Ixq.Soft.Core.Tests")]
+[assembly: InternalsVisibleTo("Ixq.Soft.Mvc")]

@@ -37,10 +37,10 @@ namespace Ixq.Soft.Core.Linq
             return Expression.Lambda<Func<T, bool>>(Expression.AndAlso(left, right), parameter);
         }
 
-        class ReplaceExpressionVisitor : ExpressionVisitor
+        private class ReplaceExpressionVisitor : ExpressionVisitor
         {
-            private readonly Expression _oldValue;
             private readonly Expression _newValue;
+            private readonly Expression _oldValue;
 
             public ReplaceExpressionVisitor(Expression oldValue, Expression newValue)
             {
@@ -51,13 +51,10 @@ namespace Ixq.Soft.Core.Linq
             public override Expression Visit(Expression node)
             {
                 if (node == _oldValue)
-                {
                     return _newValue;
-                }
 
                 return base.Visit(node);
             }
         }
-
     }
 }

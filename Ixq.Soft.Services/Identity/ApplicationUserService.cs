@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Ixq.Soft.Core.Domain.Identity;
+using Ixq.Soft.Core.Infrastructure;
 using Ixq.Soft.Repository;
+using Microsoft.AspNetCore.Http;
 
 namespace Ixq.Soft.Services.Identity
 {
-    public class ApplicationUserService : IApplicationUserService
+    public class ApplicationUserService : BaseService, IApplicationUserService
     {
         private readonly IRepository<ApplicationUser, long> _userRepository;
 
@@ -18,6 +20,7 @@ namespace Ixq.Soft.Services.Identity
 
         public PaginatedList<ApplicationUser> GetApplicationUserList()
         {
+
             var query = _userRepository.TableNoTracking;
 
             var allUser = query.ToList();

@@ -11,7 +11,7 @@ namespace Ixq.Soft.Mvc.Startup
 {
     public static class ConfigureServicesExtensions
     {
-        public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceProvider ConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.ConfigureInfrastructureServices(configuration);
 
@@ -25,6 +25,12 @@ namespace Ixq.Soft.Mvc.Startup
                     .OrderBy(x => x.Order);
             foreach (var configureService in configureServiceInstances)
                 configureService.ConfigureServices(services, configuration);
+
+
+            serviceProvider = services.BuildServiceProvider();
+            DependencyResolver.Current.SetServiceProvider(serviceProvider);
+
+            return serviceProvider;
         }
 
         /// <summary>

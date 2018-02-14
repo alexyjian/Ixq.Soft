@@ -8,8 +8,8 @@ namespace Ixq.Soft.Repository
 {
     public class PaginatedList<T> : List<T>
     {
-        public int PageIndex { get; private set; }
-        public int TotalPages { get; private set; }
+        public int PageIndex { get; }
+        public int TotalPages { get; }
 
         public PaginatedList(List<T> items, int count, int pageIndex, int pageSize)
         {
