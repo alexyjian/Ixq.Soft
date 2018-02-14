@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Ixq.Soft.Web.Models.AccountViewModels
+namespace Ixq.Soft.Mvc.Models.AccountViewModels
 {
     public class ExternalLoginViewModel
     {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Domain.Identity;
+using Ixq.Soft.Mvc.Models.ManageViewModels;
 using Ixq.Soft.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -12,8 +13,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Ixq.Soft.Web.Models;
-using Ixq.Soft.Web.Models.ManageViewModels;
 using Ixq.Soft.Web.Services;
 
 namespace Ixq.Soft.Web.Controllers

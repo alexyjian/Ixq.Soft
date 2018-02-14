@@ -1,6 +1,4 @@
-using System;
-
-namespace Ixq.Soft.Web.Models
+namespace Ixq.Soft.Mvc.Models
 {
     public class ErrorViewModel
     {

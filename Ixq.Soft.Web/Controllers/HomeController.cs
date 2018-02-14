@@ -4,8 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Ixq.Soft.Web.Models;
 using Ixq.Soft.Core.Configuration;
+using Ixq.Soft.Mvc.Models;
 
 namespace Ixq.Soft.Web.Controllers
 {
