@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Ixq.Soft.Core.Domain.Identity;
 using Ixq.Soft.Mvc.Models.AccountViewModels;
 using Ixq.Soft.Services;
+using Ixq.Soft.Services.Infrastructure;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

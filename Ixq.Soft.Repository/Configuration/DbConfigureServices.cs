@@ -11,6 +11,7 @@ namespace Ixq.Soft.Repository.Configuration
         {
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IDbContext, AppDbContext>();
         }
 
         public int Order => 1;

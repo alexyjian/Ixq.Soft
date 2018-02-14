@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Ixq.Soft.Services
+namespace Ixq.Soft.Services.Infrastructure
 {
     public interface IEmailSender
     {

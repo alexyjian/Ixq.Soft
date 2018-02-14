@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Ixq.Soft.Services;
+using Ixq.Soft.Services.Infrastructure;
 using Ixq.Soft.Web.Services;
 
 namespace Ixq.Soft.Web.Services
