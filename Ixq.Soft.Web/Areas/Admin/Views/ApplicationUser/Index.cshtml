@@ -58,8 +58,7 @@
             <div class="box box-primary">
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped">
-                    </table>
+                    <table id="example1" class="table table-bordered table-striped"></table>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -126,10 +125,11 @@
                     url:'@Url.Action("ApplicationUserList")'
                 },
                 columns: [
-                    { name: 'UserName', data: 'UserName', title: '姓名', searchable: true, orderable: true },
-                    { name: 'Email', data: 'Email', title: '电子邮箱', searchable: true, orderable: true },
-                    { name: 'PhoneNumber', data: 'PhoneNumber', title: '电话号码', searchable: true, orderable: true },
-                    { name: 'LockoutEnabled', data: 'LockoutEnabled', title: '是否锁定', searchable: true, orderable: true }
+                    { name: 'id', data: 'id', visible: false },
+                    { name: 'UserName', data: 'userName', title: '姓名', searchable: true, orderable: true },
+                    { name: 'Email', data: 'email', title: '电子邮箱', searchable: true, orderable: true },
+                    { name: 'PhoneNumber', data: 'phoneNumber', title: '电话号码', searchable: true, orderable: true },
+                    { name: 'LockoutEnabled', data: 'lockoutEnabled', title: '是否锁定', searchable: true, orderable: true }
                 ]
             })
         })

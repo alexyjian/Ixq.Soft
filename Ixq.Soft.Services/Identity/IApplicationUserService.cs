@@ -8,6 +8,6 @@ namespace Ixq.Soft.Services.Identity
 {
     public interface IApplicationUserService : IBaseService
     {
-        PaginatedList<ApplicationUser> GetApplicationUserList();
+        IList<ApplicationUser> GetApplicationUserList();
     }
 }

@@ -6,6 +6,7 @@ using Ixq.Soft.Core.Domain.Identity;
 using Ixq.Soft.Core.Infrastructure;
 using Ixq.Soft.Repository;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace Ixq.Soft.Services.Identity
 {
@@ -18,13 +19,13 @@ namespace Ixq.Soft.Services.Identity
             _userRepository = userRepository;
         }
 
-        public PaginatedList<ApplicationUser> GetApplicationUserList()
+        public IList<ApplicationUser> GetApplicationUserList()
         {
             var query = _userRepository.TableNoTracking;
 
             var allUser = query.ToList();
 
-            return new PaginatedList<ApplicationUser>(allUser, allUser.Count, 1, allUser.Count);
+            return allUser;
         }
     }
 }
