@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace Ixq.Soft.Core
 {
+    /// <summary>
+    ///     数据响应类。
+    /// </summary>
     public class DataResponseModel
     {
         /// <summary>

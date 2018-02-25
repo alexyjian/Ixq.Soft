@@ -21,7 +21,7 @@ namespace Ixq.Soft.Services.Identity
             _userRepository = userRepository;
         }
 
-        public DataResponseModel GetApplicationUserList(DataRequestModel requestModel)
+        public PagingList<ApplicationUser> GetApplicationUserList(DataRequestModel requestModel)
         {
             var query = _userRepository.TableNoTracking;
 
@@ -32,18 +32,7 @@ namespace Ixq.Soft.Services.Identity
                     : query.OrderByDescending(requestModel.SortField);
             }
 
-
-            var model = new DataResponseModel
-            {
-                Records = query.Count(),
-                PageIndex = requestModel.PageIndex
-            };
-            model.PageTotal = (int) Math.Ceiling(model.Records / (double) requestModel.PageSize);
-            model.Rows = query
-                .Skip((requestModel.PageIndex - 1) * requestModel.PageSize)
-                .Take(requestModel.PageSize).ToList();
-
-            return model;
+            return query.PagingList(requestModel.PageIndex, requestModel.PageSize);
         }
     }
 }

@@ -9,6 +9,6 @@ namespace Ixq.Soft.Services.Identity
 {
     public interface IApplicationUserService : IBaseService
     {
-        DataResponseModel GetApplicationUserList(DataRequestModel requestModel);
+        PagingList<ApplicationUser> GetApplicationUserList(DataRequestModel requestModel);
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Ixq.Soft.Core.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ixq.Soft.Core.Extensions
 {
@@ -15,6 +17,21 @@ namespace Ixq.Soft.Core.Extensions
         {
             dynamic keySelector = ExpressionHelper.GetKeySelector<T>(propertyName);
             return Queryable.OrderByDescending(queryable, keySelector);
+        }
+
+        public static PagingList<T> PagingList<T>(this IQueryable<T> queryable, int pageIndex, int pageSize)
+        {
+            return new PagingList<T>(queryable, pageIndex, pageSize);
+        }
+
+        public static async Task<PagingList<T>> PagingListAsync<T>(this IQueryable<T> queryable, int pageIndex,
+            int pageSize)
+        {
+            var totalRecords = await queryable.CountAsync();
+
+            var list = await queryable.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            return new PagingList<T>(list, totalRecords, pageIndex, pageSize);
         }
     }
 }
