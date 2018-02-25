@@ -7,8 +7,7 @@ using Ixq.Soft.Repository;
 
 namespace Ixq.Soft.Services.Identity
 {
-    public interface IApplicationUserService : IBaseService
+    public interface IApplicationUserService : IEntityService<ApplicationUser, long>
     {
-        PagingList<ApplicationUser> GetApplicationUserList(DataRequestModel requestModel);
     }
 }

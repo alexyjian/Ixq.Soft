@@ -12,27 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Ixq.Soft.Services.Identity
 {
-    public class ApplicationUserService : BaseService, IApplicationUserService
+    public class ApplicationUserService : EntityService<ApplicationUser, long>, IApplicationUserService
     {
-        private readonly IRepositoryInt64<ApplicationUser> _userRepository;
-
-        public ApplicationUserService(IRepositoryInt64<ApplicationUser> userRepository)
-        {
-            _userRepository = userRepository;
-        }
-
-        public PagingList<ApplicationUser> GetApplicationUserList(DataRequestModel requestModel)
-        {
-            var query = _userRepository.TableNoTracking;
-
-            if (!string.IsNullOrEmpty(requestModel.SortField))
-            {
-                query = requestModel.ListSortDirection == System.ComponentModel.ListSortDirection.Ascending
-                    ? query.OrderBy(requestModel.SortField)
-                    : query.OrderByDescending(requestModel.SortField);
-            }
-
-            return query.PagingList(requestModel.PageIndex, requestModel.PageSize);
-        }
     }
 }
