@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Ixq.Soft.Core;
 using Ixq.Soft.Core.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace Ixq.Soft.Core.Extensions
+namespace Ixq.Soft.Repository
 {
     public static class QueryableExtensions
     {
