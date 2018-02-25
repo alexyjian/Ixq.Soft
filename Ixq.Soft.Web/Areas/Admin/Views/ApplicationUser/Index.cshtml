@@ -58,7 +58,10 @@
             <div class="box box-primary">
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped"></table>
+                    <div class="jqGrid_wrapper">
+                        <table id="applicationUserGrid"></table>
+                        <div id="applicationUserPager"></div>
+                    </div>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -69,69 +72,72 @@
 </section>
 
 @section styles{
-    <link rel="stylesheet" href="~/lib/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link href="~/lib/jqGrid/css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
     <style>
         .box-header > .search-tools {
             left: 10px;
         }
 
-        div.dataTables_wrapper div.dataTables_paginate ul.pagination {
-            margin: 0;
+        .ui-jqgrid .ui-jqgrid-bdiv {
+            overflow: hidden;
+        }
+        .ui-jqgrid .ui-jqgrid-htable .ui-th-div {
+            line-height: 17px;
+            margin-bottom:5px;
         }
     </style>
 }
 @section scripts{
-    <script src="~/lib/datatables.net/js/jquery.dataTables.js"></script>
-    <script src="~/lib/datatables.net-bs/js/dataTables.bootstrap.js"></script>
-    <script src="~/lib/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="~/lib/fastclick/lib/fastclick.js"></script>
+    <script src="~/js/common.js"></script>
+    <script src="~/lib/jqGrid/js/i18n/grid.locale-cn.js"></script>
+    <script src="~/lib/jqGrid/js/jquery.jqGrid.js"></script>
     <script>
-        $(function () {
-            $('#example1').DataTable({
-                language: {
-                    "sProcessing": "处理中...",
-                    "sLengthMenu": "显示 _MENU_ 项结果",
-                    "sZeroRecords": "没有匹配结果",
-                    "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-                    "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
-                    "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-                    "sInfoPostFix": "",
-                    "sSearch": "搜索:",
-                    "sUrl": "",
-                    "sEmptyTable": "表中数据为空",
-                    "sLoadingRecords": "载入中...",
-                    "sInfoThousands": ",",
-                    "oPaginate": {
-                        "sFirst": "首页",
-                        "sPrevious": "上页",
-                        "sNext": "下页",
-                        "sLast": "末页"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": 以升序排列此列",
-                        "sSortDescending": ": 以降序排列此列"
-                    }
+        $(document).ready(function() {
+            $.jgrid.defaults.styleUI = 'Bootstrap';
+            $('#applicationUserGrid').jqGrid({
+                mtype: 'post',
+                url: '@Url.Action("ApplicationUserList")',
+                datatype: 'json',
+                height: 'auto',
+                autowidth: true,
+                shrinkToFit: true,
+                altRows: true,
+                prmNames: {
+                    page: 'pageIndex',
+                    rows: 'pageSize',
+                    sort: 'sortField',
+                    order: 'sortDirection',
+                    search: '_search'
                 },
-                paging: true,
-                lengthChange: true,
-                ordering: true,
-                autoWidth: true,
-                dom: 't<"col-md-5 col-xs-12"l><"col-md-7 col-xs-12"p>',
-                processing: true,
-                serverSide: true,
-                ajax: {
-                    type: 'post',
-                    contentType:'application/json; charset=utf-8',
-                    url:'@Url.Action("ApplicationUserList")'
-                },
-                columns: [
-                    { name: 'id', data: 'id', visible: false },
-                    { name: 'UserName', data: 'userName', title: '姓名', searchable: true, orderable: true },
-                    { name: 'Email', data: 'email', title: '电子邮箱', searchable: true, orderable: true },
-                    { name: 'PhoneNumber', data: 'phoneNumber', title: '电话号码', searchable: true, orderable: true },
-                    { name: 'LockoutEnabled', data: 'lockoutEnabled', title: '是否锁定', searchable: true, orderable: true }
+                viewrecords: true,
+                rowNum: 10,
+                rowList: [10, 30, 60, 120],
+                sortname: 'UserName',
+                sortorder: 'asc',
+                rownumbers: false,
+                multiboxonly: false,
+                multiselect: false,
+                pager: '#applicationUserPager',
+                colNames: ['Id', 'UserName', 'PhoneNumber', 'Email', 'LockoutEnabled', '操作'],
+                colModel: [
+                    { name: 'id', index: 'Id', width: 150, align: 'center', sortable: false, hidedlg: true, key: true },
+                    { name: 'userName', index: 'UserName', width: 150, align: 'center', sortable: true },
+                    { name: 'phoneNumber', index: 'PhoneNumber', width: 150, align: 'center', sortable: true },
+                    { name: 'email', index: 'Email', width: 150, align: 'center', sortable: true },
+                    { name: 'lockoutEnabled', index: 'LockoutEnabled', width: 150, align: 'center', sortable: true },
+                    { name: 'options', align: 'center', width: 150, sortable: false, formatter: ixq.jqGrid.format.optionsFormat }
                 ]
-            })
-        })
+            });
+
+            $(window).bind('resize',
+                function() {
+                    setTimeout(function() {
+                            var width = $('.jqGrid_wrapper').width();
+                            $('#applicationUserGrid').setGridWidth(width);
+                        },
+                        500);
+                });
+        });
+
     </script>
 }
