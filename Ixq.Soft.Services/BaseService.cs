@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Text;
+﻿using System.Security.Claims;
 using Ixq.Soft.Core.Infrastructure;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -16,11 +12,11 @@ namespace Ixq.Soft.Services
         protected BaseService()
         {
             _userAccessor = DependencyResolver.Current.RequestServices.GetService<UserAccessor>();
-            Logger = DependencyResolver.Current.RequestServices.GetService<ILogger>();
+            Logger = DependencyResolver.Current.RequestServices.GetService<ILogger<BaseService>>();
         }
 
-        public ClaimsPrincipal User => _userAccessor.User;
+        protected ILogger Logger { get; }
 
-        public ILogger Logger { get; }
+        public ClaimsPrincipal User => _userAccessor.User;
     }
 }

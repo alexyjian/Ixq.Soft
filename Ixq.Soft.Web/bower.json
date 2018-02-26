@@ -2,7 +2,8 @@
   "name": "asp.net",
   "private": true,
   "dependencies": {
-    "admin-lte": "v2.4.3"
+    "admin-lte": "v2.4.3",
+    "jqGrid": "jqgrid#v5.3.0"
   },
   "resolutions": {
     "jquery": "^3.2.1"
