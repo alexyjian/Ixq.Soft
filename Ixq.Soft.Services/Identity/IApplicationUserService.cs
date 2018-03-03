@@ -7,7 +7,7 @@ using Ixq.Soft.Repository;
 
 namespace Ixq.Soft.Services.Identity
 {
-    public interface IApplicationUserService : IEntityService<ApplicationUser, long>
+    public interface IApplicationUserService : IBaseEntityService<ApplicationUser, long>
     {
     }
 }

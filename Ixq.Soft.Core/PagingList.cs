@@ -8,7 +8,7 @@ namespace Ixq.Soft.Core
     ///     分页类。
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class PagingList<T> : List<T>
+    public class PagingList<T> : List<T>, IPagingList<T>
     {
         private PagingList(int pageIndex, int pageSize)
         {
@@ -16,7 +16,8 @@ namespace Ixq.Soft.Core
             PageIndex = pageIndex;
 
         }
-        public PagingList(IQueryable<T> queryable, int pageIndex, int pageSize) : this(pageIndex,pageSize)
+
+        public PagingList(IQueryable<T> queryable, int pageIndex, int pageSize) : this(pageIndex, pageSize)
         {
             TotalRecords = queryable.Count();
             TotalPages = (int) Math.Ceiling(TotalRecords / (double) pageSize);

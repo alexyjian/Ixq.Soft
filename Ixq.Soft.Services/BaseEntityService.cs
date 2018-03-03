@@ -6,16 +6,17 @@ using Ixq.Soft.Core;
 using Ixq.Soft.Core.Domain;
 using Ixq.Soft.Core.Infrastructure;
 using Ixq.Soft.Repository;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Ixq.Soft.Services
 {
-    public class EntityService<TEntity, TKey> : BaseService, IEntityService<TEntity, TKey>
+    public class BaseEntityService<TEntity, TKey> : BaseService, IBaseEntityService<TEntity, TKey>
         where TEntity : class, IEntityBase<TKey>
     {
-        private readonly EfCoreRepository<TEntity, TKey> _entityRepository;
+        private readonly IRepository<TEntity, TKey> _entityRepository;
 
-        public EntityService()
+        public BaseEntityService()
         {
             var dbContext = DependencyResolver.Current.RequestServices
                 .GetService<IDbContext>();
@@ -56,7 +57,7 @@ namespace Ixq.Soft.Services
                     : query.OrderByDescending(requestModel.SortField);
             }
 
-            return query.PagingList(requestModel.PageIndex, requestModel.PageSize);
+            return query.ToPagingList(requestModel.PageIndex, requestModel.PageSize);
         }
     }
 }

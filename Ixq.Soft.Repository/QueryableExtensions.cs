@@ -20,12 +20,12 @@ namespace Ixq.Soft.Repository
             return Queryable.OrderByDescending(queryable, keySelector);
         }
 
-        public static PagingList<T> PagingList<T>(this IQueryable<T> queryable, int pageIndex, int pageSize)
+        public static PagingList<T> ToPagingList<T>(this IQueryable<T> queryable, int pageIndex, int pageSize)
         {
             return new PagingList<T>(queryable, pageIndex, pageSize);
         }
 
-        public static async Task<PagingList<T>> PagingListAsync<T>(this IQueryable<T> queryable, int pageIndex,
+        public static async Task<PagingList<T>> ToPagingListAsync<T>(this IQueryable<T> queryable, int pageIndex,
             int pageSize)
         {
             var totalRecords = await queryable.CountAsync();

@@ -9,6 +9,22 @@ namespace Ixq.Soft.Core
     public class DataResponseModel
     {
         /// <summary>
+        /// 实例化一个新的 <see cref="DataResponseModel"/> 实例。
+        /// </summary>
+        public DataResponseModel() { }
+
+        /// <summary>
+        /// 使用 <see cref="IPagingList"/> 实例化一个新的 <see cref="DataResponseModel"/> 实例，但是并未将数据源绑定到 <see cref="Rows"/> 属性上。
+        /// </summary>
+        /// <param name="pagingList"></param>
+        public DataResponseModel(IPagingList pagingList)
+        {
+            PageIndex = pagingList.PageIndex;
+            PageTotal = pagingList.TotalPages;
+            Records = pagingList.TotalPages;
+        }
+
+        /// <summary>
         ///     用户数据
         /// </summary>
         [JsonProperty("userdata")]

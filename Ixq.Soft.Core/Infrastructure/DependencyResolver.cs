@@ -19,6 +19,8 @@ namespace Ixq.Soft.Core.Infrastructure
 
         private IServiceProvider GetServiceProvider()
         {
+            Guard.ArgumentNotNull(_service, "service");
+
             var httpAccessor = _service.GetService<IHttpContextAccessor>();
             return httpAccessor.HttpContext.RequestServices ?? _service;
         }

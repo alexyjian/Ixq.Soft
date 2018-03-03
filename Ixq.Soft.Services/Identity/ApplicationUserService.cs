@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Ixq.Soft.Services.Identity
 {
-    public class ApplicationUserService : EntityService<ApplicationUser, long>, IApplicationUserService
+    public class ApplicationUserService : BaseEntityService<ApplicationUser, long>, IApplicationUserService
     {
     }
 }

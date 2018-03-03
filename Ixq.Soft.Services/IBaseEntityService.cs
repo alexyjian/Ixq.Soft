@@ -6,7 +6,7 @@ using Ixq.Soft.Core.Domain;
 
 namespace Ixq.Soft.Services
 {
-    public interface IEntityService<TEntity, in TKey> : IBaseService
+    public interface IBaseEntityService<TEntity, in TKey> : IBaseService
         where TEntity : class, IEntityBase<TKey>
     {
         TEntity GetEntityById(TKey id);

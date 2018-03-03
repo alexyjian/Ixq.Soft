@@ -27,11 +27,8 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
         {
             var pagingList = _userSvc.GetEntityPagingList(requestModel);
 
-            var responseModel = new DataResponseModel
+            var responseModel = new DataResponseModel(pagingList)
             {
-                PageIndex = pagingList.PageIndex,
-                PageTotal = pagingList.TotalPages,
-                Records = pagingList.TotalRecords,
                 Rows = pagingList.Select(user => new ApplicationUserModel
                 {
                     Id = user.Id,
