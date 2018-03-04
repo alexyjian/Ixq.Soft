@@ -1,10 +1,24 @@
-﻿
+﻿@model IListPages
+
 <section class="content-header">
     <h1>用户管理</h1>
-    <ol class="breadcrumb">
-        <li><a asp-controller="home" asp-action="index"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">用户管理</a></li>
-    </ol>
+    <div class=" btn-container">
+        <button title="新增用户" type="button" class="btn btn-primary">
+            <i class="fa fa-fw fa-plus"></i>新增用户
+        </button>
+        <button title="导出" type="button" class="btn btn-success">
+            <i class="fa fa-fw fa-cloud-download"></i>
+            导出
+        </button>
+        <button title="导入" type="button" class="btn btn-success">
+            <i class="fa fa-fw fa-cloud-upload"></i>
+            导入
+        </button>
+        <button title="删除选中" type="button" class="btn btn-danger">
+            <i class="fa fa-fw fa-trash"></i>
+            删除选中
+        </button>
+    </div>
 </section>
 <section class="content">
     <div class="row">
@@ -49,7 +63,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-lg-6">
-                            <button type="submit" class="btn btn-primary btn-lg center-block">
+                            <button title="搜索" type="submit" class="btn btn-primary btn-lg center-block">
                                 <i class="fa fa-fw fa-search"></i>搜索
                             </button>
                         </div>
@@ -90,7 +104,7 @@
     </style>
 }
 @section scripts{
-    <script src="~/js/common.js"></script>
+    <script src="~/js/admin-common.js"></script>
     <script src="~/lib/jqGrid/js/i18n/grid.locale-cn.js"></script>
     <script src="~/lib/jqGrid/js/jquery.jqGrid.js"></script>
     <script>
@@ -112,10 +126,10 @@
                 search: '_search'
             },
             viewrecords: true,
-            rowNum: 10,
-            rowList: [10, 30, 60, 120],
-            sortname: 'UserName',
-            sortorder: 'asc',
+            rowNum: @Model.PageSize,
+            rowList: @Model.PageSizeList.ToString(),
+            sortname: '@Model.SortField',
+            sortorder: '@Model.SortDirection',
             rownumbers: false,
             multiboxonly: false,
             multiselect: false,
@@ -158,12 +172,16 @@
         // 页面加载完毕后短暂的出现一个垂直滚动条，导致 grid 的 宽度不正确，所以延时100毫秒，重新设置grid的宽度
         setTimeout(resetGridWidth, 100);
 
-        function editApplicationUser(id) {
+        function editEntity(id) {
             window.location.href = '@Url.Action("Edit")/' + id;
         }
 
-        function removeApplicationUser(id) {
+        function removeEntity(id) {
             alert(id)
+        }
+
+        function removeSelectedEntity() {
+            
         }
 
     </script>

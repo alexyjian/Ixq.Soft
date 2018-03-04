@@ -7,18 +7,28 @@ namespace Ixq.Soft.Core
     /// </summary>
     public class DataRequestModel
     {
+        public DataRequestModel()
+        {
+            PageSize = 30;
+            PageIndex = 1;
+            SortDirection = "asc";
+        }
+
         /// <summary>
         ///     获取或设置页面大小。
         /// </summary>
         public int PageSize { get; set; }
+
         /// <summary>
         ///     获取或设置当前页。
         /// </summary>
         public int PageIndex { get; set; }
+
         /// <summary>
         ///     获取或设置排序字段名称。
         /// </summary>
         public string SortField { get; set; }
+
         /// <summary>
         ///     获取或设置排序方向。
         /// </summary>

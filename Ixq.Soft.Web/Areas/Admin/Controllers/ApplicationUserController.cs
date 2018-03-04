@@ -5,6 +5,8 @@ using Ixq.Soft.Mvc.Models.IdentityViewModels;
 using Ixq.Soft.Services.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using Ixq.Soft.Mvc.UI;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Ixq.Soft.Web.Areas.Admin.Controllers
 {
@@ -19,7 +21,10 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            IListPages listPagesModel = new ListPages();
+            listPagesModel.SortDirection = "asc";
+            listPagesModel.SortField = "UserName";
+            return View(listPagesModel);
         }
 
         [HttpPost]

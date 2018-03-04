@@ -7,10 +7,10 @@
 
     var format = {
         optionsFormat: function(cellvalue, options, rowObject) {
-            return '<i onclick="editApplicationUser(\'' +
+            return '<i onclick="editEntity(\'' +
                 rowObject.id +
                 '\')" class="fa fa-fw fa-edit" title="编辑"></i>' +
-                '<i onclick="removeApplicationUser(\'' +
+                '<i onclick="removeEntity(\'' +
                 rowObject.id +
                 '\')" class="fa fa-fw fa-remove" title="删除"></i>';
         },
