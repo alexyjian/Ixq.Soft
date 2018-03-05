@@ -21,9 +21,11 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
+
             IListPages listPagesModel = new ListPages();
             listPagesModel.SortDirection = "asc";
             listPagesModel.SortField = "UserName";
+
             return View(listPagesModel);
         }
 
