@@ -3,9 +3,15 @@ using System.Linq;
 using Ixq.Soft.Core.Caching;
 using Ixq.Soft.Core.Configuration;
 using Ixq.Soft.Core.Infrastructure;
+using Ixq.Soft.Mvc.DataAnnotations.Internal;
+using Ixq.Soft.Mvc.ModelBinding.Metadata;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 
 namespace Ixq.Soft.Mvc.Startup
 {
@@ -14,6 +20,15 @@ namespace Ixq.Soft.Mvc.Startup
         public static IServiceProvider ConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.ConfigureInfrastructureServices(configuration);
+
+            services.AddMvcService();
+
+            var mvcBuilder = services.AddMvc();
+
+            mvcBuilder.AddMvcOptions(options =>
+            {
+                options.ModelMetadataDetailsProviders.Add(new EntityDataAnnotationsMetadataProvider());
+            });
 
             var serviceProvider = services.BuildServiceProvider();
 
@@ -70,6 +85,17 @@ namespace Ixq.Soft.Mvc.Startup
 
             // logging
             services.AddLogging();
+        }
+
+
+        public static void AddMvcService(this IServiceCollection services)
+        {
+            services.TryAddSingleton<IModelMetadataProvider, EntityModelMetadataProvider>();
+            services.TryAdd(ServiceDescriptor.Transient<ICompositeMetadataDetailsProvider>(s =>
+            {
+                var options = s.GetRequiredService<IOptions<MvcOptions>>().Value;
+                return new DefaultCompositeMetadataDetailsProvider(options.ModelMetadataDetailsProviders);
+            }));
         }
     }
 }

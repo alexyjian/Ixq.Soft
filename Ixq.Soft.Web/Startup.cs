@@ -29,10 +29,7 @@ namespace Ixq.Soft.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();
 
-            services.AddMvc();
 
             return services.ConfigureServices(Configuration);
         }
@@ -61,10 +58,7 @@ namespace Ixq.Soft.Web
                     name: "areas",
                     template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                 );
-            });
 
-            app.UseMvc(routes =>
-            {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
