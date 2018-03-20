@@ -23,7 +23,7 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
         public IActionResult Index(ApplicationUserModel model)
         {
 
-            IListPages listPagesModel = new ListPages();
+            IListPageModel listPagesModel = new ListPageModel();
             listPagesModel.SortDirection = "asc";
             listPagesModel.SortField = "UserName";
 

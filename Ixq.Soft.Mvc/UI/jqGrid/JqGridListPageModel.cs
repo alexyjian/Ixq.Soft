@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Ixq.Soft.Mvc.UI.jqGrid
 {
-    public class JqGridConfig
+    public class JqGridListPageModel : ListPageModel
     {
+        public JqGridMetadata JqGridMetadata { get; set; }
     }
 }

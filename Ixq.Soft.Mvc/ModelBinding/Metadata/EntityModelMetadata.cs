@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Ixq.Soft.Mvc.UI.jqGrid;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Ixq.Soft.Mvc.ModelBinding.Metadata
@@ -37,6 +38,21 @@ namespace Ixq.Soft.Mvc.ModelBinding.Metadata
                 }
 
                 return _details.EntityMetadata;
+            }
+        }
+
+        public JqGridMetadata JqGridMetadata
+        {
+            get
+            {
+                if (_details.JqGridMetadata == null)
+                {
+                    var content = new JqGridMetadataProviderContext(Identity, _details.ModelAttributes);
+
+                    _details.JqGridMetadata = content.JqGridMetadata;
+                }
+
+                return _details.JqGridMetadata;
             }
         }
 

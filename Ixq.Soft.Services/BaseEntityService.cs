@@ -52,9 +52,7 @@ namespace Ixq.Soft.Services
 
             if (!string.IsNullOrEmpty(requestModel.SortField))
             {
-                query = requestModel.ListSortDirection == System.ComponentModel.ListSortDirection.Ascending
-                    ? query.OrderBy(requestModel.SortField)
-                    : query.OrderByDescending(requestModel.SortField);
+                query = query.OrderByDirection(requestModel.SortField, requestModel.ListSortDirection);
             }
 
             return query.ToPagingList(requestModel.PageIndex, requestModel.PageSize);

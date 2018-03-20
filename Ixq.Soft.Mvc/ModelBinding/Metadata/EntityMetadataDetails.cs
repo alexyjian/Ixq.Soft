@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Ixq.Soft.Mvc.UI.jqGrid;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 
@@ -14,5 +15,7 @@ namespace Ixq.Soft.Mvc.ModelBinding.Metadata
         }
 
         public EntityMetadata EntityMetadata { get; set; }
+
+        public JqGridMetadata JqGridMetadata { get; set; }
     }
 }

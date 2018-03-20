@@ -8,12 +8,39 @@ namespace Ixq.Soft.Repository
 {
     public static class QueryableExtensions
     {
+        public static IQueryable<T> OrderByDirection<T>(this IQueryable<T> queryable, string propertyName,
+            System.ComponentModel.ListSortDirection direction)
+        {
+            dynamic keySelector = ExpressionHelper.GetKeySelector<T>(propertyName);
+
+            if (direction == System.ComponentModel.ListSortDirection.Ascending)
+            {
+                return Queryable.OrderBy(queryable, keySelector);
+            }
+
+            return Queryable.OrderByDescending(queryable, keySelector);
+        }
+
+        /// <summary>
+        /// 升序排序。
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="queryable"></param>
+        /// <param name="propertyName"></param>
+        /// <returns></returns>
         public static IQueryable<T> OrderBy<T>(this IQueryable<T> queryable, string propertyName)
         {
             dynamic keySelector = ExpressionHelper.GetKeySelector<T>(propertyName);
             return Queryable.OrderBy(queryable, keySelector);
         }
 
+        /// <summary>
+        /// 降序排序。
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="queryable"></param>
+        /// <param name="propertyName"></param>
+        /// <returns></returns>
         public static IQueryable<T> OrderByDescending<T>(this IQueryable<T> queryable, string propertyName)
         {
             dynamic keySelector = ExpressionHelper.GetKeySelector<T>(propertyName);

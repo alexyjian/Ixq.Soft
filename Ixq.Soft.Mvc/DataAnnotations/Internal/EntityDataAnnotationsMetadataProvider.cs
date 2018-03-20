@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Ixq.Soft.Mvc.ModelBinding.Metadata;
+using Ixq.Soft.Mvc.UI.jqGrid;
 
 namespace Ixq.Soft.Mvc.DataAnnotations.Internal
 {
-    public class EntityDataAnnotationsMetadataProvider : IEntityMetadataProvider
+    public class EntityDataAnnotationsMetadataProvider : IEntityMetadataProvider, IJqGridMetadataProvider
     {
         public void CreateEntityMetadata(EntityMetadataProviderContext context)
         {
@@ -14,6 +15,11 @@ namespace Ixq.Soft.Mvc.DataAnnotations.Internal
             {
                 context.EntityMetadata.IsSearcher = true;
             }
+        }
+
+        public void CreateJqGridMetadata(JqGridMetadataProviderContext context)
+        {
+            throw new NotImplementedException();
         }
     }
 }

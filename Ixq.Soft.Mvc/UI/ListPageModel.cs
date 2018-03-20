@@ -8,9 +8,9 @@ namespace Ixq.Soft.Mvc.UI
     /// <summary>
     ///     列表页面。
     /// </summary>
-    public class ListPages : IListPages
+    public class ListPageModel : IListPageModel
     {
-        public ListPages()
+        public ListPageModel()
         {
             PageIndex = 1;
             PageSize = 30;
@@ -29,7 +29,7 @@ namespace Ixq.Soft.Mvc.UI
     /// <summary>
     ///     列表页面接口。
     /// </summary>
-    public interface IListPages
+    public interface IListPageModel
     {
         /// <summary>
         ///     获取或设置模型元数据。
