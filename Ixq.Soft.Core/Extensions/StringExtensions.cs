@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace Ixq.Soft.Core.Extensions
 {
-    class StringExtensions
+    public static class StringExtensions
     {
+        public static string Fill(this string template, params object[] arguments)
+        {
+            Guard.ArgumentNotNullOrWhiteSpace(template, nameof(template));
+            return string.Format(CultureInfo.CurrentCulture, template, arguments);
+        }
+
+        public static bool IsNullOrEmpty(this string template)
+        {
+            return string.IsNullOrEmpty(template);
+        }
+
+        public static bool IsNullOrWhiteSpace(this string template)
+        {
+            return string.IsNullOrWhiteSpace(template);
+        }
     }
 }

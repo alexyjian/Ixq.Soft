@@ -1,15 +1,23 @@
-﻿@{ 
-    Layout = "~/Areas/Hplus/Views/Shared/_LayoutHplusIframe.cshtml";
+﻿@using Ixq.Soft.Mvc.Models
+@model Ixq.Soft.Mvc.Models.ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
 }
-<div class="middle-box text-center animated fadeInDown">
-    <h1>500</h1>
-    <h3 class="font-bold">服务器内部错误</h3>
-    <div class="error-desc">
-        服务器好像出错了...
-    </div>
-    @*<div class="error-desc">
-        控制器：@ViewData.Model.ControllerName
-        <br/>
-        操作：@ViewData.Model.ActionName
-    </div>*@
-</div>
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+<h3>Development Mode</h3>
+<p>
+    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
+</p>
+<p>
+    <strong>Development environment should not be enabled in deployed applications</strong>, as it can result in sensitive information from exceptions being displayed to end users. For local debugging, development environment can be enabled by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>, and restarting the application.
+</p>

@@ -1,0 +1,188 @@
+﻿@model IListPages
+
+<section class="content-header">
+    <h1>用户管理</h1>
+    <div class=" btn-container">
+        <button title="新增用户" type="button" class="btn btn-primary">
+            <i class="fa fa-fw fa-plus"></i>新增用户
+        </button>
+        <button title="导出" type="button" class="btn btn-success">
+            <i class="fa fa-fw fa-cloud-download"></i>
+            导出
+        </button>
+        <button title="导入" type="button" class="btn btn-success">
+            <i class="fa fa-fw fa-cloud-upload"></i>
+            导入
+        </button>
+        <button title="删除选中" type="button" class="btn btn-danger">
+            <i class="fa fa-fw fa-trash"></i>
+            删除选中
+        </button>
+    </div>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">&nbsp;</h3>
+                    <div class="box-tools search-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <form class="form-horizontal">
+                        <div class="col-md-6 col-xs-12">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
+                                <div class="col-sm-8">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-4 control-label">Password</label>
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
+                                <div class="col-sm-8">
+                                    <input type="email" class="form-control" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-4 control-label">Password</label>
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control" placeholder="Password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-lg-6">
+                            <button title="搜索" type="submit" class="btn btn-primary btn-lg center-block">
+                                <i class="fa fa-fw fa-search"></i>搜索
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <div class="box box-primary">
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="jqGrid_wrapper">
+                        <table id="applicationUserGrid"></table>
+                        <div id="applicationUserPager"></div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+</section>
+
+@section styles{
+    <link href="~/lib/jqGrid/css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
+    <style>
+        .box-header > .search-tools {
+            left: 10px;
+        }
+
+        .ui-jqgrid .ui-jqgrid-bdiv {
+            overflow: hidden;
+        }
+        .ui-jqgrid .ui-jqgrid-htable .ui-th-div {
+            line-height: 17px;
+            margin-bottom:5px;
+        }
+    </style>
+}
+@section scripts{
+    <script src="~/js/admin-common.js"></script>
+    <script src="~/lib/jqGrid/js/i18n/grid.locale-cn.js"></script>
+    <script src="~/lib/jqGrid/js/jquery.jqGrid.js"></script>
+    <script>
+
+        $.jgrid.defaults.styleUI = 'Bootstrap';
+        $('#applicationUserGrid').jqGrid({
+            mtype: 'post',
+            url: '@Url.Action("ApplicationUserList")',
+            datatype: 'json',
+            height: 'auto',
+            autowidth: true,
+            shrinkToFit: true,
+            altRows: true,
+            prmNames: {
+                page: 'pageIndex',
+                rows: 'pageSize',
+                sort: 'sortField',
+                order: 'sortDirection',
+                search: '_search'
+            },
+            viewrecords: true,
+            rowNum: @Model.PageSize,
+            rowList: @Model.PageSizeList.ToString(),
+            sortname: '@Model.SortField',
+            sortorder: '@Model.SortDirection',
+            rownumbers: false,
+            multiboxonly: false,
+            multiselect: false,
+            pager: '#applicationUserPager',
+            colNames: ['Id', 'UserName', 'PhoneNumber', 'Email', 'LockoutEnabled', '操作'],
+            colModel: [
+                { name: 'id', index: 'Id', width: 150, align: 'center', sortable: false, hidedlg: true, key: true },
+                { name: 'userName', index: 'UserName', width: 150, align: 'center', sortable: true },
+                { name: 'phoneNumber', index: 'PhoneNumber', width: 150, align: 'center', sortable: true },
+                { name: 'email', index: 'Email', width: 150, align: 'center', sortable: true },
+                {
+                    name: 'lockoutEnabled',
+                    index: 'LockoutEnabled',
+                    width: 150,
+                    align: 'center',
+                    sortable: true,
+                    formatter: ixq.jqGrid.format.yesNoFormat
+                },
+                {
+                    name: 'options',
+                    align: 'center',
+                    width: 150,
+                    sortable: false,
+                    formatter: ixq.jqGrid.format.optionsFormat
+                }
+            ]
+        });
+
+        $(window).bind('resize',
+            function() {
+                setTimeout(resetGridWidth, 500);
+            });
+
+        function resetGridWidth() {
+            var width = $('.jqGrid_wrapper').width();
+            $('#applicationUserGrid').setGridWidth(width);
+        }
+
+
+        // 页面加载完毕后短暂的出现一个垂直滚动条，导致 grid 的 宽度不正确，所以延时100毫秒，重新设置grid的宽度
+        setTimeout(resetGridWidth, 100);
+
+        function editEntity(id) {
+            window.location.href = '@Url.Action("Edit")/' + id;
+        }
+
+        function removeEntity(id) {
+            alert(id)
+        }
+
+        function removeSelectedEntity() {
+            
+        }
+
+    </script>
+}

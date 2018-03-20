@@ -1,53 +1,89 @@
-﻿@model Ixq.Soft.Mvc.ViewModels.LoginMoldes.LoginViewModel
+﻿@using System.Collections.Generic
+@using System.Linq
+@using Ixq.Soft.Core.Domain.Identity
+@using Ixq.Soft.Mvc.Models.AccountViewModels
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@model Ixq.Soft.Mvc.Models.AccountViewModels.LoginViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+
 @{
-    Layout = null;
+    ViewData["Title"] = "Log in";
 }
-<!DOCTYPE html>
-<html class="login">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>欢迎使用 Ixq</title>
-    <link rel="shortcut icon" href="~/favicon.ico">
-    @Styles.Render("~/bundles/basis/css")
-    <script>if (window.top !== window.self) { window.top.location = window.location; }</script>
-</head>
-<body class="gray-bg">
-    <div class="bg"></div>
-    <div class="loginscreen login-container animated fadeInDown">
-        <h2 class="text-center ">欢迎使用 Ixq</h2>
-        <form class="m-t" method="post" role="form" action="@Url.Action("Login")">
-            @Html.AntiForgeryToken()
-            <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserName)
-                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", placeholder = "请输入用户名" })
-                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Password)
-                @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "请输入密码" })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Code)
-                @Html.TextBoxFor(model => model.Code, new { @class = "form-control input-captcha", placeholder = "请输入验证码" })
-                <img data-toggle="tooltip" data-placement="top" title="点击刷新" class="captcha" src="@Url.Action("GetValidateCode")" />
-                @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
-            </div>
-            <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
-            <p class="text-muted text-center text-warning">@Html.ValidationSummary(true, "", new{ @class = "text-danger" })</p>
-            <p class="text-muted text-center">
-                <a href="@Url.Action("ForgotPassword")"><small>忘记密码了？</small></a> | <a href="@Url.Action("Register")">注册一个新账号</a>
-            </p>
-        </form>
+
+<h2>@ViewData["Title"]</h2>
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                <h4>Use a local account to log in.</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="RememberMe">
+                            <input asp-for="RememberMe" />
+                            @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Log in</button>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <a asp-action="ForgotPassword">Forgot your password?</a>
+                    </p>
+                    <p>
+                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
+                    </p>
+                </div>
+            </form>
+        </section>
     </div>
-    @Scripts.Render("~/bundles/login", "~/bundles/jqueryval")
-    <script>
-        $(function () { $("[data-toggle='tooltip']").tooltip(); });
-        $('img.captcha').click(function() {
-            this.src = '@Url.Action("GetValidateCode")?_=' + (+new Date());
-        });
-    </script>
-</body>
-</html>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h4>Use another service to log in.</h4>
+            <hr />
+            @{
+                var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+                if (loginProviders.Count == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                            for details on setting up this ASP.NET application to support logging in via external services.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in loginProviders)
+                                {
+                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.Name</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
