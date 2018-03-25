@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Ixq.Soft.Mvc.ModelBinding.Metadata;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Ixq.Soft.Mvc.UI
@@ -17,7 +18,7 @@ namespace Ixq.Soft.Mvc.UI
             PageSizeList = new PageSizeList {15, 30, 60, 90};
             CustomButtons = new List<CustomButton>();
         }
-        public ModelMetadata ModelMetadata { get; set; }
+        public EntityModelMetadata ModelMetadata { get; set; }
         public PageSizeList PageSizeList { get; set; }
         public int PageSize { get; set; }
         public int PageIndex { get; set; }
@@ -34,7 +35,7 @@ namespace Ixq.Soft.Mvc.UI
         /// <summary>
         ///     获取或设置模型元数据。
         /// </summary>
-        ModelMetadata ModelMetadata { get; set; }
+        EntityModelMetadata ModelMetadata { get; set; }
 
         /// <summary>
         ///     获取或设置页面大小集合。

@@ -1,4 +1,4 @@
-﻿@model IListPages
+﻿@model IListPageModel
 
 <section class="content-header">
     <h1>用户管理</h1>
@@ -86,6 +86,7 @@
         <!-- /.col -->
     </div>
 </section>
+@await Component.InvokeAsync("JqGrid")
 
 @section styles{
     <link href="~/lib/jqGrid/css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
@@ -136,7 +137,7 @@
             pager: '#applicationUserPager',
             colNames: ['Id', 'UserName', 'PhoneNumber', 'Email', 'LockoutEnabled', '操作'],
             colModel: [
-                { name: 'id', index: 'Id', width: 150, align: 'center', sortable: false, hidedlg: true, key: true },
+                { name: 'id', index: 'Id', width: 150, align: 'center', sortable: false, hidden: true, key: true },
                 { name: 'userName', index: 'UserName', width: 150, align: 'center', sortable: true },
                 { name: 'phoneNumber', index: 'PhoneNumber', width: 150, align: 'center', sortable: true },
                 { name: 'email', index: 'Email', width: 150, align: 'center', sortable: true },
@@ -167,7 +168,6 @@
             var width = $('.jqGrid_wrapper').width();
             $('#applicationUserGrid').setGridWidth(width);
         }
-
 
         // 页面加载完毕后短暂的出现一个垂直滚动条，导致 grid 的 宽度不正确，所以延时100毫秒，重新设置grid的宽度
         setTimeout(resetGridWidth, 100);

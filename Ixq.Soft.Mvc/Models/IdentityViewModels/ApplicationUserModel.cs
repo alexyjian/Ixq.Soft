@@ -6,6 +6,7 @@ using Ixq.Soft.Mvc.DataAnnotations;
 
 namespace Ixq.Soft.Mvc.Models.IdentityViewModels
 {
+
     public class ApplicationUserModel
     {
         [Required]

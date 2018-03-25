@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Ixq.Soft.Mvc.ModelBinding.Metadata;
 using Ixq.Soft.Mvc.UI;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Ixq.Soft.Web.Areas.Admin.Controllers
 {
@@ -22,8 +21,10 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
 
         public IActionResult Index(ApplicationUserModel model)
         {
+            var metadata = MetadataProvider.GetMetadataForType(typeof(ApplicationUserModel)) as EntityModelMetadata;
 
             IListPageModel listPagesModel = new ListPageModel();
+            listPagesModel.ModelMetadata = metadata;
             listPagesModel.SortDirection = "asc";
             listPagesModel.SortField = "UserName";
 

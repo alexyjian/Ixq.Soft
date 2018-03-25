@@ -30,9 +30,7 @@ namespace Ixq.Soft.Mvc.Startup
                 options.ModelMetadataDetailsProviders.Add(new EntityDataAnnotationsMetadataProvider());
             });
 
-            var serviceProvider = services.BuildServiceProvider();
-
-            var typeFinder = serviceProvider.GetService<ITypeFinder>();
+            var typeFinder = new AppDomainTypeFinder();
 
             var configureServiceTypes = typeFinder.FindTypes<IConfigureServices>();
             var configureServiceInstances =
@@ -42,7 +40,7 @@ namespace Ixq.Soft.Mvc.Startup
                 configureService.ConfigureServices(services, configuration);
 
 
-            serviceProvider = services.BuildServiceProvider();
+            var serviceProvider = services.BuildServiceProvider();
             DependencyResolver.Current.SetServiceProvider(serviceProvider);
 
             return serviceProvider;
