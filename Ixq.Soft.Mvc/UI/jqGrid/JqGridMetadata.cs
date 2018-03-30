@@ -32,6 +32,11 @@ namespace Ixq.Soft.Mvc.UI.jqGrid
         public TextAlign Align { get; set; }
 
         /// <summary>
+        ///     获取或设置字段值的显示格式。
+        /// </summary>
+        public string DataFormatString { get; set; }
+      
+        /// <summary>
         ///     获取或设置格式化 Javascript 脚本。
         /// </summary>
         public string FormatterScript { get; set; }

@@ -29,7 +29,6 @@ namespace Ixq.Soft.Mvc.ModelBinding.Metadata
                 ModelBindingMessageProvider);
         }
 
-
         protected virtual EntityMetadataDetails ConvertMetadataDetails(DefaultMetadataDetails details)
         {
             var entityDetails = new EntityMetadataDetails(details.Key, details.ModelAttributes);

@@ -8,6 +8,14 @@ namespace Ixq.Soft.Repository
 {
     public static class QueryableExtensions
     {
+        /// <summary>
+        /// 根据指定的方向排序。
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="queryable"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="direction"></param>
+        /// <returns></returns>
         public static IQueryable<T> OrderByDirection<T>(this IQueryable<T> queryable, string propertyName,
             System.ComponentModel.ListSortDirection direction)
         {
