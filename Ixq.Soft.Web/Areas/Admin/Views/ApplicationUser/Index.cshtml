@@ -86,7 +86,8 @@
         <!-- /.col -->
     </div>
 </section>
-@await Component.InvokeAsync("JqGrid")
+@await Component.InvokeAsync("JqGrid", Model)
+@await Component.InvokeAsync("JqGrid", new { name = "ZK",age= 24})
 
 @section styles{
     <link href="~/lib/jqGrid/css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
@@ -98,9 +99,10 @@
         .ui-jqgrid .ui-jqgrid-bdiv {
             overflow: hidden;
         }
+
         .ui-jqgrid .ui-jqgrid-htable .ui-th-div {
             line-height: 17px;
-            margin-bottom:5px;
+            margin-bottom: 5px;
         }
     </style>
 }
@@ -181,7 +183,7 @@
         }
 
         function removeSelectedEntity() {
-            
+
         }
 
     </script>

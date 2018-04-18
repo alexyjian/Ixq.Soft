@@ -17,7 +17,7 @@ namespace Ixq.Soft.Mvc.Startup
 {
     public static class ConfigureServicesExtensions
     {
-        public static IServiceProvider ConfigureServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceProvider ConfigureServices(this IServiceCollection services, IConfigurationRoot configuration)
         {
             services.ConfigureInfrastructureServices(configuration);
 
@@ -52,8 +52,16 @@ namespace Ixq.Soft.Mvc.Startup
         /// <param name="services"></param>
         /// <param name="configuration"></param>
         private static void ConfigureInfrastructureServices(this IServiceCollection services,
-            IConfiguration configuration)
+            IConfigurationRoot configuration)
         {
+            services.AddOptions();
+
+            services.Configure<AppConfig>(config =>
+            {
+                configuration.GetSection("AppConfig").Bind(config);
+                config.DbContextConnectionString = configuration.GetConnectionString("DefaultConnection");
+            });
+            
             // http context accessor
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
