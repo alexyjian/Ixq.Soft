@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Ixq.Soft.Mvc.Models.AccountViewModels
+namespace Ixq.Soft.Web.Models.AccountViewModels
 {
     public class ExternalLoginViewModel
     {

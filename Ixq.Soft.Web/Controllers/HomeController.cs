@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Ixq.Soft.Core.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using Ixq.Soft.Mvc.Models;
+using Ixq.Soft.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 

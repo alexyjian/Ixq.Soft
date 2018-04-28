@@ -1,4 +1,4 @@
-namespace Ixq.Soft.Mvc.Models
+namespace Ixq.Soft.Web.Models
 {
     public class ErrorViewModel
     {

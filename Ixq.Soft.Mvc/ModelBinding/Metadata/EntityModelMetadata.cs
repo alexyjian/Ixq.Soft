@@ -109,8 +109,8 @@ namespace Ixq.Soft.Mvc.ModelBinding.Metadata
         public bool Sortable => JqGridMetadata.Sortable;
 
         /// <summary>
-        ///     获取一个值，表示在初始化表格时是否要隐藏此列。
+        ///     获取一个值，表示在列表中否要隐藏此属性。
         /// </summary>
-        public bool Hidden => JqGridMetadata.Hidden;
+        public bool ShowForList => JqGridMetadata.ShowForList;
     }
 }

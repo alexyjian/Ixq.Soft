@@ -1,12 +1,12 @@
 ﻿using Ixq.Soft.Core;
 using Ixq.Soft.Core.Domain.Identity;
 using Ixq.Soft.Mvc.Controllers;
-using Ixq.Soft.Mvc.Models.IdentityViewModels;
 using Ixq.Soft.Services.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Ixq.Soft.Mvc.ModelBinding.Metadata;
 using Ixq.Soft.Mvc.UI;
+using Ixq.Soft.Web.Models.IdentityViewModels;
 
 namespace Ixq.Soft.Web.Areas.Admin.Controllers
 {

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 using Ixq.Soft.Mvc.DataAnnotations;
 
-namespace Ixq.Soft.Mvc.Models.IdentityViewModels
+namespace Ixq.Soft.Web.Models.IdentityViewModels
 {
 
     public class ApplicationUserModel

@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace Ixq.Soft.Mvc.Html
 {
@@ -20,15 +18,16 @@ namespace Ixq.Soft.Mvc.Html
         /// <param name="helper"></param>
         /// <param name="templates"></param>
         /// <returns></returns>
-        public static IHtmlContent RegisterScript(this IHtmlHelper helper, params Func<object, HelperResult>[] templates)
+        public static IHtmlContent RegisterScript(this IHtmlHelper helper,
+            params Func<object, HelperResult>[] templates)
         {
             foreach (var template in templates)
             {
                 var htmlTemplate = new ScriptTemplate(template);
                 if (helper.ViewContext.HttpContext.Items[ScriptsKey] != null)
-                    ((List<ScriptTemplate>)helper.ViewContext.HttpContext.Items[ScriptsKey]).Add(htmlTemplate);
+                    ((List<ScriptTemplate>) helper.ViewContext.HttpContext.Items[ScriptsKey]).Add(htmlTemplate);
                 else
-                    helper.ViewContext.HttpContext.Items[ScriptsKey] = new List<ScriptTemplate> { htmlTemplate };
+                    helper.ViewContext.HttpContext.Items[ScriptsKey] = new List<ScriptTemplate> {htmlTemplate};
             }
 
             return HtmlString.Empty;
@@ -62,15 +61,16 @@ namespace Ixq.Soft.Mvc.Html
         /// <param name="helper"></param>
         /// <param name="templates"></param>
         /// <returns></returns>
-        public static IHtmlContent RegisterStyles(this IHtmlHelper helper, params Func<object, HelperResult>[] templates)
+        public static IHtmlContent RegisterStyles(this IHtmlHelper helper,
+            params Func<object, HelperResult>[] templates)
         {
             foreach (var template in templates)
             {
                 var htmlTemplate = new StyleTemplate(template);
                 if (helper.ViewContext.HttpContext.Items[StylesKey] != null)
-                    ((List<StyleTemplate>)helper.ViewContext.HttpContext.Items[StylesKey]).Add(htmlTemplate);
+                    ((List<StyleTemplate>) helper.ViewContext.HttpContext.Items[StylesKey]).Add(htmlTemplate);
                 else
-                    helper.ViewContext.HttpContext.Items[StylesKey] = new List<StyleTemplate> { htmlTemplate };
+                    helper.ViewContext.HttpContext.Items[StylesKey] = new List<StyleTemplate> {htmlTemplate};
             }
 
             return HtmlString.Empty;
@@ -112,9 +112,9 @@ namespace Ixq.Soft.Mvc.Html
             {
                 var htmlTemplate = new HtmlTemplate(template);
                 if (helper.ViewContext.HttpContext.Items[type] != null)
-                    ((List<HtmlTemplate>)helper.ViewContext.HttpContext.Items[type]).Add(htmlTemplate);
+                    ((List<HtmlTemplate>) helper.ViewContext.HttpContext.Items[type]).Add(htmlTemplate);
                 else
-                    helper.ViewContext.HttpContext.Items[type] = new List<HtmlTemplate> { htmlTemplate };
+                    helper.ViewContext.HttpContext.Items[type] = new List<HtmlTemplate> {htmlTemplate};
             }
 
             return HtmlString.Empty;

@@ -35,7 +35,7 @@ namespace Ixq.Soft.Mvc.DataAnnotations.Internal
 
             if (hiddenInputAttribute != null)
             {
-                metadata.Hidden = true;
+                metadata.ShowForList = false;
             }
 
             if (displayAttribute != null)
@@ -48,7 +48,7 @@ namespace Ixq.Soft.Mvc.DataAnnotations.Internal
                 metadata.Name = columnAttribute.Name;
                 metadata.Index = columnAttribute.Index;
                 metadata.Sortable = columnAttribute.Sortable;
-                metadata.Hidden = columnAttribute.Hidden;
+                metadata.ShowForList = !columnAttribute.Hidden;
             }
 
             if (styleAttribute != null)

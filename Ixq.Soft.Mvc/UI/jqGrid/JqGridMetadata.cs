@@ -52,9 +52,9 @@ namespace Ixq.Soft.Mvc.UI.jqGrid
         public bool Sortable { get; set; }
 
         /// <summary>
-        ///     获取或设置在初始化表格时是否要隐藏此列。
+        ///     获取或设置在列表中是否要显示此属性。
         /// </summary>
-        public bool Hidden { get; set; }
+        public bool ShowForList { get; set; } = true;
 
     }
 }

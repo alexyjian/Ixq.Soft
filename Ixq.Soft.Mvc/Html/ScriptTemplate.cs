@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc.Razor;
 
@@ -31,6 +29,11 @@ namespace Ixq.Soft.Mvc.Html
                 return false;
 
             return match1.Groups[1].Value == match2.Groups[1].Value;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
         public static bool operator ==(ScriptTemplate a, ScriptTemplate b)

@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace Ixq.Soft.Mvc.Html
 {
     /// <summary>
-    /// html模版。
+    ///     html模版。
     /// </summary>
     public class HtmlTemplate
     {
         /// <summary>
-        /// 初始化一个<see cref="HtmlTemplate" />对象。
+        ///     初始化一个<see cref="HtmlTemplate" />对象。
         /// </summary>
         /// <param name="template">模版委托方法。</param>
         public HtmlTemplate(Func<object, HelperResult> template)
