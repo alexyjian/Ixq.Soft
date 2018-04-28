@@ -119,9 +119,9 @@ namespace Ixq.Soft.Repository
             if (!(entry.Entity is IEntityBase<Guid> entity))
                 return;
 
-            entity.Id = Guid.NewGuid();
+            if (entity.Id == Guid.Empty)
+                entity.Id = Guid.NewGuid();
         }
-
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
