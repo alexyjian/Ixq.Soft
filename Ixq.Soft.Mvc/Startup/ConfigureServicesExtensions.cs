@@ -17,13 +17,11 @@ namespace Ixq.Soft.Mvc.Startup
 {
     public static class ConfigureServicesExtensions
     {
-        public static IServiceProvider ConfigureServices(this IServiceCollection services, IConfigurationRoot configuration)
+        public static IServiceProvider ConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.ConfigureInfrastructureServices(configuration);
 
-            services.AddMvcService();
-
-            var mvcBuilder = services.AddMvc();
+            var mvcBuilder = services.AddMvcService();
 
             mvcBuilder.AddMvcOptions(options =>
             {
@@ -52,7 +50,7 @@ namespace Ixq.Soft.Mvc.Startup
         /// <param name="services"></param>
         /// <param name="configuration"></param>
         private static void ConfigureInfrastructureServices(this IServiceCollection services,
-            IConfigurationRoot configuration)
+            IConfiguration configuration)
         {
             services.AddOptions();
 
@@ -94,7 +92,7 @@ namespace Ixq.Soft.Mvc.Startup
         }
 
 
-        public static void AddMvcService(this IServiceCollection services)
+        public static IMvcBuilder AddMvcService(this IServiceCollection services)
         {
             services.TryAddSingleton<IModelMetadataProvider, EntityModelMetadataProvider>();
             services.TryAdd(ServiceDescriptor.Transient<ICompositeMetadataDetailsProvider>(s =>
@@ -102,6 +100,8 @@ namespace Ixq.Soft.Mvc.Startup
                 var options = s.GetRequiredService<IOptions<MvcOptions>>().Value;
                 return new DefaultCompositeMetadataDetailsProvider(options.ModelMetadataDetailsProviders);
             }));
+
+            return services.AddMvc();
         }
     }
 }

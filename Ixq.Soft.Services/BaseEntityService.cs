@@ -18,8 +18,7 @@ namespace Ixq.Soft.Services
 
         public BaseEntityService()
         {
-            var dbContext = DependencyResolver.Current.RequestServices
-                .GetService<IDbContext>();
+            var dbContext = DependencyResolver.Current.GetService<IDbContext>();
 
             _entityRepository = new EfCoreRepository<TEntity, TKey>(dbContext);
         }

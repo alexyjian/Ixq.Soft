@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +12,31 @@ namespace Ixq.Soft.Core.Infrastructure
         static DependencyResolver()
         {
             Current = new DependencyResolver();
+        }
+
+        public T GetRequiredService<T>()
+        {
+            return RequestServices.GetRequiredService<T>();
+        }
+
+        public object GetRequiredService(Type serviceType)
+        {
+            return RequestServices.GetRequiredService(serviceType);
+        }
+
+        public T GetService<T>()
+        {
+            return RequestServices.GetService<T>();
+        }
+
+        public IEnumerable<T> GetServices<T>()
+        {
+            return RequestServices.GetServices<T>();
+        }
+
+        public IEnumerable<object> GetServices(Type serviceType)
+        {
+            return RequestServices.GetServices(serviceType);
         }
 
         public IServiceProvider RequestServices => GetServiceProvider();

@@ -1,17 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using Ixq.Soft.Mvc.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 
 namespace Ixq.Soft.Web.Controllers
 {
     public class HomeController : Controller
     {
+        public HomeController(IServiceProvider services)
+        {
+            
+        }
         public IActionResult Index()
         {
             return View();
