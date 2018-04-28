@@ -22,4 +22,10 @@
     <ProjectReference Include="..\Ixq.Soft.Repository\Ixq.Soft.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Server.IISIntegration">
+      <HintPath>..\..\..\..\Users\zhaokun\.nuget\packages\microsoft.aspnetcore.server.iisintegration\2.0.1\lib\netstandard2.0\Microsoft.AspNetCore.Server.IISIntegration.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
