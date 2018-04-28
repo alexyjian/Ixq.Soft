@@ -21,9 +21,7 @@ namespace Ixq.Soft.Mvc.Startup
         {
             services.ConfigureInfrastructureServices(configuration);
 
-            services.AddMvcService();
-
-            var mvcBuilder = services.AddMvc();
+            var mvcBuilder = services.AddMvcService();
 
             mvcBuilder.AddMvcOptions(options =>
             {
@@ -54,6 +52,14 @@ namespace Ixq.Soft.Mvc.Startup
         private static void ConfigureInfrastructureServices(this IServiceCollection services,
             IConfiguration configuration)
         {
+            services.AddOptions();
+
+            services.Configure<AppConfig>(config =>
+            {
+                configuration.GetSection("AppConfig").Bind(config);
+                config.DbContextConnectionString = configuration.GetConnectionString("DefaultConnection");
+            });
+            
             // http context accessor
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -86,7 +92,7 @@ namespace Ixq.Soft.Mvc.Startup
         }
 
 
-        public static void AddMvcService(this IServiceCollection services)
+        public static IMvcBuilder AddMvcService(this IServiceCollection services)
         {
             services.TryAddSingleton<IModelMetadataProvider, EntityModelMetadataProvider>();
             services.TryAdd(ServiceDescriptor.Transient<ICompositeMetadataDetailsProvider>(s =>
@@ -94,6 +100,8 @@ namespace Ixq.Soft.Mvc.Startup
                 var options = s.GetRequiredService<IOptions<MvcOptions>>().Value;
                 return new DefaultCompositeMetadataDetailsProvider(options.ModelMetadataDetailsProviders);
             }));
+
+            return services.AddMvc();
         }
     }
 }

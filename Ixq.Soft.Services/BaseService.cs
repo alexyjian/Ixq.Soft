@@ -11,8 +11,8 @@ namespace Ixq.Soft.Services
 
         protected BaseService()
         {
-            _userAccessor = DependencyResolver.Current.RequestServices.GetService<UserAccessor>();
-            var loggerFactory = DependencyResolver.Current.RequestServices.GetService<ILoggerFactory>();
+            _userAccessor = DependencyResolver.Current.GetService<UserAccessor>();
+            var loggerFactory = DependencyResolver.Current.GetService<ILoggerFactory>();
             Logger = loggerFactory.CreateLogger(GetType());
         }
 

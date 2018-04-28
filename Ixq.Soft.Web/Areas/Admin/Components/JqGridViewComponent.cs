@@ -9,9 +9,9 @@ namespace Ixq.Soft.Web.Areas.Admin.Components
 {
     public class JqGridViewComponent : ViewComponent
     {
-        public IViewComponentResult Invoke(IListPageModel pageModel)
+        public IViewComponentResult Invoke(IListPageModel model)
         {
-            return View();
+            return View(model);
         }
     }
 }

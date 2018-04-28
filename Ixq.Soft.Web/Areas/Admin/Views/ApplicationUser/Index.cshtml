@@ -86,6 +86,7 @@
         <!-- /.col -->
     </div>
 </section>
+@await Component.InvokeAsync("JqGrid")
 
 @section styles{
     <link href="~/lib/jqGrid/css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
@@ -119,4 +120,3 @@
         }
     </script>
 }
-@await Component.InvokeAsync("JqGrid", Model)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,10 +7,9 @@ namespace Ixq.Soft.Core
 {
     public interface IPagingList<T> : IPagingList, IList<T>
     {
-        
     }
 
-    public interface IPagingList
+    public interface IPagingList : IEnumerable
     {
         /// <summary>
         ///     获取页面大小。
