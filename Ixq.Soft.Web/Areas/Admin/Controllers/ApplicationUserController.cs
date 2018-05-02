@@ -21,7 +21,7 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
 
         public IActionResult Index(ApplicationUserModel model)
         {
-            var metadata = MetadataProvider.GetMetadataForType(typeof(ApplicationUserModel)) as EntityModelMetadata;
+            var metadata = MetadataProvider.GetMetadataForType(typeof(ApplicationUserModel));
 
             IListPageModel listPagesModel = new ListPageModel();
             listPagesModel.ModelMetadata = metadata;

@@ -43,9 +43,9 @@ namespace Ixq.Soft.Repository
             _entities = _dbContext.Set<TEntity>();
         }
 
-        public TEntity GetById(TKey id)
+        public TEntity GetById(params TKey[] keyValues)
         {
-            return _entities.Find(id);
+            return _entities.Find(keyValues);
         }
 
         public void Add(TEntity entity)

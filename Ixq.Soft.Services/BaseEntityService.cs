@@ -25,9 +25,9 @@ namespace Ixq.Soft.Services
 
         protected IRepository<TEntity, TKey> EntityRepository => _entityRepository;
 
-        public virtual TEntity GetEntityById(TKey id)
+        public virtual TEntity GetEntityById(params TKey[] keyValues)
         {
-            return EntityRepository.GetById(id);
+            return EntityRepository.GetById(keyValues);
         }
 
         public virtual void AddEntity(TEntity entity)

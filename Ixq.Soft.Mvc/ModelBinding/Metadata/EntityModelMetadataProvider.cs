@@ -32,10 +32,14 @@ namespace Ixq.Soft.Mvc.ModelBinding.Metadata
         protected virtual EntityMetadataDetails ConvertMetadataDetails(DefaultMetadataDetails details)
         {
             var entityDetails = new EntityMetadataDetails(details.Key, details.ModelAttributes);
+            entityDetails.BindingMetadata = details.BindingMetadata;
             entityDetails.ContainerMetadata = details.ContainerMetadata;
+            entityDetails.DisplayMetadata = details.DisplayMetadata;
             entityDetails.PropertyGetter = details.PropertyGetter;
             entityDetails.PropertySetter = details.PropertySetter;
             entityDetails.Properties = entityDetails.Properties;
+            entityDetails.ValidationMetadata = details.ValidationMetadata;
+
             return entityDetails;
         }
     }

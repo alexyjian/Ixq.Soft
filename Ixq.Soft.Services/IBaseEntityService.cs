@@ -9,7 +9,7 @@ namespace Ixq.Soft.Services
     public interface IBaseEntityService<TEntity, in TKey> : IBaseService
         where TEntity : class, IEntityBase<TKey>
     {
-        TEntity GetEntityById(TKey id);
+        TEntity GetEntityById(params TKey[] keyValues);
         void AddEntity(TEntity entity);
         void UpdateEntity(TEntity entity);
         void RemoveEntity(TEntity entity);

@@ -18,7 +18,7 @@ namespace Ixq.Soft.Mvc.UI
             PageSizeList = new PageSizeList {15, 30, 60, 90};
             CustomButtons = new List<CustomButton>();
         }
-        public EntityModelMetadata ModelMetadata { get; set; }
+        public ModelMetadata ModelMetadata { get; set; }
         public PageSizeList PageSizeList { get; set; }
         public int PageSize { get; set; }
         public int PageIndex { get; set; }
@@ -35,7 +35,7 @@ namespace Ixq.Soft.Mvc.UI
         /// <summary>
         ///     获取或设置模型元数据。
         /// </summary>
-        EntityModelMetadata ModelMetadata { get; set; }
+        ModelMetadata ModelMetadata { get; set; }
 
         /// <summary>
         ///     获取或设置页面大小集合。
