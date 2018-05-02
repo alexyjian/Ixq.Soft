@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ixq.Soft.Web", "Ixq.Soft.We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ixq.Soft.Core.Tests", "Ixq.Soft.Core.Tests\Ixq.Soft.Core.Tests.csproj", "{D7F27032-5224-4310-A464-B43FC5C37442}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Repository.Tests", "Ixq.Soft.Repository.Tests\Ixq.Soft.Repository.Tests.csproj", "{9EC08D8C-420C-4FCC-9B77-E4B11DD53975}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ixq.Soft.Repository.Tests", "Ixq.Soft.Repository.Tests\Ixq.Soft.Repository.Tests.csproj", "{9EC08D8C-420C-4FCC-9B77-E4B11DD53975}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixq.Soft.Services.Tests", "Ixq.Soft.Services.Tests\Ixq.Soft.Services.Tests.csproj", "{8B58734E-133A-4982-88BA-FAC2D2532C9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ixq.Soft.Services.Tests", "Ixq.Soft.Services.Tests\Ixq.Soft.Services.Tests.csproj", "{8B58734E-133A-4982-88BA-FAC2D2532C9B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0269242A-7B18-466D-86BC-A1DAD15724D4}"
 EndProject
