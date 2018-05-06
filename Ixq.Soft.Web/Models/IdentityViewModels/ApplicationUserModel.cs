@@ -3,7 +3,7 @@ using Ixq.Soft.Mvc.DataAnnotations;
 
 namespace Ixq.Soft.Web.Models.IdentityViewModels
 {
-
+    [PageConfig(PageTitle = "用户管理", SortField = nameof(UserName))]
     public class ApplicationUserModel
     {
         [Required]

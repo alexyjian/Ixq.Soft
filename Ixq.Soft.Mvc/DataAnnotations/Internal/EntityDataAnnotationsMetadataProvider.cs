@@ -36,6 +36,11 @@ namespace Ixq.Soft.Mvc.DataAnnotations.Internal
 
                 entityMetadata.SortField = pageConfigAttribute.SortField;
                 entityMetadata.SortDirection = pageConfigAttribute.SortDirection;
+                entityMetadata.PageTitle = pageConfigAttribute.PageTitle;
+            }
+            else
+            {
+                entityMetadata.PageTitle = context.Key.ModelType.Name;
             }
 
             if (context.Attributes.OfType<SearcherAttribute>().Any())

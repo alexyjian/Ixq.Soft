@@ -13,9 +13,9 @@ namespace Ixq.Soft.Core.Caching
 {
     public class MemoryCache : ICache
     {
-        private static readonly ConcurrentDictionary<string, bool> AllKeys;
         private readonly IMemoryCache _memoryCache;
         private CancellationTokenSource _cancellationTokenSource;
+        protected static readonly ConcurrentDictionary<string, bool> AllKeys;
 
         static MemoryCache()
         {

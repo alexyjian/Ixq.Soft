@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ixq.Soft.Mvc.UI.jqGrid
+namespace Ixq.Soft.Core
 {
-    public class JqGridConfig
+    public enum SortDirection
     {
+        Asc,
+        Desc
     }
 }

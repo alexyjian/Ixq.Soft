@@ -8,20 +8,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ixq.Soft.Web.Areas.Admin.Components
 {
-    public class JqGridViewComponent : ViewComponent
+    public class SearcherViewComponent : ViewComponent
     {
         public IViewComponentResult Invoke(IListPageModel model)
         {
-            var propertieMetadatas = model.ModelMetadata
-                .GetMetadataForProperties(model.ModelMetadata.ModelType)
+            var propertieMetadatas = model.ModelMetadata.Properties
                 .OfType<EntityModelMetadata>()
-                .Where(x => x.ShowForList)
+                .Where(x => x.IsSearcher)
                 .OrderBy(x => x.Order);
 
-
-
-
-            return View(model);
+            return View(propertieMetadatas);
         }
     }
 }

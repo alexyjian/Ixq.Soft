@@ -8,6 +8,10 @@ namespace Ixq.Soft.Mvc.DataAnnotations
     public interface IPageConfig
     {
         /// <summary>
+        ///     获取或设置一个值，指示页面的标题。
+        /// </summary>
+        string PageTitle { get; set; }
+        /// <summary>
         ///     获取或设置一个值，表示获取列表数据的控制器 action.
         /// </summary>
         string ListAction { get; set; }
@@ -32,5 +36,9 @@ namespace Ixq.Soft.Mvc.DataAnnotations
         /// </summary>
         ListSortDirection SortDirection { get; set; }
 
+        /// <summary>
+        ///     asc or desc
+        /// </summary>
+        string SortDirectionName { get; }
     }
 }

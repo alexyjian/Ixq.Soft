@@ -57,6 +57,11 @@ namespace Ixq.Soft.Mvc.ModelBinding.Metadata
         }
 
         /// <summary>
+        ///     获取一个值，指示页面的标题。
+        /// </summary>
+        public string PageTitle => EntityMetadata.PageTitle;
+
+        /// <summary>
         ///     获取或设置一个值，表示获取列表数据的控制器 action.
         /// </summary>
         public string ListAction => EntityMetadata.ListAction;

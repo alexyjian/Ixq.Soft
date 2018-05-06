@@ -19,14 +19,14 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
             _userSvc = userSvc;
         }
 
-        public IActionResult Index(ApplicationUserModel model)
+        public IActionResult Index()
         {
             var listPagesModel = MetadataProvider.GetListPageModel(typeof(ApplicationUserModel));
             return View(listPagesModel);
         }
 
         [HttpPost]
-        public IActionResult ApplicationUserList(DataRequestModel requestModel)
+        public IActionResult List(DataRequestModel requestModel)
         {
             var pagingList = _userSvc.GetPagingList(requestModel);
 

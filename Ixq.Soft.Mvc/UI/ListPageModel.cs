@@ -18,6 +18,7 @@ namespace Ixq.Soft.Mvc.UI
             CustomButtons = new List<CustomButton>();
         }
 
+        public string PageTitle { get; set; }
         public string ListAction { get; set; }
         public string EditAction { get; set; }
         public string DeleteAction { get; set; }
@@ -27,6 +28,7 @@ namespace Ixq.Soft.Mvc.UI
         public int PageIndex { get; set; }
         public string SortField { get; set; }
         public ListSortDirection SortDirection { get; set; }
+        public string SortDirectionName => SortDirection == ListSortDirection.Ascending ? "asc" : "desc";
         public IList<CustomButton> CustomButtons { get; set; }
     }
 

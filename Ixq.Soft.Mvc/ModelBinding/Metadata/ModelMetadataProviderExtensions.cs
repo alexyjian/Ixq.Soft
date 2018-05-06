@@ -16,6 +16,7 @@ namespace Ixq.Soft.Mvc.ModelBinding.Metadata
 
             if (metadata is EntityModelMetadata entityMetadata)
             {
+                pageModel.PageTitle = entityMetadata.PageTitle;
                 pageModel.ListAction = entityMetadata.ListAction;
                 pageModel.EditAction = entityMetadata.EditAction;
                 pageModel.DeleteAction = entityMetadata.DeleteAction;
