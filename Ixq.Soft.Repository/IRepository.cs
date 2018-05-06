@@ -24,11 +24,11 @@ namespace Ixq.Soft.Repository
         IQueryable<TEntity> Table { get; }
         IQueryable<TEntity> TableNoTracking { get; }
         TEntity GetById(params TKey[] keyValues);
-        void Add(TEntity entity);
+        TEntity Add(TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);
-        void Update(TEntity entity);
+        TEntity Update(TEntity entity);
         void UpdateRange(IEnumerable<TEntity> entities);
-        void Remove(TEntity entity);
+        TEntity Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);
         int Save();
         Task<int> SaveAsync();

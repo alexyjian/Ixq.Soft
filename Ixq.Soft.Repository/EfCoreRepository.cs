@@ -48,9 +48,9 @@ namespace Ixq.Soft.Repository
             return _entities.Find(keyValues);
         }
 
-        public void Add(TEntity entity)
+        public TEntity Add(TEntity entity)
         {
-            _entities.Add(entity);
+            return _entities.Add(entity).Entity;
         }
 
         public void AddRange(IEnumerable<TEntity> entities)
@@ -58,9 +58,9 @@ namespace Ixq.Soft.Repository
             _entities.AddRange(entities);
         }
 
-        public void Update(TEntity entity)
+        public TEntity Update(TEntity entity)
         {
-            _entities.Update(entity);
+            return _entities.Update(entity).Entity;
         }
 
         public void UpdateRange(IEnumerable<TEntity> entities)
@@ -68,9 +68,9 @@ namespace Ixq.Soft.Repository
             _entities.UpdateRange(entities);
         }
 
-        public void Remove(TEntity entity)
+        public TEntity Remove(TEntity entity)
         {
-            _entities.Remove(entity);
+            return _entities.Remove(entity).Entity;
         }
 
         public void RemoveRange(IEnumerable<TEntity> entities)
@@ -88,9 +88,9 @@ namespace Ixq.Soft.Repository
             return _entities.FromSql(sql, parameters);
         }
 
-        public async Task<int> SaveAsync()
+        public Task<int> SaveAsync()
         {
-            return await _dbContext.SaveChangesAsync();
+            return _dbContext.SaveChangesAsync();
         }
 
         public IQueryable<TEntity> Table => _entities;

@@ -52,7 +52,7 @@ namespace Ixq.Soft.Mvc.UI.jqGrid
         public bool Sortable { get; set; }
 
         /// <summary>
-        ///     获取或设置在列表中是否要显示此属性。
+        ///     获取或设置在列表中是否要显示此属性，默认是 true。
         /// </summary>
         public bool ShowForList { get; set; } = true;
 

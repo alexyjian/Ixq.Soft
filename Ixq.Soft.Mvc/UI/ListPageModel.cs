@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Ixq.Soft.Mvc.ModelBinding.Metadata;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using Ixq.Soft.Mvc.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Ixq.Soft.Mvc.UI
@@ -18,19 +17,23 @@ namespace Ixq.Soft.Mvc.UI
             PageSizeList = new PageSizeList {15, 30, 60, 90};
             CustomButtons = new List<CustomButton>();
         }
+
+        public string ListAction { get; set; }
+        public string EditAction { get; set; }
+        public string DeleteAction { get; set; }
         public ModelMetadata ModelMetadata { get; set; }
         public PageSizeList PageSizeList { get; set; }
         public int PageSize { get; set; }
         public int PageIndex { get; set; }
         public string SortField { get; set; }
-        public string SortDirection { get; set; }
+        public ListSortDirection SortDirection { get; set; }
         public IList<CustomButton> CustomButtons { get; set; }
     }
 
     /// <summary>
     ///     列表页面接口。
     /// </summary>
-    public interface IListPageModel
+    public interface IListPageModel : IPageConfig
     {
         /// <summary>
         ///     获取或设置模型元数据。
@@ -51,16 +54,6 @@ namespace Ixq.Soft.Mvc.UI
         ///     获取或设置当前页。
         /// </summary>
         int PageIndex { get; set; }
-
-        /// <summary>
-        ///     获取或设置排序字段名称。
-        /// </summary>
-        string SortField { get; set; }
-
-        /// <summary>
-        ///     获取或设置排序方向。
-        /// </summary>
-        string SortDirection { get; set; }
 
         /// <summary>
         ///     获取或设置自定义按钮。

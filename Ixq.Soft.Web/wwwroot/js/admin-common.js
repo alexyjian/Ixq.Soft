@@ -10,7 +10,7 @@
             return '<i onclick="editEntity(\'' +
                 rowObject.id +
                 '\')" class="fa fa-fw fa-edit" title="编辑"></i>' +
-                '<i onclick="removeEntity(\'' +
+                '&nbsp;<i onclick="removeEntity(\'' +
                 rowObject.id +
                 '\')" class="fa fa-fw fa-remove" title="删除"></i>';
         },

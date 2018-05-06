@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel;
 using Ixq.Soft.Mvc.UI;
 using Ixq.Soft.Mvc.UI.jqGrid;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 
 namespace Ixq.Soft.Mvc.ModelBinding.Metadata
 {
@@ -12,6 +10,7 @@ namespace Ixq.Soft.Mvc.ModelBinding.Metadata
     {
         private readonly EntityMetadataDetails _details;
         private readonly ICompositeMetadataDetailsProvider _detailsProvider;
+
         public EntityModelMetadata(IModelMetadataProvider provider, ICompositeMetadataDetailsProvider detailsProvider,
             EntityMetadataDetails details) : base(provider, detailsProvider, details)
         {
@@ -58,10 +57,34 @@ namespace Ixq.Soft.Mvc.ModelBinding.Metadata
         }
 
         /// <summary>
+        ///     获取或设置一个值，表示获取列表数据的控制器 action.
+        /// </summary>
+        public string ListAction => EntityMetadata.ListAction;
+
+        /// <summary>
+        ///     获取或设置一个值，表示表单提交的控制器 action.
+        /// </summary>
+        public string EditAction => EntityMetadata.EditAction;
+
+        /// <summary>
+        ///     获取一个值，表示删除元素时的控制器 action.
+        /// </summary>
+        public string DeleteAction => EntityMetadata.DeleteAction;
+
+        /// <summary>
         ///     获取一个值，指示模型值是否用于页面搜索字段。
         /// </summary>
         public bool IsSearcher => EntityMetadata.IsSearcher;
 
+        /// <summary>
+        ///     获取一个值，指示数据的排序字段。
+        /// </summary>
+        public string SortField => EntityMetadata.SortField;
+
+        /// <summary>
+        ///     获取一个值，指示数据的排序方向。
+        /// </summary>
+        public ListSortDirection SortDirection => EntityMetadata.SortDirection;
 
         /// <summary>
         ///     获取一个值，表示与后台交互的参数。

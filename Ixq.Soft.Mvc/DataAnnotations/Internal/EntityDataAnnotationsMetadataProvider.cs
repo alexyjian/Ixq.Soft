@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using Ixq.Soft.Core.Extensions;
 using Ixq.Soft.Mvc.ModelBinding.Metadata;
 using Ixq.Soft.Mvc.UI.jqGrid;
 using Microsoft.AspNetCore.Mvc;
@@ -13,9 +14,33 @@ namespace Ixq.Soft.Mvc.DataAnnotations.Internal
     {
         public void CreateEntityMetadata(EntityMetadataProviderContext context)
         {
+            var entityMetadata = context.EntityMetadata;
+            var attributes = context.Attributes;
+            var pageConfigAttribute = attributes.OfType<PageConfigAttribute>().FirstOrDefault();
+            if (pageConfigAttribute != null)
+            {
+                if (!pageConfigAttribute.ListAction.IsNullOrEmpty())
+                {
+                    entityMetadata.ListAction = pageConfigAttribute.ListAction;
+                }
+
+                if (!pageConfigAttribute.EditAction.IsNullOrEmpty())
+                {
+                    entityMetadata.EditAction = pageConfigAttribute.EditAction;
+                }
+
+                if (!pageConfigAttribute.DeleteAction.IsNullOrEmpty())
+                {
+                    entityMetadata.DeleteAction = pageConfigAttribute.DeleteAction;
+                }
+
+                entityMetadata.SortField = pageConfigAttribute.SortField;
+                entityMetadata.SortDirection = pageConfigAttribute.SortDirection;
+            }
+
             if (context.Attributes.OfType<SearcherAttribute>().Any())
             {
-                context.EntityMetadata.IsSearcher = true;
+                entityMetadata.IsSearcher = true;
             }
         }
 

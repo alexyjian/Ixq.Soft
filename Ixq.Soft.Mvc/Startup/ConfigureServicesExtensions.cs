@@ -8,10 +8,13 @@ using Ixq.Soft.Mvc.ModelBinding.Metadata;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
+using IXQMemoryCache = Ixq.Soft.Core.Caching.MemoryCache;
+using MSMemoryCache = Microsoft.Extensions.Caching.Memory.MemoryCache;
 
 namespace Ixq.Soft.Mvc.Startup
 {
@@ -77,11 +80,12 @@ namespace Ixq.Soft.Mvc.Startup
             {
                 services.AddSingleton<ISerializableService, BinarySerializableService>();
                 services.AddSingleton<IConnectionMultiplexerAccessor, ConnectionMultiplexerAccessor>();
-                services.AddScoped<ICache, RedisCache>();
+                services.AddSingleton<ICache, RedisCache>();
             }
             else
             {
-                services.AddScoped<ICache, MemoryCache>();
+                services.TryAddSingleton<IMemoryCache, MSMemoryCache>();
+                services.AddSingleton<ICache, IXQMemoryCache>();
             }
 
             // type finder

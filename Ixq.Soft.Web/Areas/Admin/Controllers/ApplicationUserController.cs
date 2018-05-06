@@ -21,32 +21,25 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
 
         public IActionResult Index(ApplicationUserModel model)
         {
-            var metadata = MetadataProvider.GetMetadataForType(typeof(ApplicationUserModel));
-
-            IListPageModel listPagesModel = new ListPageModel();
-            listPagesModel.ModelMetadata = metadata;
-            listPagesModel.SortDirection = "asc";
-            listPagesModel.SortField = "UserName";
-
+            var listPagesModel = MetadataProvider.GetListPageModel(typeof(ApplicationUserModel));
             return View(listPagesModel);
         }
 
         [HttpPost]
         public IActionResult ApplicationUserList(DataRequestModel requestModel)
         {
-            var pagingList = _userSvc.GetEntityPagingList(requestModel);
+            var pagingList = _userSvc.GetPagingList(requestModel);
 
-            var responseModel = new DataResponseModel(pagingList)
+            var responseModel = pagingList.ToDataResponse();
+
+            responseModel.Rows = pagingList.Select(user => new ApplicationUserModel
             {
-                Rows = pagingList.Select(user => new ApplicationUserModel
-                {
-                    Id = user.Id,
-                    UserName = user.UserName,
-                    Email = user.Email,
-                    PhoneNumber = user.PhoneNumber,
-                    LockoutEnabled = user.LockoutEnabled
-                })
-            };
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                LockoutEnabled = user.LockoutEnabled
+            });
 
             return Json(responseModel);
         }

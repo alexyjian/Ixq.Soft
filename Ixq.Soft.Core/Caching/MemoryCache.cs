@@ -30,6 +30,7 @@ namespace Ixq.Soft.Core.Caching
 
         public void Dispose()
         {
+            Clear();
             _memoryCache?.Dispose();
         }
 

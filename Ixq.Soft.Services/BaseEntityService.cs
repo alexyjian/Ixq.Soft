@@ -45,7 +45,7 @@ namespace Ixq.Soft.Services
             EntityRepository.Remove(entity);
         }
 
-        public virtual PagingList<TEntity> GetEntityPagingList(DataRequestModel requestModel)
+        public virtual PagingList<TEntity> GetPagingList(DataRequestModel requestModel)
         {
             var query = EntityRepository.TableNoTracking;
 
