@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Ixq.Soft.Mvc.ModelBinding.Metadata;
 using Ixq.Soft.Mvc.UI;
+using Ixq.Soft.Repository;
 using Ixq.Soft.Web.Models.IdentityViewModels;
 
 namespace Ixq.Soft.Web.Areas.Admin.Controllers
@@ -51,6 +52,11 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
 
         public IActionResult Edit(long id)
         {
+            var repos = Ixq.Soft.Core.Infrastructure.DependencyResolver.Current
+                .GetRequiredService<IRepositoryInt64<ApplicationUser>>();
+
+            var u = repos.GetById(id);
+
             var user = _userSvc.GetEntityById(id);
             if (user == null)
                 return RedirectToAction("index");

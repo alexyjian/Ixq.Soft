@@ -43,7 +43,7 @@ namespace Ixq.Soft.Repository
             _entities = _dbContext.Set<TEntity>();
         }
 
-        public TEntity GetById(params TKey[] keyValues)
+        public TEntity GetById(params object[] keyValues)
         {
             return _entities.Find(keyValues);
         }

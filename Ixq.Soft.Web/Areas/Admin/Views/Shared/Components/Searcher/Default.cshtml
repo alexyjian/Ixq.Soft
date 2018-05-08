@@ -12,30 +12,20 @@
         </div>
         <div class="box-body">
             <form class="form-horizontal">
-                @foreach (var metadata in Model)
-                {
-                    <div class="form-group">
-                        <label for="@(metadata.PropertyName)" class="col-sm-4 control-label">Email</label>
-                        <div class="col-sm-8">
-                            @Html.EditorFor(metadata, new { htmlAttributes = new { @class = "form-control" } })
-                        </div>
-                    </div>
-                }
-                <div class="col-md-6 col-xs-12">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
-                        <div class="col-sm-8">
-                            <input type="email" class="form-control" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-4 control-label">Password</label>
-                        <div class="col-sm-8">
-                            <input type="password" class="form-control" placeholder="Password">
-                        </div>
-                    </div>
-                </div>
+                @{
+                    var metadataList = Model.ToList();
 
+                    for (var i = 0; i < metadataList.Count; i++)
+                    {
+                        var metadata = metadataList[i];
+                        <div class="form-group">
+                            <label for="@(metadata.PropertyName)" title="@metadata.Description" class="col-sm-4 control-label">@(metadata.DisplayName ?? metadata.PropertyName)</label>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(metadata, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    }
+                }
                 <div class="col-xs-12 col-lg-6">
                     <button title="搜索" type="submit" class="btn btn-primary btn-lg center-block">
                         <i class="fa fa-fw fa-search"></i>搜索

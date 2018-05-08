@@ -23,7 +23,7 @@ namespace Ixq.Soft.Repository
     {
         IQueryable<TEntity> Table { get; }
         IQueryable<TEntity> TableNoTracking { get; }
-        TEntity GetById(params TKey[] keyValues);
+        TEntity GetById(params object[] keyValues);
         TEntity Add(TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);
         TEntity Update(TEntity entity);
