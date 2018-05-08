@@ -10,15 +10,9 @@ namespace Ixq.Soft.Web.Areas.Admin.Components
 {
     public class JqGridViewComponent : ViewComponent
     {
-        public IViewComponentResult Invoke(IListPageModel model)
+        public IViewComponentResult Invoke(IListPageModel model, string viewName = "Default")
         {
-            var propertieMetadatas = model.ModelMetadata
-                .GetMetadataForProperties(model.ModelMetadata.ModelType)
-                .OfType<EntityModelMetadata>()
-                .Where(x => x.ShowForList)
-                .OrderBy(x => x.Order);
-
-            return View(model);
+            return View(viewName, model);
         }
     }
 }
