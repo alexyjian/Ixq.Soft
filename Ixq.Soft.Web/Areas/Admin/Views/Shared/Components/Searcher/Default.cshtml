@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label for="@(metadata.PropertyName)" class="col-sm-4 control-label">Email</label>
                         <div class="col-sm-8">
-                            @Html.EditorFor(metadata, null, metadata.PropertyName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(metadata, null, metadata.PropertyName, new {htmlAttributes = new {@class = "form-control"}})
                         </div>
                     </div>
                 }
@@ -52,6 +52,5 @@
                 </div>
             </form>
         </div>
-        <!-- /.box-body -->
     </div>
 }

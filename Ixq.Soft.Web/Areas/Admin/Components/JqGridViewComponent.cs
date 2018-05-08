@@ -18,9 +18,6 @@ namespace Ixq.Soft.Web.Areas.Admin.Components
                 .Where(x => x.ShowForList)
                 .OrderBy(x => x.Order);
 
-
-
-
             return View(model);
         }
     }
