@@ -11,19 +11,14 @@ namespace Ixq.Soft.Mvc.ModelBinding.Metadata
         public static IListPageModel GetListPageModel(this IModelMetadataProvider provider, Type modelType)
         {
             var metadata = provider.GetMetadataForType(modelType);
-            IListPageModel pageModel = new ListPageModel();
-            pageModel.ModelMetadata = metadata;
-
-            if (metadata is EntityModelMetadata entityMetadata)
+            EntityMetadata entityMetadata = null;
+            if (metadata is EntityModelMetadata entityModelMetadata)
             {
-                pageModel.PageTitle = entityMetadata.PageTitle;
-                pageModel.ListAction = entityMetadata.ListAction;
-                pageModel.EditAction = entityMetadata.EditAction;
-                pageModel.DeleteAction = entityMetadata.DeleteAction;
-                pageModel.SortField = entityMetadata.SortField;
-                pageModel.SortDirection = entityMetadata.SortDirection;
+                entityMetadata = entityModelMetadata.EntityMetadata;
             }
 
+            IListPageModel pageModel = new ListPageModel(entityMetadata ?? new EntityMetadata());
+            pageModel.ModelMetadata = metadata;
             return pageModel;
         }
 
