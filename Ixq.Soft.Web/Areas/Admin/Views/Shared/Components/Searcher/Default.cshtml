@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Ixq.Soft.Mvc.ModelBinding.Metadata.EntityModelMetadata>
+@if (Model.Any())
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">搜索</h3>
+            <div class="box-tools search-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body">
+            <form class="form-horizontal">
+                @{
+                    var metadataList = Model.ToList();
+
+                    for (var i = 0; i < metadataList.Count; i++)
+                    {
+                        var metadata = metadataList[i];
+                        <div class="form-group">
+                            <label for="@(metadata.PropertyName)" title="@metadata.Description" class="col-sm-4 control-label">@(metadata.DisplayName ?? metadata.PropertyName)</label>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(metadata, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="col-xs-12 col-lg-6">
+                    <button title="搜索" type="submit" class="btn btn-primary btn-lg center-block">
+                        <i class="fa fa-fw fa-search"></i>搜索
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+}

@@ -1,4 +1,5 @@
 ﻿using Ixq.Soft.Core.Configuration;
+using Ixq.Soft.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +12,9 @@ namespace Ixq.Soft.Repository.Configuration
         {
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<IDbContext, AppDbContext>();
+
+            services.Add(ServiceDescriptor.Scoped<IDbContext>(s =>
+                DependencyResolver.Current.GetService<AppDbContext>()));
         }
 
         public int Order => 1;

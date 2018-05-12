@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using Ixq.Soft.Core.Caching;
 using Ixq.Soft.Core.Configuration;
-using Ixq.Soft.Mvc.Models;
+using Microsoft.AspNetCore.Mvc;
+using Ixq.Soft.Web.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Options;
 
 namespace Ixq.Soft.Web.Controllers
 {

@@ -1,13 +1,13 @@
 ﻿using Ixq.Soft.Core;
 using Ixq.Soft.Core.Domain.Identity;
 using Ixq.Soft.Mvc.Controllers;
-using Ixq.Soft.Mvc.Models.IdentityViewModels;
 using Ixq.Soft.Services.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Ixq.Soft.Mvc.ModelBinding.Metadata;
 using Ixq.Soft.Mvc.UI;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Ixq.Soft.Repository;
+using Ixq.Soft.Web.Models.IdentityViewModels;
 
 namespace Ixq.Soft.Web.Areas.Admin.Controllers
 {
@@ -20,32 +20,27 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
             _userSvc = userSvc;
         }
 
-        public IActionResult Index(ApplicationUserModel model)
+        public IActionResult Index()
         {
-
-            IListPages listPagesModel = new ListPages();
-            listPagesModel.SortDirection = "asc";
-            listPagesModel.SortField = "UserName";
-
+            var listPagesModel = MetadataProvider.GetListPageModel(typeof(ApplicationUserModel));
             return View(listPagesModel);
         }
 
         [HttpPost]
-        public IActionResult ApplicationUserList(DataRequestModel requestModel)
+        public IActionResult List(DataRequestModel requestModel)
         {
-            var pagingList = _userSvc.GetEntityPagingList(requestModel);
+            var pagingList = _userSvc.GetPagingList(requestModel);
 
-            var responseModel = new DataResponseModel(pagingList)
+            var responseModel = pagingList.ToDataResponse();
+
+            responseModel.Rows = pagingList.Select(user => new ApplicationUserModel
             {
-                Rows = pagingList.Select(user => new ApplicationUserModel
-                {
-                    Id = user.Id,
-                    UserName = user.UserName,
-                    Email = user.Email,
-                    PhoneNumber = user.PhoneNumber,
-                    LockoutEnabled = user.LockoutEnabled
-                })
-            };
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                LockoutEnabled = user.LockoutEnabled
+            });
 
             return Json(responseModel);
         }
@@ -57,6 +52,11 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
 
         public IActionResult Edit(long id)
         {
+            var repos = Ixq.Soft.Core.Infrastructure.DependencyResolver.Current
+                .GetRequiredService<IRepositoryInt64<ApplicationUser>>();
+
+            var u = repos.GetById(id);
+
             var user = _userSvc.GetEntityById(id);
             if (user == null)
                 return RedirectToAction("index");

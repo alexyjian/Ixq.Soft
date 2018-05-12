@@ -1,0 +1,82 @@
+﻿@model IListPageModel
+@{
+    var modelTypeName = Model.ModelMetadata.ModelType.Name;
+}
+<div class="jqGrid_wrapper">
+    <table id="@(modelTypeName)Grid"></table>
+    <div id="@(modelTypeName)Pager"></div>
+</div>
+
+@Html.RegisterScript(@<script src="~/lib/jqGrid/js/jquery.jqGrid.js"></script>,
+    @<script src="~/lib/jqGrid/js/i18n/grid.locale-cn.js"></script>)
+
+@Html.RegisterScript(
+@<script>
+    $.jgrid.defaults.styleUI = 'Bootstrap';
+    $('#@(modelTypeName)Grid').jqGrid({
+        mtype: 'post',
+        url: '@Url.Action(Model.ListAction)',
+        datatype: 'json',
+        height: 'auto',
+        autowidth: true,
+        shrinkToFit: true,
+        altRows: true,
+        prmNames: {
+            page: 'pageIndex',
+            rows: 'pageSize',
+            sort: 'sortField',
+            order: 'sortDirection',
+            search: '_search'
+        },
+        viewrecords: true,
+        page: @Model.PageIndex,
+        rowNum: @Model.PageSize,
+        rowList: @Model.PageSizeList.ToString(),
+        sortname: '@Model.SortField',
+        sortorder: '@Model.SortDirectionName',
+        rownumbers: false,
+        multiboxonly: false,
+        multiselect: false,
+        pager: '#@(modelTypeName)Pager',
+        loadError: function(xht) {
+            jQuery(document.body).css('font-size', '100%');
+            jQuery(document.body).html(xht.responseText);
+        },
+        colNames: ['Id', 'UserName', 'PhoneNumber', 'Email', 'LockoutEnabled', '操作'],
+        colModel: [
+            { name: 'id', index: 'Id', width: 150, align: 'center', sortable: false, hidden: true, key: true },
+            { name: 'userName', index: 'UserName', width: 150, align: 'center', sortable: true },
+            { name: 'phoneNumber', index: 'PhoneNumber', width: 150, align: 'center', sortable: true },
+            { name: 'email', index: 'Email', width: 150, align: 'center', sortable: true },
+            {
+                name: 'lockoutEnabled',
+                index: 'LockoutEnabled',
+                width: 150,
+                align: 'center',
+                sortable: true,
+                formatter: ixq.jqGrid.format.yesNoFormat
+            },
+            {
+                name: 'options',
+                align: 'center',
+                width: 150,
+                sortable: false,
+                formatter: ixq.jqGrid.format.optionsFormat
+            }
+        ]
+    });
+
+    $(window).bind('resize',
+        function() {
+            setTimeout(resetGridWidth, 500);
+        });
+
+    function resetGridWidth() {
+        var width = $('.jqGrid_wrapper').width();
+        $('#@(modelTypeName)Grid').setGridWidth(width);
+    }
+
+    // 页面加载完毕后短暂的出现一个垂直滚动条，导致 grid 的 宽度不正确，所以延时100毫秒，重新设置grid的宽度
+    setTimeout(resetGridWidth, 100);
+
+</script>)

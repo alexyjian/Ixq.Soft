@@ -5,8 +5,16 @@
     <UserSecretsId>aspnet-Ixq.Soft.Web-DB2C9956-25FB-4A27-9616-319FE903492A</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <Content Remove="Logs\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Logs\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="2.6.375" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" PrivateAssets="All" />

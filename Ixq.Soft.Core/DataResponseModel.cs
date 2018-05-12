@@ -14,14 +14,15 @@ namespace Ixq.Soft.Core
         public DataResponseModel() { }
 
         /// <summary>
-        /// 使用 <see cref="IPagingList"/> 实例化一个新的 <see cref="DataResponseModel"/> 实例，但是并未将数据源绑定到 <see cref="Rows"/> 属性上。
+        /// 使用 <see cref="IPagingList"/> 实例化一个新的 <see cref="DataResponseModel"/> 实例。
         /// </summary>
         /// <param name="pagingList"></param>
         public DataResponseModel(IPagingList pagingList)
         {
             PageIndex = pagingList.PageIndex;
             PageTotal = pagingList.TotalPages;
-            Records = pagingList.TotalPages;
+            Records = pagingList.TotalRecords;
+            Rows = pagingList;
         }
 
         /// <summary>

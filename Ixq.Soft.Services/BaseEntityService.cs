@@ -18,17 +18,16 @@ namespace Ixq.Soft.Services
 
         public BaseEntityService()
         {
-            var dbContext = DependencyResolver.Current.RequestServices
-                .GetService<IDbContext>();
+            var dbContext = DependencyResolver.Current.GetService<IDbContext>();
 
             _entityRepository = new EfCoreRepository<TEntity, TKey>(dbContext);
         }
 
         protected IRepository<TEntity, TKey> EntityRepository => _entityRepository;
 
-        public virtual TEntity GetEntityById(TKey id)
+        public virtual TEntity GetEntityById(params object[] keyValues)
         {
-            return EntityRepository.GetById(id);
+            return EntityRepository.GetById(keyValues);
         }
 
         public virtual void AddEntity(TEntity entity)
@@ -46,15 +45,13 @@ namespace Ixq.Soft.Services
             EntityRepository.Remove(entity);
         }
 
-        public virtual PagingList<TEntity> GetEntityPagingList(DataRequestModel requestModel)
+        public virtual PagingList<TEntity> GetPagingList(DataRequestModel requestModel)
         {
             var query = EntityRepository.TableNoTracking;
 
             if (!string.IsNullOrEmpty(requestModel.SortField))
             {
-                query = requestModel.ListSortDirection == System.ComponentModel.ListSortDirection.Ascending
-                    ? query.OrderBy(requestModel.SortField)
-                    : query.OrderByDescending(requestModel.SortField);
+                query = query.OrderByDirection(requestModel.SortField, requestModel.ListSortDirection);
             }
 
             return query.ToPagingList(requestModel.PageIndex, requestModel.PageSize);

@@ -8,10 +8,13 @@ using Ixq.Soft.Mvc.ModelBinding.Metadata;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
+using IXQMemoryCache = Ixq.Soft.Core.Caching.MemoryCache;
+using MSMemoryCache = Microsoft.Extensions.Caching.Memory.MemoryCache;
 
 namespace Ixq.Soft.Mvc.Startup
 {
@@ -21,18 +24,14 @@ namespace Ixq.Soft.Mvc.Startup
         {
             services.ConfigureInfrastructureServices(configuration);
 
-            services.AddMvcService();
-
-            var mvcBuilder = services.AddMvc();
+            var mvcBuilder = services.AddMvcService();
 
             mvcBuilder.AddMvcOptions(options =>
             {
                 options.ModelMetadataDetailsProviders.Add(new EntityDataAnnotationsMetadataProvider());
             });
 
-            var serviceProvider = services.BuildServiceProvider();
-
-            var typeFinder = serviceProvider.GetService<ITypeFinder>();
+            var typeFinder = new AppDomainTypeFinder();
 
             var configureServiceTypes = typeFinder.FindTypes<IConfigureServices>();
             var configureServiceInstances =
@@ -42,7 +41,7 @@ namespace Ixq.Soft.Mvc.Startup
                 configureService.ConfigureServices(services, configuration);
 
 
-            serviceProvider = services.BuildServiceProvider();
+            var serviceProvider = services.BuildServiceProvider();
             DependencyResolver.Current.SetServiceProvider(serviceProvider);
 
             return serviceProvider;
@@ -56,6 +55,14 @@ namespace Ixq.Soft.Mvc.Startup
         private static void ConfigureInfrastructureServices(this IServiceCollection services,
             IConfiguration configuration)
         {
+            services.AddOptions();
+
+            services.Configure<AppConfig>(config =>
+            {
+                configuration.GetSection("AppConfig").Bind(config);
+                config.DbContextConnectionString = configuration.GetConnectionString("DefaultConnection");
+            });
+            
             // http context accessor
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -73,11 +80,12 @@ namespace Ixq.Soft.Mvc.Startup
             {
                 services.AddSingleton<ISerializableService, BinarySerializableService>();
                 services.AddSingleton<IConnectionMultiplexerAccessor, ConnectionMultiplexerAccessor>();
-                services.AddScoped<ICache, RedisCache>();
+                services.AddSingleton<ICache, RedisCache>();
             }
             else
             {
-                services.AddScoped<ICache, MemoryCache>();
+                services.TryAddSingleton<IMemoryCache, MSMemoryCache>();
+                services.AddSingleton<ICache, IXQMemoryCache>();
             }
 
             // type finder
@@ -88,7 +96,7 @@ namespace Ixq.Soft.Mvc.Startup
         }
 
 
-        public static void AddMvcService(this IServiceCollection services)
+        public static IMvcBuilder AddMvcService(this IServiceCollection services)
         {
             services.TryAddSingleton<IModelMetadataProvider, EntityModelMetadataProvider>();
             services.TryAdd(ServiceDescriptor.Transient<ICompositeMetadataDetailsProvider>(s =>
@@ -96,6 +104,8 @@ namespace Ixq.Soft.Mvc.Startup
                 var options = s.GetRequiredService<IOptions<MvcOptions>>().Value;
                 return new DefaultCompositeMetadataDetailsProvider(options.ModelMetadataDetailsProviders);
             }));
+
+            return services.AddMvc();
         }
     }
 }
