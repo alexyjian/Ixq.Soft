@@ -4,6 +4,7 @@ using Ixq.Soft.Mvc.Controllers;
 using Ixq.Soft.Services.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using Ixq.Soft.Core.Repository;
 using Ixq.Soft.Mvc.ModelBinding.Metadata;
 using Ixq.Soft.Mvc.UI;
 using Ixq.Soft.Repository;
@@ -52,8 +53,8 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
 
         public IActionResult Edit(long id)
         {
-            var repos = Ixq.Soft.Core.Infrastructure.DependencyResolver.Current
-                .GetRequiredService<IRepositoryInt64<ApplicationUser>>();
+            var repos = Ixq.Soft.Core.Ioc.IocResolver.Current
+                .GetRequiredService<IRepository<ApplicationUser, long>>();
 
             var u = repos.GetById(id);
 

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Ixq.Soft.Core.Infrastructure
+namespace Ixq.Soft.Core.Ioc
 {
-    public class DependencyResolver
+    public class IocResolver
     {
         private IServiceProvider _service;
 
-        static DependencyResolver()
+        static IocResolver()
         {
-            Current = new DependencyResolver();
+            Current = new IocResolver();
         }
 
         public T GetRequiredService<T>()
@@ -41,7 +41,7 @@ namespace Ixq.Soft.Core.Infrastructure
 
         public IServiceProvider RequestServices => GetServiceProvider();
 
-        public static DependencyResolver Current { get; }
+        public static IocResolver Current { get; }
 
         private IServiceProvider GetServiceProvider()
         {

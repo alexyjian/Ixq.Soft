@@ -4,20 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Domain;
 
-namespace Ixq.Soft.Repository
+namespace Ixq.Soft.Core.Repository
 {
-    public interface IRepositoryGuid<TEntity> : IRepository<TEntity, Guid> where TEntity : class, IEntityBase<Guid>
-    {
-    }
-
-    public interface IRepositoryInt64<TEntity> : IRepository<TEntity, long> where TEntity : class, IEntityBase<long>
-    {
-    }
-
-    public interface IRepositoryInt32<TEntity> : IRepository<TEntity, int> where TEntity : class, IEntityBase<int>
-    {
-    }
-
     public interface IRepository<TEntity, in TKey>
         where TEntity : class, IEntityBase<TKey>
     {

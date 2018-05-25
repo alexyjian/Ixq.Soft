@@ -5,6 +5,8 @@ using System.Text;
 using Ixq.Soft.Core;
 using Ixq.Soft.Core.Domain;
 using Ixq.Soft.Core.Infrastructure;
+using Ixq.Soft.Core.Ioc;
+using Ixq.Soft.Core.Repository;
 using Ixq.Soft.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +20,7 @@ namespace Ixq.Soft.Services
 
         public BaseEntityService()
         {
-            var dbContext = DependencyResolver.Current.GetService<IDbContext>();
+            var dbContext = IocResolver.Current.GetService<IDbContext>();
 
             _entityRepository = new EfCoreRepository<TEntity, TKey>(dbContext);
         }
@@ -30,19 +32,19 @@ namespace Ixq.Soft.Services
             return EntityRepository.GetById(keyValues);
         }
 
-        public virtual void AddEntity(TEntity entity)
+        public virtual TEntity AddEntity(TEntity entity)
         {
-            EntityRepository.Add(entity);
+            return EntityRepository.Add(entity);
         }
 
-        public virtual void UpdateEntity(TEntity entity)
+        public virtual TEntity UpdateEntity(TEntity entity)
         {
-            EntityRepository.Update(entity);
+            return EntityRepository.Update(entity);
         }
 
-        public virtual void RemoveEntity(TEntity entity)
+        public virtual TEntity RemoveEntity(TEntity entity)
         {
-            EntityRepository.Remove(entity);
+            return EntityRepository.Remove(entity);
         }
 
         public virtual PagingList<TEntity> GetPagingList(DataRequestModel requestModel)

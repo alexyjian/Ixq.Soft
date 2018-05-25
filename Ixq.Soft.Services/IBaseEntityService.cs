@@ -10,9 +10,9 @@ namespace Ixq.Soft.Services
         where TEntity : class, IEntityBase<TKey>
     {
         TEntity GetEntityById(params object[] keyValues);
-        void AddEntity(TEntity entity);
-        void UpdateEntity(TEntity entity);
-        void RemoveEntity(TEntity entity);
+        TEntity AddEntity(TEntity entity);
+        TEntity UpdateEntity(TEntity entity);
+        TEntity RemoveEntity(TEntity entity);
         PagingList<TEntity> GetPagingList(DataRequestModel requestModel);
     }
 }

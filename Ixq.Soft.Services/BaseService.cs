@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using Ixq.Soft.Core.Infrastructure;
+using Ixq.Soft.Core.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -11,12 +12,12 @@ namespace Ixq.Soft.Services
 
         protected BaseService()
         {
-            _userAccessor = DependencyResolver.Current.GetService<UserAccessor>();
-            var loggerFactory = DependencyResolver.Current.GetService<ILoggerFactory>();
+            _userAccessor = IocResolver.Current.GetService<UserAccessor>();
+            var loggerFactory = IocResolver.Current.GetService<ILoggerFactory>();
             Logger = loggerFactory.CreateLogger(GetType());
         }
 
-        protected ILogger Logger { get; }
+        public ILogger Logger { get; }
 
         public ClaimsPrincipal User => _userAccessor.User;
     }

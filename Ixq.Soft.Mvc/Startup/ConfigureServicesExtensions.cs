@@ -3,6 +3,7 @@ using System.Linq;
 using Ixq.Soft.Core.Caching;
 using Ixq.Soft.Core.Configuration;
 using Ixq.Soft.Core.Infrastructure;
+using Ixq.Soft.Core.Ioc;
 using Ixq.Soft.Mvc.DataAnnotations.Internal;
 using Ixq.Soft.Mvc.ModelBinding.Metadata;
 using Microsoft.AspNetCore.Http;
@@ -42,7 +43,7 @@ namespace Ixq.Soft.Mvc.Startup
 
 
             var serviceProvider = services.BuildServiceProvider();
-            DependencyResolver.Current.SetServiceProvider(serviceProvider);
+            IocResolver.Current.SetServiceProvider(serviceProvider);
 
             return serviceProvider;
         }
