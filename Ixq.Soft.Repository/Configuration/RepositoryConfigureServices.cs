@@ -14,7 +14,6 @@ namespace Ixq.Soft.Repository.Configuration
         {
             services.AddScoped<IRepositoryInt64<ApplicationUser>, EfCoreRepositoryInt64<ApplicationUser>>();
             services.AddScoped<IRepositoryInt64<ApplicationRole>, EfCoreRepositoryInt64<ApplicationRole>>();
-            services.AddScoped<IRepositoryInt64<ApplicationRole>, EfCoreRepositoryInt64<ApplicationRole>>();
         }
 
         public int Order => 10;
