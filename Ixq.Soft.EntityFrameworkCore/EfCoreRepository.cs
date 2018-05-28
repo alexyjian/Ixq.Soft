@@ -14,6 +14,7 @@ namespace Ixq.Soft.EntityFrameworkCore
         {
         }
     }
+
     public class EfCoreRepository<TEntity, TKey> : IRepository<TEntity, TKey>
         where TEntity : class, IEntityBase<TKey>
     {

@@ -31,6 +31,11 @@ namespace Ixq.Soft.EntityFrameworkCore
         }
 
         public bool IsSoftDeleteFilterEnabled => _appConfig.IsSoftDeleteFilterEnabled;
+        public void RollbackTransaction()
+        {
+            Database.RollbackTransaction();
+        }
+
         public UserAccessor UserProvider { get; }
 
         public int ExecuteSqlCommand(string sql, params object[] parameters)

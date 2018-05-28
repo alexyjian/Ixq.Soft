@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Infrastructure;
-using Microsoft.EntityFrameworkCore;
 
-namespace Ixq.Soft.EntityFrameworkCore
+namespace Ixq.Soft.Core.Repository
 {
-    public interface IDbContext : IDisposable
+    public interface IUnitOfWork
     {
-        bool IsSoftDeleteFilterEnabled { get; }
         UserAccessor UserProvider { get; }
+
+        bool IsSoftDeleteFilterEnabled { get; }
 
         /// <summary>
         ///     提交当前单元操作的更改。
@@ -24,10 +26,6 @@ namespace Ixq.Soft.EntityFrameworkCore
         /// <returns>操作影响的行数。</returns>
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));
 
-        DbSet<TEntity> Set<TEntity>() where TEntity : class;
-
-        int ExecuteSqlCommand(string sql, params object[] parameters);
-
-        Task<int> ExecuteSqlCommandAsync(string sql, params object[] parameters);
+        void RollbackTransaction();
     }
 }

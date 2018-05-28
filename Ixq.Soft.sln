@@ -1,11 +1,11 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ixq.Soft.Core", "Ixq.Soft.Core\Ixq.Soft.Core.csproj", "{23C7062D-1D84-4CE3-B579-B2B63EA61AEB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ixq.Soft.EntityFrameworkCore", "Ixq.Soft.Repository\Ixq.Soft.EntityFrameworkCore.csproj", "{9B971CB4-2E5B-42DE-B44B-00A94167C9DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ixq.Soft.EntityFrameworkCore", "Ixq.Soft.EntityFrameworkCore\Ixq.Soft.EntityFrameworkCore.csproj", "{9B971CB4-2E5B-42DE-B44B-00A94167C9DB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ixq.Soft.Services", "Ixq.Soft.Services\Ixq.Soft.Services.csproj", "{DB4F0AB0-11E7-4525-BA4D-46355F5C4728}"
 EndProject
