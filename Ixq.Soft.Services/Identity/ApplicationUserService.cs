@@ -6,7 +6,6 @@ using Ixq.Soft.Core;
 using Ixq.Soft.Core.Extensions;
 using Ixq.Soft.Core.Domain.Identity;
 using Ixq.Soft.Core.Infrastructure;
-using Ixq.Soft.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 

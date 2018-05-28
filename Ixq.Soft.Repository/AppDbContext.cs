@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Ixq.Soft.Repository
+namespace Ixq.Soft.EntityFrameworkCore
 {
     public class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, long>, IDbContext
     {

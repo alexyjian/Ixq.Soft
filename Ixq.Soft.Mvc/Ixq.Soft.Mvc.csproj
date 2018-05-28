@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ixq.Soft.Core\Ixq.Soft.Core.csproj" />
-    <ProjectReference Include="..\Ixq.Soft.Repository\Ixq.Soft.Repository.csproj" />
+    <ProjectReference Include="..\Ixq.Soft.Repository\Ixq.Soft.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
 </Project>

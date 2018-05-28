@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
-namespace Ixq.Soft.Repository
+namespace Ixq.Soft.EntityFrameworkCore
 {
     public interface IDbContext : IDisposable
     {

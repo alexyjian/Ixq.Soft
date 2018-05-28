@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ixq.Soft.Web.Services;
-using Ixq.Soft.Repository;
 using Ixq.Soft.Services;
 using Ixq.Soft.Services.Infrastructure;
 

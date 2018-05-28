@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using Ixq.Soft.Core;
@@ -7,25 +8,28 @@ using Ixq.Soft.Core.Domain;
 using Ixq.Soft.Core.Infrastructure;
 using Ixq.Soft.Core.Ioc;
 using Ixq.Soft.Core.Repository;
-using Ixq.Soft.Repository;
+using Ixq.Soft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Ixq.Soft.Services
 {
-    public class BaseEntityService<TEntity, TKey> : BaseService, IBaseEntityService<TEntity, TKey>
+    public class BaseEntityService<TEntity> : BaseEntityService<TEntity, int>
+        where TEntity : class, IEntityBase<int>
+    {
+
+    }
+    public class BaseEntityService<TEntity,TKey> : BaseService, IBaseEntityService<TEntity, TKey>
         where TEntity : class, IEntityBase<TKey>
     {
-        private readonly IRepository<TEntity, TKey> _entityRepository;
-
         public BaseEntityService()
         {
             var dbContext = IocResolver.Current.GetService<IDbContext>();
 
-            _entityRepository = new EfCoreRepository<TEntity, TKey>(dbContext);
+            EntityRepository = new EfCoreRepository<TEntity, TKey>(dbContext);
         }
 
-        protected IRepository<TEntity, TKey> EntityRepository => _entityRepository;
+        protected IRepository<TEntity, TKey> EntityRepository { get; }
 
         public virtual TEntity GetEntityById(params object[] keyValues)
         {
@@ -51,10 +55,9 @@ namespace Ixq.Soft.Services
         {
             var query = EntityRepository.TableNoTracking;
 
-            if (!string.IsNullOrEmpty(requestModel.SortField))
-            {
-                query = query.OrderByDirection(requestModel.SortField, requestModel.ListSortDirection);
-            }
+            query = !string.IsNullOrEmpty(requestModel.SortField)
+                ? query.OrderByDirection(requestModel.SortField, requestModel.ListSortDirection)
+                : query.OrderByDescending("Id");
 
             return query.ToPagingList(requestModel.PageIndex, requestModel.PageSize);
         }

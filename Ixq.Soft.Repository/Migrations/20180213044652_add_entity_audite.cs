@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Ixq.Soft.Repository.Migrations
+namespace Ixq.Soft.EntityFrameworkCore.Migrations
 {
     public partial class add_entity_audite : Migration
     {

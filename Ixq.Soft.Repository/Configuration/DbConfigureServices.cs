@@ -1,11 +1,10 @@
 ﻿using Ixq.Soft.Core.Configuration;
-using Ixq.Soft.Core.Infrastructure;
 using Ixq.Soft.Core.Ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Ixq.Soft.Repository.Configuration
+namespace Ixq.Soft.EntityFrameworkCore.Configuration
 {
     public class DbConfigureServices : IConfigureServices
     {

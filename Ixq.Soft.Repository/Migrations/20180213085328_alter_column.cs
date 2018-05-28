@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
-namespace Ixq.Soft.Repository.Migrations
+namespace Ixq.Soft.EntityFrameworkCore.Migrations
 {
     public partial class alter_column : Migration
     {

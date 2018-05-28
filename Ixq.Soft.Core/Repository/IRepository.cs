@@ -6,7 +6,12 @@ using Ixq.Soft.Core.Domain;
 
 namespace Ixq.Soft.Core.Repository
 {
-    public interface IRepository<TEntity, in TKey>
+    public interface IRepository<TEntity> : IRepository<TEntity, int>
+        where TEntity : class, IEntityBase<int>
+    {
+    }
+
+    public interface IRepository<TEntity, TKey>
         where TEntity : class, IEntityBase<TKey>
     {
         IQueryable<TEntity> Table { get; }

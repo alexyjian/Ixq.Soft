@@ -1,6 +1,6 @@
 ﻿using Ixq.Soft.Core.Configuration;
 using Ixq.Soft.Core.Domain.Identity;
-using Ixq.Soft.Repository;
+using Ixq.Soft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

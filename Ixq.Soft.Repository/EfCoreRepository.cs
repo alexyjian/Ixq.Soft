@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Domain;
 using Ixq.Soft.Core.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace Ixq.Soft.Repository
+namespace Ixq.Soft.EntityFrameworkCore
 {
+    public class EfCoreRepository<TEntity> : EfCoreRepository<TEntity, int>
+        where TEntity : class, IEntityBase<int>
+    {
+        public EfCoreRepository(IDbContext dbContext) : base(dbContext)
+        {
+        }
+    }
     public class EfCoreRepository<TEntity, TKey> : IRepository<TEntity, TKey>
         where TEntity : class, IEntityBase<TKey>
     {

@@ -4,7 +4,7 @@ using Ixq.Soft.Core;
 using Ixq.Soft.Core.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace Ixq.Soft.Repository
+namespace Ixq.Soft.EntityFrameworkCore
 {
     public static class QueryableExtensions
     {
