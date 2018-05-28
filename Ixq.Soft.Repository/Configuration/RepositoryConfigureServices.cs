@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Ixq.Soft.Core.Configuration;
 using Ixq.Soft.Core.Domain.Identity;
+using Ixq.Soft.Core.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Ixq.Soft.Core.Thread
 {
-    internal static class TaskHelper
+    public static class TaskHelper
     {
         private static readonly TaskFactory TaskFactory = new TaskFactory(CancellationToken.None,
             TaskCreationOptions.None, TaskContinuationOptions.None, TaskScheduler.Default);
