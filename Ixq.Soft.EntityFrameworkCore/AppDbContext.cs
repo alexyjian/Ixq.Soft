@@ -48,6 +48,16 @@ namespace Ixq.Soft.EntityFrameworkCore
             return await Database.ExecuteSqlCommandAsync(sql, parameters);
         }
 
+        public IQueryable<T> SqlQuery<T>(string sql) where T : class
+        {
+            return Query<T>().FromSql(sql);
+        }
+
+        public IQueryable<T> SqlQuery<T>(string sql, params object[] parameters) where T : class
+        {
+            return Query<T>().FromSql(sql, parameters);
+        }
+
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {

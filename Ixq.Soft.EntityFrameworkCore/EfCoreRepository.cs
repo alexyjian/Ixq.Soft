@@ -67,6 +67,11 @@ namespace Ixq.Soft.EntityFrameworkCore
             return _dbContext.SaveChanges();
         }
 
+        public IQueryable<TEntity> SqlQuery(string sql)
+        {
+            return _entities.FromSql(sql);
+        }
+
         public IQueryable<TEntity> SqlQuery(string sql, params object[] parameters)
         {
             return _entities.FromSql(sql, parameters);

@@ -25,6 +25,7 @@ namespace Ixq.Soft.Core.Repository
         void RemoveRange(IEnumerable<TEntity> entities);
         int Save();
         Task<int> SaveAsync();
+        IQueryable<TEntity> SqlQuery(string sql);
         IQueryable<TEntity> SqlQuery(string sql, params object[] parameters);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Infrastructure;
@@ -14,5 +15,8 @@ namespace Ixq.Soft.EntityFrameworkCore
         int ExecuteSqlCommand(string sql, params object[] parameters);
 
         Task<int> ExecuteSqlCommandAsync(string sql, params object[] parameters);
+
+        IQueryable<T> SqlQuery<T>(string sql) where T : class;
+        IQueryable<T> SqlQuery<T>(string sql, params object[] parameters) where T : class;
     }
 }
