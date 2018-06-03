@@ -1,5 +1,6 @@
 ﻿using Ixq.Soft.Core.Configuration;
 using Ixq.Soft.Core.Ioc;
+using Ixq.Soft.Core.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,10 @@ namespace Ixq.Soft.EntityFrameworkCore.Configuration
 
             services.Add(ServiceDescriptor.Scoped<IDbContext>(s =>
                 IocResolver.Current.GetService<AppDbContext>()));
+
+            services.Add(ServiceDescriptor.Scoped<IUnitOfWork>(s =>
+                IocResolver.Current.GetService<AppDbContext>()));
+
         }
 
         public int Order => 1;

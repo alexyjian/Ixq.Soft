@@ -48,12 +48,22 @@ namespace Ixq.Soft.Core.Ioc
             Guard.ArgumentNotNull(_service, "service");
 
             var httpAccessor = _service.GetService<IHttpContextAccessor>();
-            return httpAccessor.HttpContext.RequestServices ?? _service;
+            return httpAccessor?.HttpContext?.RequestServices ?? _service;
         }
 
         internal void SetServiceProvider(IServiceProvider serviceProvider)
         {
             _service = serviceProvider;
+        }
+
+        internal void SetServiceProvider(Func<IServiceProvider> func)
+        {
+            if (func == null)
+            {
+                throw new ArgumentNullException(nameof(func));
+            }
+
+            _service = func();
         }
     }
 }
