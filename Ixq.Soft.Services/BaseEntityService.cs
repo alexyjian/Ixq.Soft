@@ -51,15 +51,15 @@ namespace Ixq.Soft.Services
             return EntityRepository.Remove(entity);
         }
 
-        public virtual PagingList<TEntity> GetPagingList(DataRequestModel requestModel)
+        public virtual PagingList<TEntity> GetPagingList(DataRequest request)
         {
             var query = EntityRepository.TableNoTracking;
 
-            query = !string.IsNullOrEmpty(requestModel.SortField)
-                ? query.OrderByDirection(requestModel.SortField, requestModel.ListSortDirection)
+            query = !string.IsNullOrEmpty(request.SortField)
+                ? query.OrderByDirection(request.SortField, request.ListSortDirection)
                 : query.OrderByDescending("Id");
 
-            return query.ToPagingList(requestModel.PageIndex, requestModel.PageSize);
+            return query.ToPagingList(request.PageIndex, request.PageSize);
         }
     }
 }

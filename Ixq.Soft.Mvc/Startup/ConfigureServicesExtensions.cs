@@ -63,7 +63,7 @@ namespace Ixq.Soft.Mvc.Startup
                 configuration.GetSection("AppConfig").Bind(config);
                 config.DbContextConnectionString = configuration.GetConnectionString("DefaultConnection");
             });
-            
+
             // http context accessor
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -106,7 +106,10 @@ namespace Ixq.Soft.Mvc.Startup
                 return new DefaultCompositeMetadataDetailsProvider(options.ModelMetadataDetailsProviders);
             }));
 
-            return services.AddMvc();
+            return services.AddMvc(optons =>
+            {
+                optons.ModelBinderProviders.Insert(0, new DataRequestModelBinderProvider());
+            });
         }
     }
 }

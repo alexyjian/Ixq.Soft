@@ -14,7 +14,6 @@ namespace Ixq.Soft.Core.Thread
         {
             var cultureUi = CultureInfo.CurrentUICulture;
             var culture = CultureInfo.CurrentCulture;
-            func();
             return TaskFactory.StartNew(() =>
             {
                 System.Threading.Thread.CurrentThread.CurrentCulture = culture;
