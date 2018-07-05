@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Ixq.Soft.Core.Caching;
 using Ixq.Soft.Core.Configuration;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MemoryCache = Ixq.Soft.Core.Caching.MemoryCache;
 
@@ -13,16 +14,16 @@ namespace Ixq.Soft.Core.Tests.Caching
     [TestClass]
     public class RedisCacheTests
     {
-        private readonly AppConfig _appConfig;
+        private readonly IOptions<AppConfig> _appConfig;
         private readonly ISerializableService _serializableService;
         private readonly IConnectionMultiplexerAccessor _cma;
         public RedisCacheTests()
         {
-            _appConfig = new AppConfig
+            _appConfig = Options.Create(new AppConfig
             {
                 RedisCacheKeyPrefix = "Ixq.Soft::",
                 RedisCacheConnectionString = "localhost:6379"
-            };
+            });
 
             _serializableService = new BinarySerializableService();
             _cma = new ConnectionMultiplexerAccessor(_appConfig);

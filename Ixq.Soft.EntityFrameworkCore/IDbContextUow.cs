@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ixq.Soft.EntityFrameworkCore
 {
-    public interface IDbContext : IUnitOfWork, IDisposable
+    public interface IDbContextUow : IUnitOfWork, IDisposable
     {
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 

@@ -58,6 +58,7 @@ namespace Ixq.Soft.Mvc.Startup
         {
             services.AddOptions();
 
+            // app config
             services.Configure<AppConfig>(config =>
             {
                 configuration.GetSection("AppConfig").Bind(config);
@@ -70,14 +71,14 @@ namespace Ixq.Soft.Mvc.Startup
             // user accessor
             services.AddSingleton<UserAccessor>();
 
-            // app config
             var appConfig = new AppConfig();
             configuration.Bind("AppConfig", appConfig);
             appConfig.DbContextConnectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddSingleton(typeof(AppConfig), appConfig);
 
             // caching
-            if (appConfig.RedisCacheEnabled)
+            var redisCacheEnabled = configuration.GetValue<bool>("AppConfig:RedisCacheEnabled");
+            if (redisCacheEnabled)
             {
                 services.AddSingleton<ISerializableService, BinarySerializableService>();
                 services.AddSingleton<IConnectionMultiplexerAccessor, ConnectionMultiplexerAccessor>();

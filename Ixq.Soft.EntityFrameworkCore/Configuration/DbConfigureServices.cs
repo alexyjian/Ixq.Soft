@@ -14,7 +14,7 @@ namespace Ixq.Soft.EntityFrameworkCore.Configuration
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            services.Add(ServiceDescriptor.Scoped<IDbContext>(s =>
+            services.Add(ServiceDescriptor.Scoped<IDbContextUow>(s =>
                 IocResolver.Current.GetService<AppDbContext>()));
 
             services.Add(ServiceDescriptor.Scoped<IUnitOfWork>(s =>

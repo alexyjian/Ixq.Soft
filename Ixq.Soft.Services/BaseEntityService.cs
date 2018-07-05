@@ -24,7 +24,7 @@ namespace Ixq.Soft.Services
     {
         public BaseEntityService()
         {
-            var dbContext = IocResolver.Current.GetService<IDbContext>();
+            var dbContext = IocResolver.Current.GetService<IDbContextUow>();
 
             EntityRepository = new EfCoreRepository<TEntity, TKey>(dbContext);
         }

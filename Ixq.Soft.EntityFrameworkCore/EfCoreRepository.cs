@@ -10,7 +10,7 @@ namespace Ixq.Soft.EntityFrameworkCore
     public class EfCoreRepository<TEntity> : EfCoreRepository<TEntity, int>
         where TEntity : class, IEntityBase<int>
     {
-        public EfCoreRepository(IDbContext dbContext) : base(dbContext)
+        public EfCoreRepository(IDbContextUow dbContext) : base(dbContext)
         {
         }
     }
@@ -18,10 +18,10 @@ namespace Ixq.Soft.EntityFrameworkCore
     public class EfCoreRepository<TEntity, TKey> : IRepository<TEntity, TKey>
         where TEntity : class, IEntityBase<TKey>
     {
-        private readonly IDbContext _dbContext;
+        private readonly IDbContextUow _dbContext;
         private readonly DbSet<TEntity> _entities;
 
-        public EfCoreRepository(IDbContext dbContext)
+        public EfCoreRepository(IDbContextUow dbContext)
         {
             _dbContext = dbContext;
             _entities = _dbContext.Set<TEntity>();
