@@ -7,6 +7,9 @@ using System.Text.RegularExpressions;
 
 namespace Ixq.Soft.Core.Infrastructure
 {
+    /// <summary>
+    /// appDomain 类型查找器。
+    /// </summary>
     public class AppDomainTypeFinder : ITypeFinder
     {
         public string AssemblySkipLoadingPattern { get; set; } =

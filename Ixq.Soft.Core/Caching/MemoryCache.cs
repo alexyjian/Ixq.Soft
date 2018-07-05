@@ -11,6 +11,9 @@ using Microsoft.Extensions.Primitives;
 
 namespace Ixq.Soft.Core.Caching
 {
+    /// <summary>
+    ///     基于 <see cref="IMemoryCache"/> 实现的缓存。
+    /// </summary>
     public class MemoryCache : ICache
     {
         private readonly IMemoryCache _memoryCache;

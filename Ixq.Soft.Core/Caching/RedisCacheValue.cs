@@ -2,6 +2,9 @@
 
 namespace Ixq.Soft.Core.Caching
 {
+    /// <summary>
+    /// 包装了 <see cref="RedisCache"/> 的缓存值。
+    /// </summary>
     [Serializable]
     public class RedisCacheValue
     {

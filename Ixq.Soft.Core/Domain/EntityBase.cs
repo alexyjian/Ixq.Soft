@@ -2,6 +2,9 @@
 
 namespace Ixq.Soft.Core.Domain
 {
+    /// <summary>
+    /// 实体基类。
+    /// </summary>
     public class EntityBase : IEntityBase<int>, ICreationAudited, IUpdateAudited, ISoftDeleteAudited
     {
         public virtual int Id { get; set; }

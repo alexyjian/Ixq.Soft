@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace Ixq.Soft.Core.Caching
 {
     /// <summary>
-    ///     使用 Newtonsoft.Json 进行序列化。
+    ///     基于 Newtonsoft.Json 类库实现的序列化服务。
     /// </summary>
     public class SerializableService : ISerializableService
     {

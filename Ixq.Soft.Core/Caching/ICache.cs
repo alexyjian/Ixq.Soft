@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace Ixq.Soft.Core.Caching
 {
+    /// <summary>
+    ///     定义一个缓存接口。
+    /// </summary>
     public interface ICache : IDisposable
     {
         /// <summary>
