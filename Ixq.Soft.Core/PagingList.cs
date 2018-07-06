@@ -65,12 +65,12 @@ namespace Ixq.Soft.Core
         public bool HasNextPage => PageIndex < TotalPages;
 
         /// <summary>
-        ///     返回一个新的 <see cref="DataResponseModel"/> 对象实例。
+        ///     返回一个新的 <see cref="DataResponse"/> 对象实例。
         /// </summary>
         /// <returns></returns>
-        public DataResponseModel ToDataResponse()
+        public DataResponse ToDataResponse()
         {
-            return new DataResponseModel(this);
+            return new DataResponse(this);
         }
     }
 }

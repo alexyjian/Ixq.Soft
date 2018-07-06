@@ -6,10 +6,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Caching;
 using Ixq.Soft.Core.Configuration;
+using Ixq.Soft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Ixq.Soft.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ixq.Soft.Web.Controllers
 {

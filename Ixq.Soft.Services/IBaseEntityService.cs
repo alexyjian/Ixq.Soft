@@ -19,6 +19,6 @@ namespace Ixq.Soft.Services
         TEntity AddEntity(TEntity entity);
         TEntity UpdateEntity(TEntity entity);
         TEntity RemoveEntity(TEntity entity);
-        PagingList<TEntity> GetPagingList(DataRequestModel requestModel);
+        PagingList<TEntity> GetPagingList(DataRequest request);
     }
 }

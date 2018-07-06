@@ -6,18 +6,18 @@ namespace Ixq.Soft.Core
     /// <summary>
     ///     数据响应类。
     /// </summary>
-    public class DataResponseModel
+    public class DataResponse
     {
         /// <summary>
-        /// 实例化一个新的 <see cref="DataResponseModel"/> 实例。
+        /// 实例化一个新的 <see cref="DataResponse"/> 实例。
         /// </summary>
-        public DataResponseModel() { }
+        public DataResponse() { }
 
         /// <summary>
-        /// 使用 <see cref="IPagingList"/> 实例化一个新的 <see cref="DataResponseModel"/> 实例。
+        /// 使用 <see cref="IPagingList"/> 实例化一个新的 <see cref="DataResponse"/> 实例。
         /// </summary>
         /// <param name="pagingList"></param>
-        public DataResponseModel(IPagingList pagingList)
+        public DataResponse(IPagingList pagingList)
         {
             PageIndex = pagingList.PageIndex;
             PageTotal = pagingList.TotalPages;

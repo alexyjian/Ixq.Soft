@@ -27,9 +27,9 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult List(DataRequestModel requestModel)
+        public IActionResult List(DataRequest request)
         {
-            var pagingList = _userSvc.GetPagingList(requestModel);
+            var pagingList = _userSvc.GetPagingList(request);
 
             var responseModel = pagingList.ToDataResponse();
 

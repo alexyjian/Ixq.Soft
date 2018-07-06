@@ -5,13 +5,14 @@ namespace Ixq.Soft.Core
     /// <summary>
     ///     数据请求类。
     /// </summary>
-    public class DataRequestModel
+    public class DataRequest
     {
-        public DataRequestModel()
+        public DataRequest()
         {
             PageSize = 30;
             PageIndex = 1;
             SortDirection = "asc";
+            QueryParam = new DataQueryParameter();
         }
 
         /// <summary>
@@ -33,6 +34,14 @@ namespace Ixq.Soft.Core
         ///     获取或设置排序方向。
         /// </summary>
         public string SortDirection { get; set; }
+
+        /// <summary>
+        ///     获取或设置请求查询参数。
+        ///     <para>
+        ///         如果此类作用于 action 方法的参数，模型绑定器将自动从 ValueProvider 中前缀为 “search.” 的查询参数转换为字典项，并同时将字典的key去掉前缀部分。
+        ///     </para>
+        /// </summary>
+        public DataQueryParameter QueryParam { get; set; }
 
         /// <summary>
         ///     获取用 <see cref="System.ComponentModel.ListSortDirection"/> 表示的排序方向。

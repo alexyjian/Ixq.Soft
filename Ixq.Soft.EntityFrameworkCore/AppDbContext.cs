@@ -13,10 +13,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.Options;
 
 namespace Ixq.Soft.EntityFrameworkCore
 {
-    public class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, long>, IDbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, long>, IDbContextUow
     {
         private static readonly MethodInfo ConfigureGlobalQueryFilterMethodInfo =
             typeof(AppDbContext).GetMethod(nameof(ConfigureGlobalQueryFilter),
@@ -24,10 +25,10 @@ namespace Ixq.Soft.EntityFrameworkCore
 
         private readonly AppConfig _appConfig;
 
-        public AppDbContext(DbContextOptions options, UserAccessor userProvider, AppConfig appConfig) : base(options)
+        public AppDbContext(DbContextOptions options, UserAccessor userProvider, IOptions<AppConfig> appConfig) : base(options)
         {
             UserProvider = userProvider;
-            _appConfig = appConfig;
+            _appConfig = appConfig.Value;
         }
 
         public bool IsSoftDeleteFilterEnabled => _appConfig.IsSoftDeleteFilterEnabled;
@@ -46,6 +47,16 @@ namespace Ixq.Soft.EntityFrameworkCore
         public async Task<int> ExecuteSqlCommandAsync(string sql, params object[] parameters)
         {
             return await Database.ExecuteSqlCommandAsync(sql, parameters);
+        }
+
+        public IQueryable<T> SqlQuery<T>(string sql) where T : class
+        {
+            return Query<T>().FromSql(sql);
+        }
+
+        public IQueryable<T> SqlQuery<T>(string sql, params object[] parameters) where T : class
+        {
+            return Query<T>().FromSql(sql, parameters);
         }
 
 

@@ -1,18 +1,22 @@
 ﻿using System;
 using Ixq.Soft.Core.Configuration;
+using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 
 namespace Ixq.Soft.Core.Caching
 {
+    /// <summary>
+    /// 默认的 <see cref="IConnectionMultiplexerAccessor"/> 实现。
+    /// </summary>
     public class ConnectionMultiplexerAccessor : IConnectionMultiplexerAccessor
     {
         private readonly AppConfig _appConfig;
         private readonly Lazy<ConnectionMultiplexer> _lazyConnectionMultiplexer;
         private ConnectionMultiplexer _connectionMultiplexer;
 
-        public ConnectionMultiplexerAccessor(AppConfig appConfig)
+        public ConnectionMultiplexerAccessor(IOptions<AppConfig> appConfig)
         {
-            _appConfig = appConfig;
+            _appConfig = appConfig.Value;
             _lazyConnectionMultiplexer = new Lazy<ConnectionMultiplexer>(GetConnectionMultiplexer);
         }
 

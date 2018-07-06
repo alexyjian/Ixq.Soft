@@ -3,6 +3,9 @@ using System.Linq.Expressions;
 
 namespace Ixq.Soft.Core.Linq
 {
+    /// <summary>
+    /// lambda 表达式帮助类。
+    /// </summary>
     public class ExpressionHelper
     {
         public static LambdaExpression GetKeySelector<T>(string keyName)

@@ -58,26 +58,27 @@ namespace Ixq.Soft.Mvc.Startup
         {
             services.AddOptions();
 
+            // app config
             services.Configure<AppConfig>(config =>
             {
                 configuration.GetSection("AppConfig").Bind(config);
                 config.DbContextConnectionString = configuration.GetConnectionString("DefaultConnection");
             });
-            
+
             // http context accessor
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // user accessor
             services.AddSingleton<UserAccessor>();
 
-            // app config
             var appConfig = new AppConfig();
             configuration.Bind("AppConfig", appConfig);
             appConfig.DbContextConnectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddSingleton(typeof(AppConfig), appConfig);
 
             // caching
-            if (appConfig.RedisCacheEnabled)
+            var redisCacheEnabled = configuration.GetValue<bool>("AppConfig:RedisCacheEnabled");
+            if (redisCacheEnabled)
             {
                 services.AddSingleton<ISerializableService, BinarySerializableService>();
                 services.AddSingleton<IConnectionMultiplexerAccessor, ConnectionMultiplexerAccessor>();
@@ -106,7 +107,10 @@ namespace Ixq.Soft.Mvc.Startup
                 return new DefaultCompositeMetadataDetailsProvider(options.ModelMetadataDetailsProviders);
             }));
 
-            return services.AddMvc();
+            return services.AddMvc(optons =>
+            {
+                optons.ModelBinderProviders.Insert(0, new DataRequestModelBinderProvider());
+            });
         }
     }
 }

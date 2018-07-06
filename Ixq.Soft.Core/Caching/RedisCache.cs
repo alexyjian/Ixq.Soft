@@ -4,10 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Configuration;
 using Ixq.Soft.Core.Thread;
+using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 
 namespace Ixq.Soft.Core.Caching
 {
+    /// <summary>
+    /// 基于 <see cref="StackExchange.Redis"/> 实现的缓存。
+    /// </summary>
     public class RedisCache : ICache
     {
         private readonly AppConfig _appConfig;
@@ -15,10 +19,10 @@ namespace Ixq.Soft.Core.Caching
         private readonly IDatabase _database;
         private readonly ISerializableService _serializableService;
 
-        public RedisCache(AppConfig appConfig, ISerializableService serializableService,
+        public RedisCache(IOptions<AppConfig> appConfig, ISerializableService serializableService,
             IConnectionMultiplexerAccessor connectionMultiplexerAccessor)
         {
-            _appConfig = appConfig;
+            _appConfig = appConfig.Value;
             _serializableService = serializableService;
             _connectionMultiplexerAccessor = connectionMultiplexerAccessor;
 
