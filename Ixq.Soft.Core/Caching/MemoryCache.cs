@@ -180,7 +180,7 @@ namespace Ixq.Soft.Core.Caching
         protected string AddKey(string key)
         {
             AllKeys.TryAdd(key, true);
-            return key;
+            return key; 
         }
 
         protected string RemoveKey(string key)
