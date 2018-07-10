@@ -29,7 +29,7 @@ namespace Ixq.Soft.Web.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult List(DataRequest request)
         {
-            var pagingList = _userSvc.GetPagingList(request);
+            var pagingList = _userSvc.GetPagedList(request);
 
             var responseModel = pagingList.ToDataResponse();
 

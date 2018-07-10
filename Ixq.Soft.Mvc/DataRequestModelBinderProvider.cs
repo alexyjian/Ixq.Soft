@@ -20,6 +20,7 @@ namespace Ixq.Soft.Mvc
 
             if (typeof(DataRequest).IsAssignableFrom(modelType))
             {
+                //BUG：循环调用导致 StackOverflowException.
                 var modelBiner = context.CreateBinder(context.Metadata);
                 var appConfig = context.Services.GetRequiredService<IOptions<AppConfig>>();
                 return new DataRequestModelBinder(modelBiner, appConfig);

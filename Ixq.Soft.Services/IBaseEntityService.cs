@@ -28,6 +28,6 @@ namespace Ixq.Soft.Services
         TEntity AddEntity(TEntity entity);
         TEntity UpdateEntity(TEntity entity);
         TEntity RemoveEntity(TEntity entity);
-        PagedList<TEntity> GetPagingList(DataRequest request);
+        PagedList<TEntity> GetPagedList(DataRequest request);
     }
 }
