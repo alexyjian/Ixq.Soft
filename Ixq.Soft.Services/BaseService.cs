@@ -6,6 +6,9 @@ using Microsoft.Extensions.Logging;
 
 namespace Ixq.Soft.Services
 {
+    /// <summary>
+    /// 默认的 <see cref="IBaseService"/> 实现。
+    /// </summary>
     public abstract class BaseService : IBaseService
     {
         private readonly UserAccessor _userAccessor;

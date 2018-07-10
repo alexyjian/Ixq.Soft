@@ -8,16 +8,16 @@ namespace Ixq.Soft.Core
     ///     分页类。
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class PagingList<T> : List<T>, IPagingList<T>
+    public class PagedList<T> : List<T>, IPagedList<T>
     {
-        private PagingList(int pageIndex, int pageSize)
+        private PagedList(int pageIndex, int pageSize)
         {
             PageSize = pageSize;
             PageIndex = pageIndex;
 
         }
 
-        public PagingList(IQueryable<T> queryable, int pageIndex, int pageSize) : this(pageIndex, pageSize)
+        public PagedList(IQueryable<T> queryable, int pageIndex, int pageSize) : this(pageIndex, pageSize)
         {
             TotalRecords = queryable.Count();
             TotalPages = (int) Math.Ceiling(TotalRecords / (double) pageSize);
@@ -25,7 +25,7 @@ namespace Ixq.Soft.Core
             AddRange(queryable.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList());
         }
 
-        public PagingList(IEnumerable<T> queryable, int totalRecords, int pageIndex, int pageSize) : this(pageIndex,
+        public PagedList(IEnumerable<T> queryable, int totalRecords, int pageIndex, int pageSize) : this(pageIndex,
             pageSize)
         {
             TotalRecords = totalRecords;

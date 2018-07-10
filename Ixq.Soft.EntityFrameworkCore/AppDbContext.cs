@@ -17,6 +17,9 @@ using Microsoft.Extensions.Options;
 
 namespace Ixq.Soft.EntityFrameworkCore
 {
+    /// <summary>
+    /// 上下文。
+    /// </summary>
     public class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, long>, IDbContextUow
     {
         private static readonly MethodInfo ConfigureGlobalQueryFilterMethodInfo =

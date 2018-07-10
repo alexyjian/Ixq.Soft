@@ -14,10 +14,10 @@ namespace Ixq.Soft.Core
         public DataResponse() { }
 
         /// <summary>
-        /// 使用 <see cref="IPagingList"/> 实例化一个新的 <see cref="DataResponse"/> 实例。
+        /// 使用 <see cref="IPagedList"/> 实例化一个新的 <see cref="DataResponse"/> 实例。
         /// </summary>
         /// <param name="pagingList"></param>
-        public DataResponse(IPagingList pagingList)
+        public DataResponse(IPagedList pagingList)
         {
             PageIndex = pagingList.PageIndex;
             PageTotal = pagingList.TotalPages;

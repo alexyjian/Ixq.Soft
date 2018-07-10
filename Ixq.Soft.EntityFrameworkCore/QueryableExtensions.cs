@@ -1,7 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Ixq.Soft.Core;
+using Ixq.Soft.Core.Domain;
 using Ixq.Soft.Core.Linq;
+using Ixq.Soft.Core.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ixq.Soft.EntityFrameworkCore
@@ -55,19 +58,56 @@ namespace Ixq.Soft.EntityFrameworkCore
             return Queryable.OrderByDescending(queryable, keySelector);
         }
 
-        public static PagingList<T> ToPagingList<T>(this IQueryable<T> queryable, int pageIndex, int pageSize)
+        /// <summary>
+        ///     将指定的 <paramref name="queryable" /> 转换为 <see cref="PagedList{T}" />。
+        /// </summary>
+        /// <typeparam name="T">返回的数据类型。</typeparam>
+        /// <param name="queryable">源数据。</param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public static PagedList<T> ToPagedList<T>(this IQueryable<T> queryable, int pageIndex, int pageSize)
         {
-            return new PagingList<T>(queryable, pageIndex, pageSize);
+            return new PagedList<T>(queryable, pageIndex, pageSize);
         }
 
-        public static async Task<PagingList<T>> ToPagingListAsync<T>(this IQueryable<T> queryable, int pageIndex,
+        /// <summary>
+        ///     将指定的 <paramref name="queryable" /> 转换为 <see cref="PagedList{T}" />。
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="queryable"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public static async Task<PagedList<T>> ToPagedListAsync<T>(this IQueryable<T> queryable, int pageIndex,
             int pageSize)
         {
             var totalRecords = await queryable.CountAsync();
 
             var list = await queryable.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
 
-            return new PagingList<T>(list, totalRecords, pageIndex, pageSize);
+            return new PagedList<T>(list, totalRecords, pageIndex, pageSize);
+        }
+
+
+        /// <summary>
+        /// 获取上下文。
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="repository"></param>
+        /// <returns></returns>
+        public static DbContext GetDbContext<TEntity, TKey>(this IRepository<TEntity, TKey> repository)
+            where TEntity : class, IEntityBase<TKey>, new()
+        {
+            if (repository == null)
+            {
+                throw new ArgumentNullException(nameof(repository));
+            }
+
+            if (repository.UnitOfWork == null)
+                throw new ArgumentNullException(nameof(repository.UnitOfWork), "未初始化工作单元");
+            return (DbContext)repository.UnitOfWork;
         }
     }
 }

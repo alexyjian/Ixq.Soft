@@ -6,12 +6,21 @@ using Ixq.Soft.Core.Domain;
 
 namespace Ixq.Soft.Services
 {
+    /// <summary>
+    /// 具有实体 CRUD 操作的服务接口。
+    /// </summary>
+    /// <typeparam name="TEntity">实体类型。</typeparam>
     public interface IBaseEntityService<TEntity> : IBaseEntityService<TEntity, int>
         where TEntity : class, IEntityBase<int>
     {
 
     }
 
+    /// <summary>
+    /// 具有实体 CRUD 操作的服务接口。
+    /// </summary>
+    /// <typeparam name="TEntity">实体类型。</typeparam>
+    /// <typeparam name="TKey">实体主键类型。</typeparam>
     public interface IBaseEntityService<TEntity, TKey> : IBaseService
         where TEntity : class, IEntityBase<TKey>
     {
@@ -19,6 +28,6 @@ namespace Ixq.Soft.Services
         TEntity AddEntity(TEntity entity);
         TEntity UpdateEntity(TEntity entity);
         TEntity RemoveEntity(TEntity entity);
-        PagingList<TEntity> GetPagingList(DataRequest request);
+        PagedList<TEntity> GetPagingList(DataRequest request);
     }
 }

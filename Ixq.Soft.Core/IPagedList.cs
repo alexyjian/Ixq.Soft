@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Ixq.Soft.Core
 {
-    public interface IPagingList<T> : IPagingList, IList<T>
+    public interface IPagedList<T> : IPagedList, IList<T>
     {
     }
 
-    public interface IPagingList : IEnumerable
+    public interface IPagedList : IEnumerable
     {
         /// <summary>
         ///     获取页面大小。

@@ -9,10 +9,16 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Ixq.Soft.Services.Configuration
 {
+    /// <summary>
+    /// 应用服务配置。
+    /// </summary>
     public class ApplicationConfigureServices : IConfigureServices
     {
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
+            services.AddScoped(typeof(IBaseEntityService<,>), typeof(BaseEntityService<,>));
+            services.AddScoped(typeof(IBaseEntityService<>), typeof(BaseEntityService<>));
+
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped<IApplicationUserService, ApplicationUserService>();
         }

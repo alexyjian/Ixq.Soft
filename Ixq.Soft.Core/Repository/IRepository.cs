@@ -24,6 +24,11 @@ namespace Ixq.Soft.Core.Repository
         where TEntity : class, IEntityBase<TKey>
     {
         /// <summary>
+        ///     获取此仓储的工作单元。
+        /// </summary>
+        IUnitOfWork UnitOfWork { get; }
+
+        /// <summary>
         /// 获取实体集。
         /// </summary>
         IQueryable<TEntity> Table { get; }

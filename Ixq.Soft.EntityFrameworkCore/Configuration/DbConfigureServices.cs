@@ -7,6 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Ixq.Soft.EntityFrameworkCore.Configuration
 {
+    /// <summary>
+    ///  数据库配置。
+    /// </summary>
     public class DbConfigureServices : IConfigureServices
     {
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)

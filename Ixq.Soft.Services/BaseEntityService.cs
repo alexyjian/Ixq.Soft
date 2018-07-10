@@ -14,11 +14,21 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Ixq.Soft.Services
 {
+    /// <summary>
+    /// 默认的 <see cref="IBaseEntityService{TEntity}"/> 实现。
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
     public class BaseEntityService<TEntity> : BaseEntityService<TEntity, int>
         where TEntity : class, IEntityBase<int>
     {
 
     }
+
+    /// <summary>
+    /// 默认的 <see cref="IBaseEntityService{TEntity, TKey}"/> 实现。
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TKey"></typeparam>
     public class BaseEntityService<TEntity,TKey> : BaseService, IBaseEntityService<TEntity, TKey>
         where TEntity : class, IEntityBase<TKey>
     {
@@ -51,7 +61,7 @@ namespace Ixq.Soft.Services
             return EntityRepository.Remove(entity);
         }
 
-        public virtual PagingList<TEntity> GetPagingList(DataRequest request)
+        public virtual PagedList<TEntity> GetPagingList(DataRequest request)
         {
             var query = EntityRepository.TableNoTracking;
 
@@ -59,7 +69,7 @@ namespace Ixq.Soft.Services
                 ? query.OrderByDirection(request.SortField, request.ListSortDirection)
                 : query.OrderByDescending("Id");
 
-            return query.ToPagingList(request.PageIndex, request.PageSize);
+            return query.ToPagedList(request.PageIndex, request.PageSize);
         }
     }
 }
