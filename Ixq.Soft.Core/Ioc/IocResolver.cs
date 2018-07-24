@@ -52,6 +52,16 @@ namespace Ixq.Soft.Core.Ioc
         }
 
         /// <summary>
+        ///     从 <see cref="IServiceProvider" /> 获取 <paramref name="serviceType"/> 类型的服务。
+        /// </summary>
+        /// <param name="serviceType">指定要获取的服务对象类型的对象。</param>
+        /// <returns>类型 <paramref name="serviceType" /> 的服务对象。</returns>
+        public object GetService(Type serviceType)
+        {
+            return RequestServices.GetService(serviceType);
+        }
+
+        /// <summary>
         ///     从 <see cref="IServiceProvider" /> 获取 <typeparamref name="T" /> 类型的服务。
         /// </summary>
         /// <typeparam name="T">要获取的服务对象的类型。</typeparam>
