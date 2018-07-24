@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Ixq.Soft.Core.Application.Service;
 using Ixq.Soft.Core.Configuration;
 using Ixq.Soft.Services.Identity;
 using Ixq.Soft.Services.Infrastructure;
@@ -16,8 +17,8 @@ namespace Ixq.Soft.Services.Configuration
     {
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped(typeof(IBaseEntityService<,>), typeof(BaseEntityService<,>));
-            services.AddScoped(typeof(IBaseEntityService<>), typeof(BaseEntityService<>));
+            services.AddScoped(typeof(IEntityAppService<,>), typeof(EntityAppService<,>));
+            services.AddScoped(typeof(IEntityAppService<>), typeof(EntityAppService<>));
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped<IApplicationUserService, ApplicationUserService>();

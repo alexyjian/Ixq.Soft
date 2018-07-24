@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 namespace Ixq.Soft.Core.Linq
 {
     /// <summary>
-    /// lambda 表达式帮助类。
+    ///     lambda 表达式帮助类。
     /// </summary>
     public class ExpressionHelper
     {
@@ -22,6 +22,7 @@ namespace Ixq.Soft.Core.Linq
                 type = property.PropertyType;
                 propertyAccess = Expression.MakeMemberAccess(propertyAccess, property);
             }
+
             var keySelector = Expression.Lambda(propertyAccess, param);
             return keySelector;
         }

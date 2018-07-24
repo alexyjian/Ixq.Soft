@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Domain;
@@ -7,7 +6,7 @@ using Ixq.Soft.Core.Domain;
 namespace Ixq.Soft.Core.Repository
 {
     /// <summary>
-    /// 定义仓储接口。
+    ///     定义仓储接口。
     /// </summary>
     /// <typeparam name="TEntity">实体类型。</typeparam>
     public interface IRepository<TEntity> : IRepository<TEntity, int>
@@ -16,7 +15,7 @@ namespace Ixq.Soft.Core.Repository
     }
 
     /// <summary>
-    /// 定义仓储接口。
+    ///     定义仓储接口。
     /// </summary>
     /// <typeparam name="TEntity">实体类型。</typeparam>
     /// <typeparam name="TKey">实体主键的类型。</typeparam>
@@ -29,17 +28,17 @@ namespace Ixq.Soft.Core.Repository
         IUnitOfWork UnitOfWork { get; }
 
         /// <summary>
-        /// 获取实体集。
+        ///     获取实体集。
         /// </summary>
         IQueryable<TEntity> Table { get; }
 
         /// <summary>
-        /// 获取实体集，返回的实体不会被上下文跟踪。
+        ///     获取实体集，返回的实体不会被上下文跟踪。
         /// </summary>
         IQueryable<TEntity> TableNoTracking { get; }
 
         /// <summary>
-        /// 根据主键查找实体。
+        ///     根据主键查找实体。
         /// </summary>
         /// <param name="keyValues">实体主键。</param>
         /// <returns>查找出来的实体，可能为 null。</returns>

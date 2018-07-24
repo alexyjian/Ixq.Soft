@@ -3,7 +3,7 @@
 namespace Ixq.Soft.Core.Extensions
 {
     /// <summary>
-    /// <see cref="string"/> 扩展类。
+    ///     <see cref="string" /> 扩展类。
     /// </summary>
     public static class StringExtensions
     {

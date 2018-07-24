@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace Ixq.Soft.Core
 {
@@ -44,10 +45,10 @@ namespace Ixq.Soft.Core
         public DataQueryParameter QueryParam { get; set; }
 
         /// <summary>
-        ///     获取用 <see cref="System.ComponentModel.ListSortDirection"/> 表示的排序方向。
+        ///     获取用 <see cref="System.ComponentModel.ListSortDirection" /> 表示的排序方向。
         /// </summary>
         public ListSortDirection ListSortDirection =>
-            SortDirection.Equals("asc", System.StringComparison.OrdinalIgnoreCase)
+            SortDirection.Equals("asc", StringComparison.OrdinalIgnoreCase)
                 ? ListSortDirection.Ascending
                 : ListSortDirection.Descending;
     }

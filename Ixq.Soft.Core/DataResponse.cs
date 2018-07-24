@@ -9,12 +9,14 @@ namespace Ixq.Soft.Core
     public class DataResponse
     {
         /// <summary>
-        /// 实例化一个新的 <see cref="DataResponse"/> 实例。
+        ///     实例化一个新的 <see cref="DataResponse" /> 实例。
         /// </summary>
-        public DataResponse() { }
+        public DataResponse()
+        {
+        }
 
         /// <summary>
-        /// 使用 <see cref="IPagedList"/> 实例化一个新的 <see cref="DataResponse"/> 实例。
+        ///     使用 <see cref="IPagedList" /> 实例化一个新的 <see cref="DataResponse" /> 实例。
         /// </summary>
         /// <param name="pagingList"></param>
         public DataResponse(IPagedList pagingList)

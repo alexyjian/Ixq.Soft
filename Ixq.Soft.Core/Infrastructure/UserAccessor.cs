@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 namespace Ixq.Soft.Core.Infrastructure
 {
     /// <summary>
-    /// 授权用于访问器。
+    ///     授权用于访问器。
     /// </summary>
     public sealed class UserAccessor
     {
@@ -16,7 +16,7 @@ namespace Ixq.Soft.Core.Infrastructure
         }
 
         /// <summary>
-        /// 获取当前授权用户。
+        ///     获取当前授权用户。
         /// </summary>
         public ClaimsPrincipal User =>
             _httpContextAccessor?.HttpContext.User ?? System.Threading.Thread.CurrentPrincipal as ClaimsPrincipal;

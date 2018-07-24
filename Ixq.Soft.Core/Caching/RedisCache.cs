@@ -10,7 +10,7 @@ using StackExchange.Redis;
 namespace Ixq.Soft.Core.Caching
 {
     /// <summary>
-    /// 基于 <see cref="StackExchange.Redis"/> 实现的缓存。
+    ///     基于 <see cref="StackExchange.Redis" /> 实现的缓存。
     /// </summary>
     public class RedisCache : ICache
     {

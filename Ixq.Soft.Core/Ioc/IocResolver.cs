@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Ixq.Soft.Core.Ioc
 {
     /// <summary>
-    /// 依赖注入解析器。
+    ///     依赖注入解析器。
     /// </summary>
     public class IocResolver
     {
@@ -16,6 +16,16 @@ namespace Ixq.Soft.Core.Ioc
         {
             Current = new IocResolver();
         }
+
+        /// <summary>
+        ///     获取服务提供者。
+        /// </summary>
+        public IServiceProvider RequestServices => GetServiceProvider();
+
+        /// <summary>
+        ///     获取解析器实例。
+        /// </summary>
+        public static IocResolver Current { get; }
 
 
         /// <summary>
@@ -73,17 +83,7 @@ namespace Ixq.Soft.Core.Ioc
         }
 
         /// <summary>
-        /// 获取服务提供者。
-        /// </summary>
-        public IServiceProvider RequestServices => GetServiceProvider();
-
-        /// <summary>
-        /// 获取解析器实例。
-        /// </summary>
-        public static IocResolver Current { get; }
-
-        /// <summary>
-        /// 获取服务提供者。
+        ///     获取服务提供者。
         /// </summary>
         /// <returns></returns>
         private IServiceProvider GetServiceProvider()
@@ -95,7 +95,7 @@ namespace Ixq.Soft.Core.Ioc
         }
 
         /// <summary>
-        /// 设置<see cref="IServiceProvider"/>。
+        ///     设置<see cref="IServiceProvider" />。
         /// </summary>
         /// <param name="serviceProvider"></param>
         internal void SetServiceProvider(IServiceProvider serviceProvider)
@@ -104,15 +104,12 @@ namespace Ixq.Soft.Core.Ioc
         }
 
         /// <summary>
-        /// 设置<see cref="IServiceProvider"/>。
+        ///     设置<see cref="IServiceProvider" />。
         /// </summary>
         /// <param name="func"></param>
         internal void SetServiceProvider(Func<IServiceProvider> func)
         {
-            if (func == null)
-            {
-                throw new ArgumentNullException(nameof(func));
-            }
+            if (func == null) throw new ArgumentNullException(nameof(func));
 
             _service = func();
         }

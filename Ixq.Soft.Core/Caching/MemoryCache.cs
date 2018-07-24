@@ -12,13 +12,13 @@ using Microsoft.Extensions.Primitives;
 namespace Ixq.Soft.Core.Caching
 {
     /// <summary>
-    ///     基于 <see cref="IMemoryCache"/> 实现的缓存。
+    ///     基于 <see cref="IMemoryCache" /> 实现的缓存。
     /// </summary>
     public class MemoryCache : ICache
     {
+        protected static readonly ConcurrentDictionary<string, bool> AllKeys;
         private readonly IMemoryCache _memoryCache;
         private CancellationTokenSource _cancellationTokenSource;
-        protected static readonly ConcurrentDictionary<string, bool> AllKeys;
 
         static MemoryCache()
         {
@@ -41,7 +41,7 @@ namespace Ixq.Soft.Core.Caching
         {
             Guard.ArgumentNotNullOrWhiteSpace(key, nameof(key));
 
-            return _memoryCache.TryGetValue(key, out object _);
+            return _memoryCache.TryGetValue(key, out _);
         }
 
         public Task<bool> ExistsAsync(string key)
@@ -183,7 +183,7 @@ namespace Ixq.Soft.Core.Caching
         protected string AddKey(string key)
         {
             AllKeys.TryAdd(key, true);
-            return key; 
+            return key;
         }
 
         protected string RemoveKey(string key)
@@ -194,7 +194,7 @@ namespace Ixq.Soft.Core.Caching
 
         protected void TryRemoveKey(string key)
         {
-            if (!AllKeys.TryRemove(key, out bool _))
+            if (!AllKeys.TryRemove(key, out _))
                 AllKeys.TryUpdate(key, false, false);
         }
 

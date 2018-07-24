@@ -1,27 +1,26 @@
 ﻿using System.Security.Claims;
 using Ixq.Soft.Core.Infrastructure;
 using Ixq.Soft.Core.Ioc;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Ixq.Soft.Services
+namespace Ixq.Soft.Core.Application.Service
 {
     /// <summary>
-    /// 默认的 <see cref="IBaseService"/> 实现。
+    ///     应用服务基类。
     /// </summary>
-    public abstract class BaseService : IBaseService
+    public abstract class ApplicationService : IApplicationService
     {
         private readonly UserAccessor _userAccessor;
 
-        protected BaseService()
+        protected ApplicationService()
         {
             _userAccessor = IocResolver.Current.GetService<UserAccessor>();
             var loggerFactory = IocResolver.Current.GetService<ILoggerFactory>();
             Logger = loggerFactory.CreateLogger(GetType());
         }
 
-        public ILogger Logger { get; }
+        protected ILogger Logger { get; }
 
-        public ClaimsPrincipal User => _userAccessor.User;
+        protected ClaimsPrincipal User => _userAccessor.User;
     }
 }

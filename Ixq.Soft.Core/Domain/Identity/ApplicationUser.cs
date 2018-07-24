@@ -15,10 +15,11 @@ namespace Ixq.Soft.Core.Domain.Identity
             UserName = userName;
         }
 
-        public long CreationUserId { get; set; }
-        public DateTime CreationTime { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+
+        public long CreationUserId { get; set; }
+        public DateTime CreationTime { get; set; }
         public string SoteCode { get; set; }
         public long DeleteUserId { get; set; }
         public DateTime? DeleteTime { get; set; }

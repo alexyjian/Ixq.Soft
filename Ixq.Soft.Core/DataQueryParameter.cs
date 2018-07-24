@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Ixq.Soft.Core
 {
     /// <summary>
     ///     数据请求参数。
     /// </summary>
-    public class DataQueryParameter : Dictionary<string,string>
+    public class DataQueryParameter : Dictionary<string, string>
     {
     }
 }

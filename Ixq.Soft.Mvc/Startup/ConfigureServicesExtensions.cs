@@ -71,11 +71,6 @@ namespace Ixq.Soft.Mvc.Startup
             // user accessor
             services.AddSingleton<UserAccessor>();
 
-            var appConfig = new AppConfig();
-            configuration.Bind("AppConfig", appConfig);
-            appConfig.DbContextConnectionString = configuration.GetConnectionString("DefaultConnection");
-            services.AddSingleton(typeof(AppConfig), appConfig);
-
             // caching
             var redisCacheEnabled = configuration.GetValue<bool>("AppConfig:RedisCacheEnabled");
             if (redisCacheEnabled)

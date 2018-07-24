@@ -1,18 +1,15 @@
-﻿using System;
+﻿using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Ixq.Soft.Core;
-using Ixq.Soft.Core.Domain;
 using Ixq.Soft.Core.Linq;
-using Ixq.Soft.Core.Repository;
-using Microsoft.EntityFrameworkCore;
+using Ixq.Soft.Core.Thread;
 
-namespace Ixq.Soft.EntityFrameworkCore
+namespace Ixq.Soft.Core.Extensions
 {
     public static class QueryableExtensions
     {
         /// <summary>
-        /// 根据指定的方向排序。
+        ///     根据指定的方向排序。
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="queryable"></param>
@@ -20,20 +17,17 @@ namespace Ixq.Soft.EntityFrameworkCore
         /// <param name="direction"></param>
         /// <returns></returns>
         public static IQueryable<T> OrderByDirection<T>(this IQueryable<T> queryable, string propertyName,
-            System.ComponentModel.ListSortDirection direction)
+            ListSortDirection direction)
         {
             dynamic keySelector = ExpressionHelper.GetKeySelector<T>(propertyName);
 
-            if (direction == System.ComponentModel.ListSortDirection.Ascending)
-            {
-                return Queryable.OrderBy(queryable, keySelector);
-            }
+            if (direction == ListSortDirection.Ascending) return Queryable.OrderBy(queryable, keySelector);
 
             return Queryable.OrderByDescending(queryable, keySelector);
         }
 
         /// <summary>
-        /// 升序排序。
+        ///     升序排序。
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="queryable"></param>
@@ -46,7 +40,7 @@ namespace Ixq.Soft.EntityFrameworkCore
         }
 
         /// <summary>
-        /// 降序排序。
+        ///     降序排序。
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="queryable"></param>
@@ -82,32 +76,13 @@ namespace Ixq.Soft.EntityFrameworkCore
         public static async Task<PagedList<T>> ToPagedListAsync<T>(this IQueryable<T> queryable, int pageIndex,
             int pageSize)
         {
-            var totalRecords = await queryable.CountAsync();
+            return await TaskHelper.Run(() => ToPagedList(queryable, pageIndex, pageSize));
 
-            var list = await queryable.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+            //var totalRecords = await queryable.CountAsync();
 
-            return new PagedList<T>(list, totalRecords, pageIndex, pageSize);
-        }
+            //var list = await queryable.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
 
-
-        /// <summary>
-        /// 获取上下文。
-        /// </summary>
-        /// <typeparam name="TEntity"></typeparam>
-        /// <typeparam name="TKey"></typeparam>
-        /// <param name="repository"></param>
-        /// <returns></returns>
-        public static DbContext GetDbContext<TEntity, TKey>(this IRepository<TEntity, TKey> repository)
-            where TEntity : class, IEntityBase<TKey>, new()
-        {
-            if (repository == null)
-            {
-                throw new ArgumentNullException(nameof(repository));
-            }
-
-            if (repository.UnitOfWork == null)
-                throw new ArgumentNullException(nameof(repository.UnitOfWork), "未初始化工作单元");
-            return (DbContext)repository.UnitOfWork;
+            //return new PagedList<T>(list, totalRecords, pageIndex, pageSize);
         }
     }
 }

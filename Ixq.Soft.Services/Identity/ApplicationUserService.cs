@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Ixq.Soft.Core;
+using Ixq.Soft.Core.Application.Service;
 using Ixq.Soft.Core.Extensions;
 using Ixq.Soft.Core.Domain.Identity;
 using Ixq.Soft.Core.Infrastructure;
@@ -11,7 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Ixq.Soft.Services.Identity
 {
-    public class ApplicationUserService : BaseEntityService<ApplicationUser, long>, IApplicationUserService
+    public class ApplicationUserService : EntityAppService<ApplicationUser, long>, IApplicationUserService
     {
     }
 }

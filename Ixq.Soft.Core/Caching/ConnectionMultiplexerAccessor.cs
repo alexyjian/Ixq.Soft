@@ -6,7 +6,7 @@ using StackExchange.Redis;
 namespace Ixq.Soft.Core.Caching
 {
     /// <summary>
-    /// 默认的 <see cref="IConnectionMultiplexerAccessor"/> 实现。
+    ///     默认的 <see cref="IConnectionMultiplexerAccessor" /> 实现。
     /// </summary>
     public class ConnectionMultiplexerAccessor : IConnectionMultiplexerAccessor
     {

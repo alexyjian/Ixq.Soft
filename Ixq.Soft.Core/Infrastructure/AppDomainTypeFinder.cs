@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 namespace Ixq.Soft.Core.Infrastructure
 {
     /// <summary>
-    /// appDomain 类型查找器。
+    ///     appDomain 类型查找器。
     /// </summary>
     public class AppDomainTypeFinder : ITypeFinder
     {
@@ -47,6 +47,7 @@ namespace Ixq.Soft.Core.Infrastructure
                         if (!IgnoreReflectionErrors)
                             throw;
                     }
+
                     if (types != null)
                         foreach (var t in types)
                             if (type.IsAssignableFrom(t) ||
@@ -65,6 +66,7 @@ namespace Ixq.Soft.Core.Infrastructure
 
                 throw fail;
             }
+
             return result;
         }
 
@@ -83,6 +85,7 @@ namespace Ixq.Soft.Core.Infrastructure
                         genericTypeDefinition.IsAssignableFrom(implementedInterface.GetGenericTypeDefinition());
                     return isMatch;
                 }
+
                 return false;
             }
             catch

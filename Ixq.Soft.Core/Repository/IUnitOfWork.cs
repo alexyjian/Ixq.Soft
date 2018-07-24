@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Infrastructure;
 
@@ -13,12 +10,12 @@ namespace Ixq.Soft.Core.Repository
     public interface IUnitOfWork
     {
         /// <summary>
-        /// 获取一个 <see cref="UserAccessor"/> 实例。
+        ///     获取一个 <see cref="UserAccessor" /> 实例。
         /// </summary>
         UserAccessor UserProvider { get; }
 
         /// <summary>
-        /// 获取一值，表示是否启用软删除过滤器。
+        ///     获取一值，表示是否启用软删除过滤器。
         /// </summary>
         bool IsSoftDeleteFilterEnabled { get; }
 
@@ -36,7 +33,7 @@ namespace Ixq.Soft.Core.Repository
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// 回滚事务。
+        ///     回滚事务。
         /// </summary>
         void RollbackTransaction();
     }

@@ -14,7 +14,6 @@ namespace Ixq.Soft.Core
         {
             PageSize = pageSize;
             PageIndex = pageIndex;
-
         }
 
         public PagedList(IQueryable<T> queryable, int pageIndex, int pageSize) : this(pageIndex, pageSize)
@@ -65,7 +64,7 @@ namespace Ixq.Soft.Core
         public bool HasNextPage => PageIndex < TotalPages;
 
         /// <summary>
-        ///     返回一个新的 <see cref="DataResponse"/> 对象实例。
+        ///     返回一个新的 <see cref="DataResponse" /> 对象实例。
         /// </summary>
         /// <returns></returns>
         public DataResponse ToDataResponse()
