@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Configuration;
-using Ixq.Soft.Core.Thread;
+using Ixq.Soft.Core.Threading;
 using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 

@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Ixq.Soft.Core.Thread;
+using Ixq.Soft.Core.Threading;
 
 namespace Ixq.Soft.Core.EventBus.Internal
 {
-    public class ActionEventHandler : IEventHandler
+    public class ActionEventHandler<TEventData> : IEventHandler<TEventData>
+        where TEventData : IEventData
     {
-        public ActionEventHandler(Action<IEventData> action)
+        public ActionEventHandler(Action<TEventData> action)
         {
             Action = action;
         }
 
-        public Action<IEventData> Action { get; }
+        public Action<TEventData> Action { get; }
 
-        public void HandleEvent(IEventData eventData)
+        public void HandleEvent(TEventData eventData)
         {
             Action(eventData);
         }
 
-        public async Task HandleEventAsync(IEventData eventData)
+        public async Task HandleEventAsync(TEventData eventData)
         {
             await TaskHelper.Run(() => Action(eventData));
         }

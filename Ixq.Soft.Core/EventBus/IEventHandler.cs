@@ -7,8 +7,13 @@ namespace Ixq.Soft.Core.EventBus
 {
     public interface IEventHandler
     {
-        void HandleEvent(IEventData eventData);
+    }
 
-        Task HandleEventAsync(IEventData eventData);
+    public interface IEventHandler<in TEventData> : IEventHandler
+        where TEventData : IEventData
+    {
+        void HandleEvent(TEventData eventData);
+
+        Task HandleEventAsync(TEventData eventData);
     }
 }

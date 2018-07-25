@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Ixq.Soft.Core.Thread
+namespace Ixq.Soft.Core.Threading
 {
     public static class TaskHelper
     {

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Ixq.Soft.Core.Linq;
-using Ixq.Soft.Core.Thread;
+using Ixq.Soft.Core.Threading;
 
 namespace Ixq.Soft.Core.Extensions
 {
